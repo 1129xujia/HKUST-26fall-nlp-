@@ -1,0 +1,9 @@
+{
+  "query": "How do I replace a lost driver's license?",
+  "sub_queries": [
+    "lost license replacement documents"
+  ],
+  "domain": "dmv",
+  "top_k": 6,
+  "trace_id": "dialog-12:turn-4"
+}
