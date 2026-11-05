@@ -1,0 +1,16 @@
+# Automatically merged over default.yaml by load_config().
+# The D1/D2 backend is still mock/hash, not an experimental Single-RAG result.
+planning:
+  use_history: false
+  rewrite: false
+  decompose: false
+retrieval:
+  branches: [dense]
+  fusion: interleave
+  rerank: false
+quality:
+  enabled: false
+optimization:
+  enabled: false
+escalation:
+  enabled: false

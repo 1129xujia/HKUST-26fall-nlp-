@@ -1,0 +1,47 @@
+config_version: "1"
+seed: 42
+data:
+  passages_path: data/samples/passages.jsonl
+  examples_path: data/samples/dialogues.jsonl
+  source: synthetic
+  split: mini
+  chunk_size: 1200
+  chunk_overlap: 150
+models:
+  llm:
+    backend: mock
+    model: mock-extractive-v1
+  embedding:
+    backend: hash
+    model: hash-token-v1
+    dimensions: 256
+planning:
+  use_history: true
+  rewrite: true
+  decompose: false
+retrieval:
+  branches: [dense, bm25]
+  per_branch_top_k: 10
+  fusion: rrf
+  rrf_k: 60
+  candidate_top_k: 10
+  rerank: false
+  final_top_k: 3
+quality:
+  enabled: false
+  relevance_threshold: 0.7
+  sufficiency_threshold: 0.7
+  groundedness_threshold: 0.8
+  dialogue_consistency_threshold: 0.8
+optimization:
+  enabled: false
+  max_retries: 2
+  stop_if_no_new_evidence: true
+budget:
+  max_latency_seconds: 30.0
+  max_total_tokens: 12000
+escalation:
+  enabled: false
+paths:
+  index_dir: artifacts/indexes/mini
+  results_dir: results

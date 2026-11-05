@@ -1,0 +1,32 @@
+# Declarative profiles for later experiments; E3+ require unfinished modules.
+# All profiles inherit baseline.yaml, then apply their overrides.
+base: baseline.yaml
+profiles:
+  E0: {}
+  E1:
+    retrieval:
+      branches: [dense, bm25]
+  E2:
+    retrieval:
+      branches: [dense, bm25]
+      fusion: rrf
+  E3:
+    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
+  E4:
+    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
+    planning: {use_history: true, rewrite: true, decompose: false}
+  E5:
+    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
+    planning: {use_history: true, rewrite: true, decompose: false}
+    quality: {enabled: true}
+  E6:
+    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
+    planning: {use_history: true, rewrite: true, decompose: false}
+    quality: {enabled: true}
+    optimization: {enabled: true}
+  E7:
+    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
+    planning: {use_history: true, rewrite: true, decompose: false}
+    quality: {enabled: true}
+    optimization: {enabled: true}
+    escalation: {enabled: true}

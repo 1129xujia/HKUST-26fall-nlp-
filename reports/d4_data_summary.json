@@ -1,0 +1,90 @@
+{
+  "dataset": "MultiDoc2Dial",
+  "version": "1.0",
+  "preprocessing_version": "offset-v1",
+  "documents": 488,
+  "passages": 3798,
+  "examples": {
+    "train": 20558,
+    "dev": 2248,
+    "validation": 4427,
+    "mini": 20
+  },
+  "domains": [
+    "dmv",
+    "ssa",
+    "studentaid",
+    "va"
+  ],
+  "seed": 42,
+  "dev_ratio": 0.1,
+  "chunk_size": 800,
+  "chunk_overlap": 120,
+  "span_text_mismatches": 0,
+  "unmapped_references": 0,
+  "files": {
+    "multidoc2dial_doc.json": "7205be05b7c260fd3c0eda4d98a4abddf7af66c364238f1be509aa139414012d",
+    "multidoc2dial_dial_train.json": "c9a6ef2e0be22306429e0affa51c2ca164b2808a89a999e7756700170ed15d96",
+    "multidoc2dial_dial_validation.json": "ce063938b53d96f6128275d76c0ba967a435e3d865d011aaeb6461c2538b2ce4"
+  },
+  "protocol": "Train is split by dialogue into train/dev; official validation is untouched. Consecutive user/agent turns are merged into one request/response. Long spans require all fragment groups; overlapping windows are alternatives.",
+  "official_test": "Dummy file, excluded from labeled evaluation.",
+  "source_manifest": {
+    "dataset": "MultiDoc2Dial",
+    "version": "1.0",
+    "source_url": "https://doc2dial.github.io/multidoc2dial/file/multidoc2dial.zip",
+    "archive_sha256": "f0c034c249663d7b3cb08b19cf2cc2c3d101372485be982621d4711931a1ce00",
+    "license": "Apache-2.0",
+    "license_source": "https://huggingface.co/datasets/IBM/multidoc2dial",
+    "repository_license_url": "https://raw.githubusercontent.com/IBM/multidoc2dial/main/LICENSE",
+    "retrieved_at_utc": "2026-11-04T10:37:01.101074+00:00",
+    "files": [
+      {
+        "path": "data/raw/multidoc2dial/multidoc2dial/README.md",
+        "sha256": "ec7c53cef909a6569257ac86ddbbc5942d61b919ce024424d5fcb2fb9c876783",
+        "bytes": 2565
+      },
+      {
+        "path": "data/raw/multidoc2dial/multidoc2dial/multidoc2dial_dial_validation.json",
+        "sha256": "ce063938b53d96f6128275d76c0ba967a435e3d865d011aaeb6461c2538b2ce4",
+        "bytes": 6940151
+      },
+      {
+        "path": "data/raw/multidoc2dial/__MACOSX/multidoc2dial/._multidoc2dial_dial_validation.json",
+        "sha256": "da22dece26f6ea85178020f4dee7ad2d4138218816561a128f9dafcaed8bbb07",
+        "bytes": 269
+      },
+      {
+        "path": "data/raw/multidoc2dial/multidoc2dial/multidoc2dial_dial_test.json",
+        "sha256": "4df4887a85b4c1aec7d41e9f96ecb607ec2a7f7732344933b05b79a0526bf40f",
+        "bytes": 6648870
+      },
+      {
+        "path": "data/raw/multidoc2dial/__MACOSX/multidoc2dial/._multidoc2dial_dial_test.json",
+        "sha256": "44dc8b1dc2efa353b435d19e97147f34e039e7047e91e399a4ed0e59626d9e0e",
+        "bytes": 369
+      },
+      {
+        "path": "data/raw/multidoc2dial/multidoc2dial/multidoc2dial_dial_train.json",
+        "sha256": "c9a6ef2e0be22306429e0affa51c2ca164b2808a89a999e7756700170ed15d96",
+        "bytes": 36362816
+      },
+      {
+        "path": "data/raw/multidoc2dial/__MACOSX/multidoc2dial/._multidoc2dial_dial_train.json",
+        "sha256": "d07cdfac5a758e33bc7db50c434792bb5915a88bbe90399561cf9e4341304f04",
+        "bytes": 542
+      },
+      {
+        "path": "data/raw/multidoc2dial/multidoc2dial/multidoc2dial_doc.json",
+        "sha256": "7205be05b7c260fd3c0eda4d98a4abddf7af66c364238f1be509aa139414012d",
+        "bytes": 46216321
+      },
+      {
+        "path": "data/raw/multidoc2dial/__MACOSX/multidoc2dial/._multidoc2dial_doc.json",
+        "sha256": "aa53491eac9ccab276f376b39106d808d2ac5b01cb90af608db0c3a2c00a6b39",
+        "bytes": 269
+      }
+    ],
+    "test_split": "Official v1.0 test JSON is a dummy file; not used for labeled evaluation."
+  }
+}

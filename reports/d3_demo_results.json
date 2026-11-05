@@ -1,0 +1,140 @@
+{
+  "is_mock": true,
+  "mode": "scripted_mock_services",
+  "note": "These outcomes demonstrate control paths, not research metrics.",
+  "runs": [
+    {
+      "scenario": "pass",
+      "run_id": "a261e6f451f6431d8fc52f840679db82",
+      "status": "answered",
+      "stop_reason": "evaluation_passed",
+      "evaluations": 1,
+      "retrieval_round": 1,
+      "retry_count": 0,
+      "actions": []
+    },
+    {
+      "scenario": "retry-retrieve",
+      "run_id": "eaac099391ad43afaabb5782d00907b7",
+      "status": "answered",
+      "stop_reason": "evaluation_passed",
+      "evaluations": 2,
+      "retrieval_round": 2,
+      "retry_count": 1,
+      "actions": [
+        "adjust_retrieval"
+      ]
+    },
+    {
+      "scenario": "retry-regenerate",
+      "run_id": "6364dab042e545f8ad9c226f7e35e59a",
+      "status": "answered",
+      "stop_reason": "evaluation_passed",
+      "evaluations": 2,
+      "retrieval_round": 1,
+      "retry_count": 1,
+      "actions": [
+        "regenerate"
+      ]
+    },
+    {
+      "scenario": "clarify",
+      "run_id": "28bb50575c5c48d8bf5896beb812d81a",
+      "status": "clarification_needed",
+      "stop_reason": "clarification_required",
+      "evaluations": 1,
+      "retrieval_round": 1,
+      "retry_count": 0,
+      "actions": []
+    },
+    {
+      "scenario": "escalate",
+      "run_id": "94ac637069964182ad997388a84da494",
+      "status": "escalated",
+      "stop_reason": "evaluator_escalation",
+      "evaluations": 1,
+      "retrieval_round": 1,
+      "retry_count": 0,
+      "actions": []
+    },
+    {
+      "scenario": "retry-limit",
+      "run_id": "fa23bdf511084085a4162b6f42f4c8e2",
+      "status": "escalated",
+      "stop_reason": "retry_limit",
+      "evaluations": 3,
+      "retrieval_round": 1,
+      "retry_count": 2,
+      "actions": [
+        "regenerate",
+        "regenerate"
+      ]
+    },
+    {
+      "scenario": "no-new-evidence",
+      "run_id": "7154b8edd14046868ef9e51e450f63d5",
+      "status": "escalated",
+      "stop_reason": "no_new_evidence",
+      "evaluations": 1,
+      "retrieval_round": 2,
+      "retry_count": 1,
+      "actions": [
+        "adjust_retrieval"
+      ]
+    },
+    {
+      "scenario": "token-budget",
+      "run_id": "80eebc0608a54532838667fa3d7fec6f",
+      "status": "escalated",
+      "stop_reason": "token_budget",
+      "evaluations": 0,
+      "retrieval_round": 0,
+      "retry_count": 0,
+      "actions": []
+    },
+    {
+      "scenario": "latency-budget",
+      "run_id": "6f9b1117ee6a4cbea6e9b2e1cea49e19",
+      "status": "escalated",
+      "stop_reason": "latency_budget",
+      "evaluations": 1,
+      "retrieval_round": 1,
+      "retry_count": 0,
+      "actions": []
+    },
+    {
+      "scenario": "no-escalation",
+      "run_id": "4fecd6a2459940fbb70d28786535ef6d",
+      "status": "insufficient_evidence",
+      "stop_reason": "retry_limit",
+      "evaluations": 1,
+      "retrieval_round": 1,
+      "retry_count": 0,
+      "actions": []
+    },
+    {
+      "scenario": "rewrite-query",
+      "run_id": "9d8a5fa98d3443cb9770a58aef5a650c",
+      "status": "answered",
+      "stop_reason": "evaluation_passed",
+      "evaluations": 2,
+      "retrieval_round": 2,
+      "retry_count": 1,
+      "actions": [
+        "rewrite_query"
+      ]
+    },
+    {
+      "scenario": "add-sub-queries",
+      "run_id": "382b15bd4478491382085d7ad174aed0",
+      "status": "answered",
+      "stop_reason": "evaluation_passed",
+      "evaluations": 2,
+      "retrieval_round": 2,
+      "retry_count": 1,
+      "actions": [
+        "add_sub_queries"
+      ]
+    }
+  ]
+}

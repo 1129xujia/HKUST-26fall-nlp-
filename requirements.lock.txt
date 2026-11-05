@@ -1,0 +1,21 @@
+# Runtime dependency snapshot: Windows / Python 3.10.14.
+# Install with: python -m pip install -c requirements.lock.txt -e .
+annotated-types==0.8.0
+click==8.2.1
+colorama==0.4.6
+Jinja2==3.1.6
+markdown-it-py==4.2.0
+MarkupSafe==3.0.4
+mdurl==0.1.2
+numpy==2.2.6
+pydantic==2.11.7
+pydantic_core==2.33.2
+Pygments==2.21.0
+python-dotenv==1.1.1
+PyYAML==6.0.2
+rank-bm25==0.2.2
+rich==15.0.0
+shellingham==1.5.4
+typer==0.16.0
+typing-inspection==0.4.4
+typing_extensions==4.16.0

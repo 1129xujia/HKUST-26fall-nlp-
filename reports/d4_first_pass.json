@@ -1,0 +1,43 @@
+{
+  "is_mock": false,
+  "batch_dir": "C:\\Users\\1\\Desktop\\nlp\\HKUST-26fall-nlp-\\results\\batch_4ff0a033ae8f4d0db73dc4d4f08c6fc9",
+  "note": "Development execution; use evaluate for reference-based metrics.",
+  "runs": [
+    {
+      "sample_id": "dmv/77bc47cb30af22bdb77019a87199356c/u8",
+      "run_id": "77ace4252d05499b834a91170a0a976e",
+      "status": "answered",
+      "stop_reason": "single_pass_mock_completed",
+      "evaluations": 0,
+      "retrieval_round": 1,
+      "retry_count": 0
+    },
+    {
+      "sample_id": "ssa/21d1570e4343547a5276c27bcb79427d/u14",
+      "run_id": "eb24a1d52c8044c6ab5f5d22634905b9",
+      "status": "answered",
+      "stop_reason": "single_pass_mock_completed",
+      "evaluations": 0,
+      "retrieval_round": 1,
+      "retry_count": 0
+    },
+    {
+      "sample_id": "studentaid/334a5aebde884aa0be540cc57888912e/u10",
+      "run_id": "8b363ab62bac45a7bfea76cba4628e15",
+      "status": "answered",
+      "stop_reason": "single_pass_mock_completed",
+      "evaluations": 0,
+      "retrieval_round": 1,
+      "retry_count": 0
+    },
+    {
+      "sample_id": "va/17278a822bc82e94b81bdbc41a73879e/u6",
+      "run_id": "fece60b6254840c48ccbc1cc8d502437",
+      "status": "answered",
+      "stop_reason": "single_pass_mock_completed",
+      "evaluations": 0,
+      "retrieval_round": 1,
+      "retry_count": 0
+    }
+  ]
+}

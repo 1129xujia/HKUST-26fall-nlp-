@@ -1,0 +1,9 @@
+# Full local-model settings with the quality loop disabled for first-pass inspection.
+# load_config layers this over default; CLI merges local.yaml explicitly via base_config.
+base_config: local.yaml
+quality:
+  enabled: false
+optimization:
+  enabled: false
+escalation:
+  enabled: false
