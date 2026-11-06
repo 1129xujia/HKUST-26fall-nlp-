@@ -1,0 +1,1175 @@
+{
+  "$defs": {
+    "BudgetState": {
+      "additionalProperties": false,
+      "properties": {
+        "used_tokens": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": 0,
+          "title": "Used Tokens"
+        },
+        "elapsed_seconds": {
+          "default": 0,
+          "minimum": 0.0,
+          "title": "Elapsed Seconds",
+          "type": "number"
+        }
+      },
+      "title": "BudgetState",
+      "type": "object"
+    },
+    "Capabilities": {
+      "additionalProperties": false,
+      "properties": {
+        "generation": {
+          "default": true,
+          "title": "Generation",
+          "type": "boolean"
+        },
+        "rewriting": {
+          "default": true,
+          "title": "Rewriting",
+          "type": "boolean"
+        },
+        "hybrid": {
+          "default": true,
+          "title": "Hybrid",
+          "type": "boolean"
+        },
+        "reranking": {
+          "default": false,
+          "title": "Reranking",
+          "type": "boolean"
+        },
+        "retrievers": {
+          "items": {
+            "enum": [
+              "dense",
+              "bm25"
+            ],
+            "type": "string"
+          },
+          "title": "Retrievers",
+          "type": "array"
+        }
+      },
+      "title": "Capabilities",
+      "type": "object"
+    },
+    "ChatMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "role": {
+          "enum": [
+            "user",
+            "agent",
+            "system"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "text": {
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "text"
+      ],
+      "title": "ChatMessage",
+      "type": "object"
+    },
+    "Decision": {
+      "enum": [
+        "pass",
+        "retry",
+        "clarify",
+        "escalate"
+      ],
+      "title": "Decision",
+      "type": "string"
+    },
+    "Evidence": {
+      "properties": {
+        "passage_id": {
+          "title": "Passage Id",
+          "type": "string"
+        },
+        "doc_id": {
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "domain": {
+          "title": "Domain",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "section_title": {
+          "title": "Section Title",
+          "type": "string"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "span_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Span Ids",
+          "type": "array"
+        },
+        "source_retrievers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Retrievers",
+          "type": "array"
+        },
+        "matched_query": {
+          "title": "Matched Query",
+          "type": "string"
+        },
+        "dense_rank": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dense Rank"
+        },
+        "bm25_rank": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bm25 Rank"
+        },
+        "rrf_score": {
+          "default": 0.0,
+          "title": "Rrf Score",
+          "type": "number"
+        },
+        "rerank_score": {
+          "default": 0.0,
+          "title": "Rerank Score",
+          "type": "number"
+        }
+      },
+      "required": [
+        "passage_id",
+        "doc_id",
+        "domain",
+        "title",
+        "section_title",
+        "text",
+        "span_ids",
+        "source_retrievers",
+        "matched_query"
+      ],
+      "title": "Evidence",
+      "type": "object"
+    },
+    "ExecutionOptions": {
+      "additionalProperties": false,
+      "description": "Request-local settings, separate from Part 2 RetrievalRequest.",
+      "properties": {
+        "dense_top_k": {
+          "default": 100,
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Dense Top K",
+          "type": "integer"
+        },
+        "bm25_top_k": {
+          "default": 50,
+          "maximum": 500,
+          "minimum": 0,
+          "title": "Bm25 Top K",
+          "type": "integer"
+        },
+        "dense_weight": {
+          "default": 1.0,
+          "maximum": 10.0,
+          "minimum": 0.0,
+          "title": "Dense Weight",
+          "type": "number"
+        },
+        "bm25_weight": {
+          "default": 1.0,
+          "maximum": 10.0,
+          "minimum": 0.0,
+          "title": "Bm25 Weight",
+          "type": "number"
+        },
+        "rrf_k": {
+          "default": 30,
+          "maximum": 200,
+          "minimum": 1,
+          "title": "Rrf K",
+          "type": "integer"
+        },
+        "candidate_top_k": {
+          "default": 50,
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Candidate Top K",
+          "type": "integer"
+        },
+        "final_top_k": {
+          "default": 6,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Final Top K",
+          "type": "integer"
+        },
+        "rerank": {
+          "default": false,
+          "title": "Rerank",
+          "type": "boolean"
+        },
+        "reranker_query_strategy": {
+          "default": "current_first_user_history",
+          "enum": [
+            "identity",
+            "current_first_user_history"
+          ],
+          "title": "Reranker Query Strategy",
+          "type": "string"
+        },
+        "reranker_use_sub_queries": {
+          "default": false,
+          "title": "Reranker Use Sub Queries",
+          "type": "boolean"
+        },
+        "reranker_skip_acknowledgements": {
+          "default": true,
+          "title": "Reranker Skip Acknowledgements",
+          "type": "boolean"
+        },
+        "domain_filter": {
+          "default": false,
+          "title": "Domain Filter",
+          "type": "boolean"
+        }
+      },
+      "title": "ExecutionOptions",
+      "type": "object"
+    },
+    "Feedback": {
+      "additionalProperties": false,
+      "description": "Accepts main EvaluationFeedback without requiring new upstream fields.",
+      "properties": {
+        "relevance": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Relevance",
+          "type": "number"
+        },
+        "sufficiency": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Sufficiency",
+          "type": "number"
+        },
+        "groundedness": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Groundedness",
+          "type": "number"
+        },
+        "dialogue_consistency": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Dialogue Consistency",
+          "type": "number"
+        },
+        "decision": {
+          "$ref": "#/$defs/Decision"
+        },
+        "missing_information": {
+          "default": "",
+          "title": "Missing Information",
+          "type": "string"
+        },
+        "suggested_action": {
+          "default": "",
+          "title": "Suggested Action",
+          "type": "string"
+        },
+        "reason": {
+          "default": "",
+          "title": "Reason",
+          "type": "string"
+        },
+        "clarification_question": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clarification Question"
+        },
+        "suggested_queries": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Suggested Queries",
+          "type": "array"
+        },
+        "failure_types": {
+          "items": {
+            "enum": [
+              "answer_defect",
+              "query_misunderstanding",
+              "retrieval_coverage",
+              "retrieval_balance",
+              "evidence_ranking",
+              "missing_user_information"
+            ],
+            "type": "string"
+          },
+          "title": "Failure Types",
+          "type": "array"
+        },
+        "evidence_sufficient": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Sufficient"
+        },
+        "preferred_retriever": {
+          "anyOf": [
+            {
+              "enum": [
+                "dense",
+                "bm25"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Preferred Retriever"
+        }
+      },
+      "required": [
+        "relevance",
+        "sufficiency",
+        "groundedness",
+        "dialogue_consistency",
+        "decision"
+      ],
+      "title": "Feedback",
+      "type": "object"
+    },
+    "FusedHit": {
+      "properties": {
+        "passage": {
+          "$ref": "#/$defs/Passage"
+        },
+        "source_retrievers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Source Retrievers",
+          "type": "array"
+        },
+        "matched_queries": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Matched Queries",
+          "type": "array"
+        },
+        "dense_rank": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dense Rank"
+        },
+        "bm25_rank": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bm25 Rank"
+        },
+        "rrf_score": {
+          "default": 0.0,
+          "title": "Rrf Score",
+          "type": "number"
+        },
+        "rerank_score": {
+          "default": 0.0,
+          "title": "Rerank Score",
+          "type": "number"
+        }
+      },
+      "required": [
+        "passage"
+      ],
+      "title": "FusedHit",
+      "type": "object"
+    },
+    "GeneratedResponse": {
+      "additionalProperties": false,
+      "properties": {
+        "answer": {
+          "minLength": 1,
+          "title": "Answer",
+          "type": "string"
+        },
+        "citations": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Citations",
+          "type": "array"
+        },
+        "retrieval_round": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Retrieval Round",
+          "type": "integer"
+        },
+        "status": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/ResponseStatus"
+            }
+          ],
+          "default": "answered"
+        }
+      },
+      "required": [
+        "answer"
+      ],
+      "title": "GeneratedResponse",
+      "type": "object"
+    },
+    "Limits": {
+      "additionalProperties": false,
+      "properties": {
+        "max_retries": {
+          "default": 2,
+          "maximum": 10,
+          "minimum": 0,
+          "title": "Max Retries",
+          "type": "integer"
+        },
+        "max_total_tokens": {
+          "default": 20000,
+          "minimum": 1,
+          "title": "Max Total Tokens",
+          "type": "integer"
+        },
+        "max_latency_seconds": {
+          "default": 180,
+          "exclusiveMinimum": 0.0,
+          "title": "Max Latency Seconds",
+          "type": "number"
+        },
+        "escalation_enabled": {
+          "default": true,
+          "title": "Escalation Enabled",
+          "type": "boolean"
+        },
+        "relevance_threshold": {
+          "default": 0.7,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Relevance Threshold",
+          "type": "number"
+        },
+        "sufficiency_threshold": {
+          "default": 0.7,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Sufficiency Threshold",
+          "type": "number"
+        },
+        "groundedness_threshold": {
+          "default": 0.8,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Groundedness Threshold",
+          "type": "number"
+        },
+        "dialogue_consistency_threshold": {
+          "default": 0.8,
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Dialogue Consistency Threshold",
+          "type": "number"
+        }
+      },
+      "title": "Limits",
+      "type": "object"
+    },
+    "OptimizationAction": {
+      "additionalProperties": false,
+      "properties": {
+        "branch": {
+          "enum": [
+            "pass",
+            "regenerate",
+            "rewrite_query",
+            "adjust_hybrid",
+            "rerank",
+            "clarify",
+            "escalate",
+            "stop"
+          ],
+          "title": "Branch",
+          "type": "string"
+        },
+        "reason": {
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Revision"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "options": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExecutionOptions"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "clarification_question": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Clarification Question"
+        }
+      },
+      "required": [
+        "branch",
+        "reason"
+      ],
+      "title": "OptimizationAction",
+      "type": "object"
+    },
+    "OptimizationInput": {
+      "additionalProperties": false,
+      "properties": {
+        "query": {
+          "$ref": "#/$defs/QueryPlan"
+        },
+        "response": {
+          "$ref": "#/$defs/GeneratedResponse"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "feedback": {
+          "$ref": "#/$defs/Feedback"
+        },
+        "options": {
+          "$ref": "#/$defs/ExecutionOptions"
+        },
+        "snapshot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RetrievalSnapshot-Input"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "capabilities": {
+          "$ref": "#/$defs/Capabilities"
+        },
+        "limits": {
+          "$ref": "#/$defs/Limits"
+        },
+        "budget": {
+          "$ref": "#/$defs/BudgetState"
+        },
+        "retry_count": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Retry Count",
+          "type": "integer"
+        },
+        "action_history": {
+          "items": {
+            "$ref": "#/$defs/OptimizationAction"
+          },
+          "title": "Action History",
+          "type": "array"
+        },
+        "trace_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Trace Id"
+        }
+      },
+      "required": [
+        "query",
+        "response",
+        "evidence",
+        "feedback"
+      ],
+      "title": "OptimizationInput",
+      "type": "object"
+    },
+    "OptimizationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "response": {
+          "$ref": "#/$defs/GeneratedResponse"
+        },
+        "query": {
+          "$ref": "#/$defs/QueryPlan"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "options": {
+          "$ref": "#/$defs/ExecutionOptions"
+        },
+        "feedback_history": {
+          "items": {
+            "$ref": "#/$defs/Feedback"
+          },
+          "title": "Feedback History",
+          "type": "array"
+        },
+        "candidate_history": {
+          "items": {
+            "$ref": "#/$defs/GeneratedResponse"
+          },
+          "title": "Candidate History",
+          "type": "array"
+        },
+        "actions": {
+          "items": {
+            "$ref": "#/$defs/OptimizationAction"
+          },
+          "title": "Actions",
+          "type": "array"
+        },
+        "trace": {
+          "items": {
+            "$ref": "#/$defs/TraceEntry"
+          },
+          "title": "Trace",
+          "type": "array"
+        },
+        "retry_count": {
+          "title": "Retry Count",
+          "type": "integer"
+        },
+        "retrieval_rounds": {
+          "title": "Retrieval Rounds",
+          "type": "integer"
+        },
+        "evaluations": {
+          "title": "Evaluations",
+          "type": "integer"
+        },
+        "used_tokens": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Used Tokens"
+        },
+        "elapsed_seconds": {
+          "title": "Elapsed Seconds",
+          "type": "number"
+        },
+        "stop_reason": {
+          "title": "Stop Reason",
+          "type": "string"
+        },
+        "snapshot": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RetrievalSnapshot-Output"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "escalation": {
+          "anyOf": [
+            {
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Escalation"
+        }
+      },
+      "required": [
+        "response",
+        "query",
+        "evidence",
+        "options",
+        "feedback_history",
+        "candidate_history",
+        "actions",
+        "trace",
+        "retry_count",
+        "retrieval_rounds",
+        "evaluations",
+        "used_tokens",
+        "elapsed_seconds",
+        "stop_reason"
+      ],
+      "title": "OptimizationResult",
+      "type": "object"
+    },
+    "Passage": {
+      "properties": {
+        "passage_id": {
+          "title": "Passage Id",
+          "type": "string"
+        },
+        "doc_id": {
+          "title": "Doc Id",
+          "type": "string"
+        },
+        "domain": {
+          "title": "Domain",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "section_title": {
+          "title": "Section Title",
+          "type": "string"
+        },
+        "parent_titles": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Parent Titles",
+          "type": "array"
+        },
+        "text": {
+          "title": "Text",
+          "type": "string"
+        },
+        "span_ids": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Span Ids",
+          "type": "array"
+        },
+        "start": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Start"
+        },
+        "end": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "End"
+        }
+      },
+      "required": [
+        "passage_id",
+        "doc_id",
+        "domain",
+        "title",
+        "section_title",
+        "parent_titles",
+        "text",
+        "span_ids"
+      ],
+      "title": "Passage",
+      "type": "object"
+    },
+    "QueryPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "conversation_id": {
+          "minLength": 1,
+          "title": "Conversation Id",
+          "type": "string"
+        },
+        "current_message": {
+          "minLength": 1,
+          "title": "Current Message",
+          "type": "string"
+        },
+        "dialogue_history": {
+          "items": {
+            "$ref": "#/$defs/ChatMessage"
+          },
+          "title": "Dialogue History",
+          "type": "array"
+        },
+        "rewritten_query": {
+          "minLength": 1,
+          "title": "Rewritten Query",
+          "type": "string"
+        },
+        "intent": {
+          "default": "unknown",
+          "title": "Intent",
+          "type": "string"
+        },
+        "domain": {
+          "default": "unknown",
+          "title": "Domain",
+          "type": "string"
+        },
+        "sub_queries": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "title": "Sub Queries",
+          "type": "array"
+        }
+      },
+      "required": [
+        "conversation_id",
+        "current_message",
+        "rewritten_query"
+      ],
+      "title": "QueryPlan",
+      "type": "object"
+    },
+    "ResponseStatus": {
+      "enum": [
+        "answered",
+        "clarification_needed",
+        "insufficient_evidence",
+        "escalated",
+        "error"
+      ],
+      "title": "ResponseStatus",
+      "type": "string"
+    },
+    "RetrievalSnapshot-Input": {
+      "additionalProperties": false,
+      "properties": {
+        "recall_key": {
+          "title": "Recall Key",
+          "type": "string"
+        },
+        "corpus_version": {
+          "title": "Corpus Version",
+          "type": "string"
+        },
+        "rankings": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/SearchHit"
+            },
+            "type": "array"
+          },
+          "title": "Rankings",
+          "type": "array"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/FusedHit"
+          },
+          "title": "Candidates",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reused_recall": {
+          "default": false,
+          "title": "Reused Recall",
+          "type": "boolean"
+        },
+        "branch_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Branch Counts",
+          "type": "object"
+        },
+        "elapsed_ms": {
+          "default": 0,
+          "minimum": 0.0,
+          "title": "Elapsed Ms",
+          "type": "number"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "recall_key",
+        "corpus_version"
+      ],
+      "title": "RetrievalSnapshot",
+      "type": "object"
+    },
+    "RetrievalSnapshot-Output": {
+      "additionalProperties": false,
+      "properties": {
+        "recall_key": {
+          "title": "Recall Key",
+          "type": "string"
+        },
+        "corpus_version": {
+          "title": "Corpus Version",
+          "type": "string"
+        },
+        "rankings": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/SearchHit"
+            },
+            "type": "array"
+          },
+          "title": "Rankings",
+          "type": "array"
+        },
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/FusedHit"
+          },
+          "title": "Candidates",
+          "type": "array"
+        },
+        "evidence": {
+          "items": {
+            "$ref": "#/$defs/Evidence"
+          },
+          "title": "Evidence",
+          "type": "array"
+        },
+        "reused_recall": {
+          "default": false,
+          "title": "Reused Recall",
+          "type": "boolean"
+        },
+        "branch_counts": {
+          "additionalProperties": {
+            "type": "integer"
+          },
+          "title": "Branch Counts",
+          "type": "object"
+        },
+        "elapsed_ms": {
+          "default": 0,
+          "minimum": 0.0,
+          "title": "Elapsed Ms",
+          "type": "number"
+        },
+        "notes": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Notes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "recall_key",
+        "corpus_version"
+      ],
+      "title": "RetrievalSnapshot",
+      "type": "object"
+    },
+    "Revision": {
+      "additionalProperties": false,
+      "properties": {
+        "instruction": {
+          "minLength": 1,
+          "title": "Instruction",
+          "type": "string"
+        },
+        "missing_information": {
+          "default": "",
+          "title": "Missing Information",
+          "type": "string"
+        },
+        "evaluation_reason": {
+          "default": "",
+          "title": "Evaluation Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instruction"
+      ],
+      "title": "Revision",
+      "type": "object"
+    },
+    "SearchHit": {
+      "properties": {
+        "passage": {
+          "$ref": "#/$defs/Passage"
+        },
+        "retriever": {
+          "title": "Retriever",
+          "type": "string"
+        },
+        "rank": {
+          "title": "Rank",
+          "type": "integer"
+        },
+        "raw_score": {
+          "title": "Raw Score",
+          "type": "number"
+        },
+        "matched_query": {
+          "title": "Matched Query",
+          "type": "string"
+        }
+      },
+      "required": [
+        "passage",
+        "retriever",
+        "rank",
+        "raw_score",
+        "matched_query"
+      ],
+      "title": "SearchHit",
+      "type": "object"
+    },
+    "TraceEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "event": {
+          "title": "Event",
+          "type": "string"
+        },
+        "details": {
+          "title": "Details",
+          "type": "object"
+        }
+      },
+      "required": [
+        "event"
+      ],
+      "title": "TraceEntry",
+      "type": "object"
+    }
+  },
+  "title": "Optimization v2 public contracts",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$ref": "#/$defs/OptimizationInput"
+}
