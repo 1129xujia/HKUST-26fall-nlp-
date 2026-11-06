@@ -1,0 +1,20 @@
+[
+  {"id":"mini_001","expected_domain":"studentaid","query_must_contain":["student aid","renew"],"answer_must_contain":["renewal form"]},
+  {"id":"mini_002","expected_domain":"studentaid","query_must_contain":["student aid","deadline"],"answer_must_contain":["15 May"]},
+  {"id":"mini_003","expected_domain":"studentaid","query_must_contain":["international students","student aid"],"answer_must_contain":["eligibility review"]},
+  {"id":"mini_004","expected_domain":"studentaid","query_must_contain":["documents","deadline"],"answer_must_contain":["enrollment confirmation","15 May"]},
+  {"id":"mini_005","expected_domain":"dmv","query_must_contain":["form","driving license"],"answer_must_contain":["DL-R1"]},
+  {"id":"mini_006","expected_domain":"dmv","query_must_contain":["DL-L2","lost","license"],"answer_must_contain":["DL-L2"]},
+  {"id":"mini_007","expected_domain":"dmv","query_must_contain":["address","driving license"],"answer_must_contain":["profile settings"]},
+  {"id":"mini_008","expected_domain":"dmv","query_must_contain":["identity check","bring"],"answer_must_contain":["confirmation notice","photo identification"]},
+  {"id":"mini_009","expected_domain":"ssa","query_must_contain":["benefit application","status"],"answer_must_contain":["My Requests"]},
+  {"id":"mini_010","expected_domain":"ssa","query_must_contain":["password","bank details"],"answer_must_contain":["passwords","Payment Settings"]},
+  {"id":"mini_011","expected_domain":"va","query_must_contain":["appeal","veteran support"],"answer_must_contain":["VA-A1","30 days"]},
+  {"id":"mini_012","expected_domain":"va","query_must_contain":["unlisted service","veteran support"],"answer_must_contain":["caseworker"]},
+  {"id":"mini_013","expected_domain":"unknown","query_must_contain":["renew it"]},
+  {"id":"mini_014","expected_domain":"unknown","query_must_contain":["eligible to apply"]},
+  {"id":"mini_015","expected_domain":"ssa","query_must_contain":["benefit money","transfer"]},
+  {"id":"mini_016","expected_domain":"studentaid","query_must_contain":["human","student aid"]},
+  {"id":"extra_form_reference","dialogue":{"conversation_id":"extra_form_reference","current_message":"Can I submit that form online?","dialogue_history":[{"role":"user","text":"I lost my driving license and need form DL-L2."}]},"expected_domain":"dmv","query_must_contain":["DL-L2","submit","online"]},
+  {"id":"extra_ambiguous","dialogue":{"conversation_id":"extra_ambiguous","current_message":"How do I renew it?","dialogue_history":[]},"expected_domain":"unknown","query_must_contain":["renew it"]}
+]

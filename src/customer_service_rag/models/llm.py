@@ -78,4 +78,7 @@ def build_llm(
     if config.backend == "transformers":
         from customer_service_rag.models.local_llm import LocalLLM
         return LocalLLM(config, root or Path.cwd(), usage_guard=usage_guard)
+    if config.backend == "deepseek":
+        from customer_service_rag.models.deepseek_llm import DeepSeekLLM
+        return DeepSeekLLM(config, usage_guard=usage_guard)
     return MockLLM(usage_guard=usage_guard)
