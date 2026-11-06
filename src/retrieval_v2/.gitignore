@@ -1,0 +1,19 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.venv_acceptance/
+.model_cache/
+.idea/
+.DS_Store
+
+# 数据集不随代码仓库提交
+data/*
+!data/.gitkeep
+
+# 索引、向量、评估明细都可重新生成
+artifacts/*
+!artifacts/.gitkeep
+artifacts_title_*/
+experiments/output/
+integration_demo/output/
