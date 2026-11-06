@@ -14,7 +14,9 @@ def normalize_domain(label: str) -> str:
 def route_visible_dialogue(message: str, history: list[dict]) -> str:
     cues = {
         "dmv": ("dmv", "vehicle", "driver", "license", "atv"),
-        "ssa": ("social security", "medicare", "retirement", "survivor"),
+        "ssa": ("social security", "medicare", "retirement", "survivor",
+                "benefit payment", "benefit money", "benefit application",
+                "payment settings", "bank details"),
         "va": ("veteran", "veterans affairs", "gi bill", "va benefit"),
         "studentaid": ("student aid", "student loan", "fafsa", "federal student"),
     }

@@ -34,7 +34,7 @@ class DataConfig(Contract):
 
 
 class LLMConfig(Contract):
-    backend: Literal["mock", "transformers"] = "mock"
+    backend: Literal["mock", "transformers", "deepseek"] = "mock"
     model: str = "mock-extractive-v1"
     revision: str | None = None
     local_path: Path | None = None
@@ -49,6 +49,8 @@ class LLMConfig(Contract):
             raise ValueError("A real model name must not use the mock backend")
         if self.backend == "transformers" and (self.local_path is None or not self.revision):
             raise ValueError("Local generation requires local_path and a pinned revision")
+        if self.backend == "deepseek" and self.model not in {"deepseek-flash", "deepseek-v4-pro"}:
+            raise ValueError("DeepSeek backend requires a supported DeepSeek model")
         return self
 
 

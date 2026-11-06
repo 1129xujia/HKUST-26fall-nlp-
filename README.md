@@ -44,7 +44,7 @@ python -m venv .venv
 
 默认使用 `mock-extractive-v1` 与 `hash-token-v1`。回答是证据摘录，评估采用词面 mock 规则，HashEmbedding 是开发替身。场景里的脚本评分只用于演示流程，均不代表真实模型质量。合成政策内容全部虚构。运行文件保存到 `results/<run_id>/`，完整结果见 `result.json`；终端加 `--full` 可查看 demo 或 retrieve 的完整对象。
 
-详细交接：[开发进度](docs/progress.md)、[D3 使用与验收记录](docs/d3_walkthrough.md)、[架构与技术决策](docs/architecture.md)、[数据契约](docs/data_contracts.md)、[实验协议](docs/experiment_protocol.md)。
+详细交接：[开发进度](docs/progress.md)、[D3 使用与验收记录](docs/d3_walkthrough.md)、[架构与技术决策](docs/architecture.md)、[数据契约](docs/data_contracts.md)、[实验协议](docs/experiment_protocol.md)、[成员三：对话理解与回答生成](docs/part3_README.md)。
 
 ## 1. 项目目标与范围
 
@@ -126,7 +126,7 @@ Parallel Retrieval
 | 测试与静态检查 | 测试暂缓；预留 Ruff 开发依赖 | 后续补充测试和检查流程 |
 | 运行产物 | JSONL、JSON、CSV | 轨迹、预测、配置和结果汇总 |
 
-用户已选择先完成离线开发环境；正式 LLM、Embedding、模型权限和预算尚未指定。当前机器为 RTX 3050 6GB，离线运行不使用 GPU。模型调用统一经过适配器，后续接入时更新契约与实验记录。
+当前离线流程仍默认使用 mock；成员三已加入 DeepSeek API 适配器和配置样例，但尚未进行带真实密钥的调用或正式质量实验。Embedding、模型权限和预算仍需全组确认。当前机器为 RTX 3050 6GB，离线运行不使用 GPU。模型调用统一经过适配器，后续接入时更新契约与实验记录。
 
 ## 4. 代码目录规划
 
