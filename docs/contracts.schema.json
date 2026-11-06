@@ -15,6 +15,18 @@
           "title": "Seed",
           "type": "integer"
         },
+        "pipeline": {
+          "default": "legacy",
+          "enum": [
+            "legacy",
+            "integrated"
+          ],
+          "title": "Pipeline",
+          "type": "string"
+        },
+        "integration": {
+          "$ref": "#/$defs/IntegrationConfig"
+        },
         "data": {
           "$ref": "#/$defs/DataConfig"
         },
@@ -117,11 +129,35 @@
           "enum": [
             "mini",
             "train",
+            "dev",
             "validation",
             "test"
           ],
           "title": "Split",
           "type": "string"
+        },
+        "raw_dir": {
+          "format": "path",
+          "title": "Raw Dir",
+          "type": "string"
+        },
+        "processed_dir": {
+          "format": "path",
+          "title": "Processed Dir",
+          "type": "string"
+        },
+        "dev_ratio": {
+          "default": 0.1,
+          "exclusiveMaximum": 1,
+          "exclusiveMinimum": 0,
+          "title": "Dev Ratio",
+          "type": "number"
+        },
+        "mini_size": {
+          "default": 20,
+          "minimum": 1,
+          "title": "Mini Size",
+          "type": "integer"
         },
         "chunk_size": {
           "default": 1200,
@@ -181,13 +217,15 @@
       "additionalProperties": false,
       "properties": {
         "backend": {
-          "const": "hash",
           "default": "hash",
+          "enum": [
+            "hash",
+            "transformers"
+          ],
           "title": "Backend",
           "type": "string"
         },
         "model": {
-          "const": "hash-token-v1",
           "default": "hash-token-v1",
           "title": "Model",
           "type": "string"
@@ -196,6 +234,49 @@
           "default": 256,
           "minimum": 8,
           "title": "Dimensions",
+          "type": "integer"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision"
+        },
+        "local_path": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Local Path"
+        },
+        "max_length": {
+          "default": 256,
+          "minimum": 32,
+          "title": "Max Length",
+          "type": "integer"
+        },
+        "batch_size": {
+          "default": 32,
+          "minimum": 1,
+          "title": "Batch Size",
+          "type": "integer"
+        },
+        "num_threads": {
+          "default": 4,
+          "minimum": 1,
+          "title": "Num Threads",
           "type": "integer"
         }
       },
@@ -311,6 +392,7 @@
         "split": {
           "enum": [
             "train",
+            "dev",
             "validation",
             "test",
             "mini"
@@ -375,6 +457,37 @@
           "default": "synthetic",
           "title": "Source",
           "type": "string"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Domain"
+        },
+        "origin_split": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Origin Split"
+        },
+        "user_turn_ids": {
+          "items": {
+            "type": "integer"
+          },
+          "title": "User Turn Ids",
+          "type": "array"
         }
       },
       "required": [
@@ -520,6 +633,54 @@
           },
           "title": "Span Ids",
           "type": "array"
+        },
+        "original_doc_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Doc Id"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "char_start": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Char Start"
+        },
+        "char_end": {
+          "anyOf": [
+            {
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Char End"
         }
       },
       "required": [
@@ -528,20 +689,109 @@
       "title": "GroundingReference",
       "type": "object"
     },
+    "IntegrationConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "domain_filter": {
+          "default": false,
+          "title": "Domain Filter",
+          "type": "boolean"
+        },
+        "dense_top_k": {
+          "default": 50,
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Dense Top K",
+          "type": "integer"
+        },
+        "bm25_top_k": {
+          "default": 50,
+          "maximum": 500,
+          "minimum": 1,
+          "title": "Bm25 Top K",
+          "type": "integer"
+        }
+      },
+      "title": "IntegrationConfig",
+      "type": "object"
+    },
     "LLMConfig": {
       "additionalProperties": false,
       "properties": {
         "backend": {
-          "const": "mock",
           "default": "mock",
+          "enum": [
+            "mock",
+            "transformers",
+            "deepseek"
+          ],
           "title": "Backend",
           "type": "string"
         },
         "model": {
-          "const": "mock-extractive-v1",
           "default": "mock-extractive-v1",
           "title": "Model",
           "type": "string"
+        },
+        "revision": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Revision"
+        },
+        "local_path": {
+          "anyOf": [
+            {
+              "format": "path",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Local Path"
+        },
+        "device": {
+          "default": "cpu",
+          "enum": [
+            "cpu",
+            "cuda"
+          ],
+          "title": "Device",
+          "type": "string"
+        },
+        "max_new_tokens": {
+          "default": 384,
+          "maximum": 2048,
+          "minimum": 32,
+          "title": "Max New Tokens",
+          "type": "integer"
+        },
+        "max_input_tokens": {
+          "default": 3072,
+          "minimum": 256,
+          "title": "Max Input Tokens",
+          "type": "integer"
+        },
+        "num_threads": {
+          "default": 4,
+          "minimum": 1,
+          "title": "Num Threads",
+          "type": "integer"
+        },
+        "timeout_seconds": {
+          "default": 45,
+          "maximum": 180,
+          "minimum": 1,
+          "title": "Timeout Seconds",
+          "type": "integer"
         }
       },
       "title": "LLMConfig",
@@ -616,6 +866,9 @@
         },
         "embedding": {
           "$ref": "#/$defs/EmbeddingConfig"
+        },
+        "reranker": {
+          "$ref": "#/$defs/RerankerConfig"
         }
       },
       "title": "ModelsConfig",
@@ -783,6 +1036,18 @@
           "default": "synthetic",
           "title": "Source",
           "type": "string"
+        },
+        "original_doc_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Doc Id"
         }
       },
       "required": [
@@ -828,6 +1093,13 @@
           "default": false,
           "title": "Decompose",
           "type": "boolean"
+        },
+        "max_sub_queries": {
+          "default": 3,
+          "maximum": 5,
+          "minimum": 1,
+          "title": "Max Sub Queries",
+          "type": "integer"
         }
       },
       "title": "PlanningConfig",
@@ -923,6 +1195,46 @@
         "rewritten_query"
       ],
       "title": "QueryPlan",
+      "type": "object"
+    },
+    "RerankerConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "default": "cross-encoder/ms-marco-MiniLM-L6-v2",
+          "title": "Model",
+          "type": "string"
+        },
+        "revision": {
+          "default": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+          "title": "Revision",
+          "type": "string"
+        },
+        "local_path": {
+          "format": "path",
+          "title": "Local Path",
+          "type": "string"
+        },
+        "max_length": {
+          "default": 512,
+          "minimum": 32,
+          "title": "Max Length",
+          "type": "integer"
+        },
+        "batch_size": {
+          "default": 16,
+          "minimum": 1,
+          "title": "Batch Size",
+          "type": "integer"
+        },
+        "num_threads": {
+          "default": 4,
+          "minimum": 1,
+          "title": "Num Threads",
+          "type": "integer"
+        }
+      },
+      "title": "RerankerConfig",
       "type": "object"
     },
     "ResponseStatus": {
@@ -1118,6 +1430,24 @@
           "default": "hash",
           "title": "Embedding Backend",
           "type": "string"
+        },
+        "rerank_elapsed_ms": {
+          "default": 0.0,
+          "minimum": 0,
+          "title": "Rerank Elapsed Ms",
+          "type": "number"
+        },
+        "rerank_model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rerank Model"
         }
       },
       "title": "RetrievalResult",
@@ -1293,6 +1623,29 @@
           ],
           "default": null,
           "title": "Mock Scenario"
+        },
+        "model_backend": {
+          "default": "mock",
+          "title": "Model Backend",
+          "type": "string"
+        },
+        "model_calls": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Model Calls",
+          "type": "array"
+        },
+        "pipeline_backend": {
+          "default": "legacy",
+          "title": "Pipeline Backend",
+          "type": "string"
+        },
+        "integration": {
+          "additionalProperties": true,
+          "title": "Integration",
+          "type": "object"
         }
       },
       "required": [
@@ -1379,6 +1732,11 @@
             }
           ],
           "default": null
+        },
+        "reranker_available": {
+          "default": false,
+          "title": "Reranker Available",
+          "type": "boolean"
         },
         "retrieval_history": {
           "items": {
@@ -1488,6 +1846,7 @@
           "enum": [
             "estimated",
             "reported",
+            "counted",
             "unavailable"
           ],
           "title": "Source",

@@ -4,9 +4,34 @@ HKUST 26fall NLP Course Project
 
 基于并行检索融合与评估—优化循环的在线客服多智能体 RAG 系统。
 
-> 当前阶段：D1–D3 离线工程与 mock 评估—优化闭环已完成。支持通过、重试、澄清、转接与受预算约束的停止，并提供 12 个可控场景。真实模型、官方数据与正式质量评价仍待接入；测试套件按要求暂缓。
+> 当前阶段：已同步队友提交，并通过统一 CLI 接通 Part 2 检索/融合/重排、Part 3 理解/生成与 optimization_v2。已用官方 MultiDoc2Dial、真实 MiniLM 与 DeepSeek 完成小样例联调；正式实验、质量提升验证和 HotpotQA 适配仍待完成。测试套件按要求暂缓。
 
-## 快速开始（当前可运行）
+## 统一入口（2026-11-06）
+
+真实模式使用根目录被 Git 忽略的 `.env` 中的 `DEEPSEEK_API_KEY`。完整安装、数据与模型准备、契约和运行结果见 [统一入口与联调说明](docs/unified_integration.md)。
+
+```powershell
+# 当前工作区已有依赖、官方数据和索引，可直接运行
+.\.venv\Scripts\cs-rag.exe doctor --config configs/integrated.yaml
+.\.venv\Scripts\cs-rag.exe ask --config configs/integrated.yaml --message "How can I replace a lost driver's license?"
+.\.venv\Scripts\cs-rag.exe run --config configs/integrated.yaml --split mini --limit 4
+
+# 保持相同规划、检索和生成设置，仅关闭质量循环
+.\.venv\Scripts\cs-rag.exe run --config configs/integrated_single.yaml --limit 1
+
+# 同一模块边界的离线 mock 模式，无需密钥
+.\.venv\Scripts\cs-rag.exe index
+.\.venv\Scripts\cs-rag.exe run --config configs/integrated_mock.yaml
+
+# 对具体运行批次评价；替换为上面命令返回的 batch 目录
+.\.venv\Scripts\cs-rag.exe evaluate --config configs/integrated.yaml --run-dir results/<batch_id>
+```
+
+统一模式保留共享语料的引用 ID 和 grounding。Dense 复用已有 NumPy 索引；BM25、RRF、Cross-Encoder 重排和优化执行接入队友模块。该路径使用根项目环境，不需混装 `src/retrieval_v2/requirements.txt` 的旧版独立依赖。原来的 default/D3 配置继续提供历史离线入口。
+
+本轮四领域开发样例：3 条通过在线质量策略，1 条达到重试上限并准备转接；参考答案 F1 为 13.08%，不能作为正式质量达标结论。实际摘要见 [integration_summary.json](reports/integration_summary.json)。
+
+## 离线开发快速开始（legacy）
 
 以下命令在项目根目录执行。已在 Windows / Python 3.10.14 的独立虚拟环境完成安装；首次安装依赖需要包源，安装后运行无需网络、API 密钥或 GPU。
 
@@ -126,7 +151,7 @@ Parallel Retrieval
 | 测试与静态检查 | 测试暂缓；预留 Ruff 开发依赖 | 后续补充测试和检查流程 |
 | 运行产物 | JSONL、JSON、CSV | 轨迹、预测、配置和结果汇总 |
 
-当前离线流程仍默认使用 mock；成员三已加入 DeepSeek API 适配器和配置样例，但尚未进行带真实密钥的调用或正式质量实验。Embedding、模型权限和预算仍需全组确认。当前机器为 RTX 3050 6GB，离线运行不使用 GPU。模型调用统一经过适配器，后续接入时更新契约与实验记录。
+默认 legacy 配置保留 mock；统一 integrated 配置已用 DeepSeek、真实 MiniLM Embedding 与 Reranker 完成开发样例运行。当前本地模型使用 CPU，API 用量使用服务端报告值。正式质量实验与消融仍待完成，实际配置和结果见统一入口说明。
 
 ## 4. 代码目录规划
 

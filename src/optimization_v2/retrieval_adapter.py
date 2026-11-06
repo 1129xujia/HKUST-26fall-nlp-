@@ -17,6 +17,7 @@ from concurrent.futures import ThreadPoolExecutor
 from time import perf_counter
 
 from retrieval_v2.retrieval.reranker import CrossEncoderReranker, NoOpReranker
+from retrieval_v2.retrieval.fusion import reciprocal_rank_fusion
 from retrieval_v2.retrieval.schemas import Evidence, FusedHit, RetrievalRequest
 
 from .schemas import Capabilities, ExecutionOptions, RetrievalSnapshot
@@ -37,6 +38,8 @@ def context_signature(evidence: list[Evidence]) -> str:
 
 
 def weighted_rrf(rankings, options: ExecutionOptions) -> list[FusedHit]:
+    if options.dense_weight == options.bm25_weight == 1.0:
+        return reciprocal_rank_fusion(rankings, rrf_k=options.rrf_k)
     fused = {}
     for ranking in rankings:
         seen = set()
@@ -154,6 +157,8 @@ class Part2RetrievalAdapter:
                 rankings = [future.result() for future in futures]
         fused = weighted_rrf(rankings, options)[:options.candidate_top_k]
         candidates = copy.deepcopy(fused)
+        rerank_elapsed_ms = 0.0
+        rerank_model = None
         if options.rerank:
             key = options.reranker_query_strategy
             if key in self.rerankers:
@@ -173,11 +178,14 @@ class Part2RetrievalAdapter:
                 raise ValueError("A real reranker must be loaded or injected before reranking")
             # CrossEncoder may not be thread-safe across concurrent requests.
             with self.rerank_lock:
+                rerank_started = perf_counter()
                 candidates = reranker.rerank(
                     request.query,
                     request.sub_queries if options.reranker_use_sub_queries else [],
                     candidates,
                 )
+                rerank_elapsed_ms = (perf_counter() - rerank_started) * 1000
+                rerank_model = getattr(reranker, "model_name", type(reranker).__name__)
         else:
             candidates = NoOpReranker().rerank(request.query, [], candidates)
         available = {item.passage.passage_id for item in fused}
@@ -197,5 +205,6 @@ class Part2RetrievalAdapter:
                 hit.retriever == name for ranking in rankings for hit in ranking
             ) for name in ("dense", "bm25")},
             elapsed_ms=(perf_counter() - started) * 1000,
+            rerank_elapsed_ms=rerank_elapsed_ms, rerank_model=rerank_model,
             notes=list(self.pipeline.runtime_notes),
         )

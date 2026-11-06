@@ -108,6 +108,8 @@ class RetrievalSnapshot(Contract):
     reused_recall: bool = False
     branch_counts: dict[str, int] = Field(default_factory=dict)
     elapsed_ms: float = Field(default=0, ge=0)
+    rerank_elapsed_ms: float = Field(default=0, ge=0)
+    rerank_model: str | None = None
     notes: list[str] = Field(default_factory=list)
 
 

@@ -18,7 +18,7 @@
         },
         "elapsed_seconds": {
           "default": 0,
-          "minimum": 0.0,
+          "minimum": 0,
           "title": "Elapsed Seconds",
           "type": "number"
         }
@@ -212,15 +212,15 @@
         },
         "dense_weight": {
           "default": 1.0,
-          "maximum": 10.0,
-          "minimum": 0.0,
+          "maximum": 10,
+          "minimum": 0,
           "title": "Dense Weight",
           "type": "number"
         },
         "bm25_weight": {
           "default": 1.0,
-          "maximum": 10.0,
-          "minimum": 0.0,
+          "maximum": 10,
+          "minimum": 0,
           "title": "Bm25 Weight",
           "type": "number"
         },
@@ -481,11 +481,7 @@
           "type": "integer"
         },
         "status": {
-          "allOf": [
-            {
-              "$ref": "#/$defs/ResponseStatus"
-            }
-          ],
+          "$ref": "#/$defs/ResponseStatus",
           "default": "answered"
         }
       },
@@ -513,7 +509,7 @@
         },
         "max_latency_seconds": {
           "default": 180,
-          "exclusiveMinimum": 0.0,
+          "exclusiveMinimum": 0,
           "title": "Max Latency Seconds",
           "type": "number"
         },
@@ -524,29 +520,29 @@
         },
         "relevance_threshold": {
           "default": 0.7,
-          "maximum": 1.0,
-          "minimum": 0.0,
+          "maximum": 1,
+          "minimum": 0,
           "title": "Relevance Threshold",
           "type": "number"
         },
         "sufficiency_threshold": {
           "default": 0.7,
-          "maximum": 1.0,
-          "minimum": 0.0,
+          "maximum": 1,
+          "minimum": 0,
           "title": "Sufficiency Threshold",
           "type": "number"
         },
         "groundedness_threshold": {
           "default": 0.8,
-          "maximum": 1.0,
-          "minimum": 0.0,
+          "maximum": 1,
+          "minimum": 0,
           "title": "Groundedness Threshold",
           "type": "number"
         },
         "dialogue_consistency_threshold": {
           "default": 0.8,
-          "maximum": 1.0,
-          "minimum": 0.0,
+          "maximum": 1,
+          "minimum": 0,
           "title": "Dialogue Consistency Threshold",
           "type": "number"
         }
@@ -787,6 +783,7 @@
         "escalation": {
           "anyOf": [
             {
+              "additionalProperties": true,
               "type": "object"
             },
             {
@@ -1006,9 +1003,27 @@
         },
         "elapsed_ms": {
           "default": 0,
-          "minimum": 0.0,
+          "minimum": 0,
           "title": "Elapsed Ms",
           "type": "number"
+        },
+        "rerank_elapsed_ms": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Rerank Elapsed Ms",
+          "type": "number"
+        },
+        "rerank_model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rerank Model"
         },
         "notes": {
           "items": {
@@ -1074,9 +1089,27 @@
         },
         "elapsed_ms": {
           "default": 0,
-          "minimum": 0.0,
+          "minimum": 0,
           "title": "Elapsed Ms",
           "type": "number"
+        },
+        "rerank_elapsed_ms": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Rerank Elapsed Ms",
+          "type": "number"
+        },
+        "rerank_model": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Rerank Model"
         },
         "notes": {
           "items": {
@@ -1158,6 +1191,7 @@
           "type": "string"
         },
         "details": {
+          "additionalProperties": true,
           "title": "Details",
           "type": "object"
         }

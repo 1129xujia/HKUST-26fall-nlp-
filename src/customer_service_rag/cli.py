@@ -1,14 +1,16 @@
-"""Executable D1-D3 offline development commands. No network calls are made."""
+"""Shared CLI for offline scenarios and the integrated member modules."""
 
 from __future__ import annotations
 
 import asyncio
 import json
+import os
 import platform
 import sys
 from importlib.metadata import version
 from pathlib import Path
 from typing import Optional
+from uuid import uuid4
 
 import typer
 import yaml
@@ -27,7 +29,7 @@ from customer_service_rag.orchestration.scenarios import (
     load_scenarios,
     scenario_factories,
 )
-from customer_service_rag.schemas import EvaluationExample, QueryPlan, ResponseStatus, RunResult
+from customer_service_rag.schemas import DialogueInput, EvaluationExample, QueryPlan, ResponseStatus, RunResult
 
 app = typer.Typer(
     no_args_is_help=True,
@@ -61,12 +63,14 @@ def doctor(config: Optional[Path] = typer.Option(None, "--config", "-c")) -> Non
         "python": platform.python_version(),
         "executable": sys.executable,
         "project_root": str(settings.project_root),
+        "pipeline_backend": settings.pipeline,
         "llm_backend": settings.models.llm.backend,
         "llm_model": settings.models.llm.model,
         "embedding_backend": settings.models.embedding.backend,
         "embedding_model": settings.models.embedding.model,
         "gpu_required": settings.models.llm.device == "cuda",
-        "external_api_required": False,
+        "external_api_required": settings.models.llm.backend == "deepseek",
+        "api_key_configured": bool(os.environ.get("DEEPSEEK_API_KEY", "").strip()),
         "quality_loop_enabled": settings.quality.enabled,
         "optimization_enabled": settings.optimization.enabled,
         "escalation_enabled": settings.escalation.enabled,
@@ -224,9 +228,10 @@ def result_summary(result: RunResult) -> dict:
         "run_id": result.run_id, "sample_id": result.sample_id,
         "is_mock": result.is_mock, "mock_scenario": result.mock_scenario,
         "model_backend": result.model_backend,
+        "pipeline_backend": result.pipeline_backend,
         "note": (
             "Offline mock decisions demonstrate control flow, not validated answer quality."
-            if result.is_mock else "Real local-model development run, not a final benchmark."
+            if result.is_mock else "Real model development run, not a final benchmark."
         ),
         "response": result.response.model_dump(mode="json"),
         "query": result.query.model_dump(mode="json") if result.query else None,
@@ -239,7 +244,30 @@ def result_summary(result: RunResult) -> dict:
         "iteration": result.iteration, "retrieval_round": result.retrieval_round,
         "retry_count": result.retry_count, "stop_reason": result.stop_reason,
         "escalation": result.escalation.model_dump(mode="json") if result.escalation else None,
+        "integration": result.integration,
     }
+
+
+@app.command()
+def ask(
+    message: str = typer.Option(..., "--message", "-m"),
+    config: Optional[Path] = typer.Option(None, "--config", "-c"),
+    history: Optional[Path] = typer.Option(None, "--history", exists=True, dir_okay=False),
+    save: bool = typer.Option(True, "--save/--no-save"),
+    full: bool = typer.Option(False, "--full"),
+) -> None:
+    """Answer a question, optionally using a JSON list of visible role/text turns."""
+    settings = load_config(config)
+    dialogue = DialogueInput(
+        conversation_id=uuid4().hex, current_message=message,
+        dialogue_history=json.loads(history.read_text(encoding="utf-8")) if history else [],
+    )
+    result = asyncio.run(build_orchestrator(settings).run(dialogue))
+    if save:
+        typer.echo(f"Run artifacts: {write_run(settings, result)}", err=True)
+    emit(result.model_dump(mode="json") if full else result_summary(result))
+    if result.response.status == ResponseStatus.ERROR:
+        raise typer.Exit(1)
 
 
 @app.command()

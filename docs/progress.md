@@ -2,8 +2,10 @@
 
 ## 本轮范围
 
-完成 D1–D3 的离线开发环境、工程骨架与 mock 评估—优化闭环。
-用户选择先使用离线环境，测试套件继续暂缓。正式模型、官方数据和真实质量评价尚未完成。
+2026-11-06：本地 main 已快进同步到 858b6d4，并完成 Part 2、Part 3 与 optimization_v2 的统一入口和接口联调。
+新增 integrated / integrated_single / integrated_mock 配置与 cs-rag ask；统一模型客户端、引用 ID、v2 诊断和全流程预算。
+真实官方数据 mini 上 4 条受控结束（3 answered、1 escalated），单次模式 1 条完成；原 D3 的 12 个场景仍可运行。测试套件继续暂缓。
+详见 [统一入口说明](unified_integration.md) 和 [实际运行摘要](../reports/integration_summary.json)。以下 D1–D3 条目保留为历史交付记录。
 
 ## D1 交付
 
@@ -78,7 +80,7 @@ D2 观察到 mini_001 的省略问句可能返回错误领域证据，单次模�
 详细场景与命令见 d3_walkthrough.md；保存的场景运行摘要见 ../reports/d3_demo_results.json。
 这些都是离线开发运行记录，没有创建或执行测试套件，也不构成正式准确率或幻觉率评价。
 
-## 明确未完成
+## D3 结束时未完成（历史记录，当前状态见上文）
 
 - 正式 LLM / Embedding / Cross-Encoder 选型、权重或 API 接入。
 - 官方 MultiDoc2Dial 下载、许可核验、正式轮次构造和 span 对齐。
@@ -87,7 +89,7 @@ D2 观察到 mini_001 的省略问句可能返回错误领域证据，单次模�
 - 正式 Single-RAG、E0–E7 实验执行和评价指标代码。
 - 测试套件及测试相关工作，按用户要求暂缓。
 
-## 下一步 D4
+## D3 时规划的下一步 D4（历史记录）
 
 1. 下载并核验官方 MultiDoc2Dial 版本、许可和可用划分。
 2. 构造无未来轮次泄漏的样本，完成 grounding span 到 passage/证据组的映射。

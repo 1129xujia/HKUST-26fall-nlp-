@@ -2,6 +2,8 @@
 
 ## 职责与流程
 
+2026-11-06 更新：已通过 configs/integrated.yaml 接入统一 CLI 和完整优化循环，初始生成与改答都调用本模块的 EvidenceResponseGenerator。v2 评价器直接使用匹配的 Feedback；统一路径的 passage_id 与共享语料 citation_id 相同。真实小样例与局限见 [统一入口说明](unified_integration.md)，下文较早的交付状态与 mock 报告保留为历史记录。
+
 本模块负责两个节点：
 
 1. **Query Planner**：读取当前问题和可见对话历史，生成独立可检索的 `query`，以及可选的 `sub_queries`、`domain`。

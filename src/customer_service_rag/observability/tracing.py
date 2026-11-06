@@ -41,10 +41,11 @@ def write_run(
         "source": config.data.source, "split": config.data.split,
         "note": "Development run; dataset split and model backends determine its scope.",
         "model_backend": result.model_backend,
+        "pipeline_backend": result.pipeline_backend,
         "mock_scenario": result.mock_scenario,
         "quality_mode": (
             "scripted" if result.mock_scenario else (
-                "mock_lexical" if result.model_backend == "mock" else "local_llm"
+                "mock_lexical" if result.model_backend == "mock" else "llm_judge"
             )
         ) if config.quality.enabled else "disabled",
         "models": config.models.model_dump(mode="json"),
@@ -64,8 +65,20 @@ def write_run(
             name: hashlib.sha256(
                 files("customer_service_rag").joinpath(f"prompts/{name}.jinja2").read_bytes()
             ).hexdigest()
-            for name in ["planning", "generation", "evaluation", "optimization"]
+            for name in ["planning", "generation", "evaluation", "evaluation_v2", "optimization"]
         },
+        "component_sha256": {
+            name: hashlib.sha256((config.project_root / name).read_bytes()).hexdigest()
+            for name in [
+                "src/customer_service_rag/part3.py",
+                "src/customer_service_rag/orchestration/integrated.py",
+                "src/customer_service_rag/orchestration/integrated_retrieval.py",
+                "src/customer_service_rag/models/deepseek_llm.py",
+                "src/optimization_v2/adapters.py", "src/optimization_v2/router.py",
+                "src/optimization_v2/controller.py",
+                "src/optimization_v2/retrieval_adapter.py",
+            ]
+        } if result.pipeline_backend == "integrated" else {},
     }
     (directory / "metadata.json").write_text(
         json.dumps(metadata, indent=2, ensure_ascii=False), encoding="utf-8",

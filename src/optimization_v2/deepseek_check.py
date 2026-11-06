@@ -53,7 +53,7 @@ async def run_check(client):
         limits=limits, budget=BudgetState(
             used_tokens=budget.used_tokens, elapsed_seconds=budget.elapsed_seconds,
         ),
-    ))
+    ), budget=budget)
     summary = {
         "is_mock": False, "model": client.model_name,
         "tasks": [{"task": c["task"], "status": c["status"]} for c in client.calls],
@@ -77,7 +77,8 @@ def main():
     if not args.run:
         print(json.dumps({
             "status": "configured_not_sent", "model": client.model_name,
-            "endpoint": client.transport.API_URL,
+            "endpoint": ("https://api.deepseek.com/chat/completions"
+                         if client._delegate is not None else client.transport.API_URL),
             "tasks": ["plan", "generate", "evaluate"],
         }, ensure_ascii=False, indent=2))
         return

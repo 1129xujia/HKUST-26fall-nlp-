@@ -31,10 +31,13 @@ class OptimizationController:
         self.rewriter = rewriter
         self.router = router or OptimizationRouter()
 
-    async def run(self, request: OptimizationInput) -> OptimizationResult:
+    async def run(self, request: OptimizationInput, *,
+                  budget: BudgetLedger | None = None) -> OptimizationResult:
         # Revalidate public inputs and isolate every request, including cached data.
         state = OptimizationInput.model_validate(request.model_dump()).model_copy(deep=True)
-        budget = BudgetLedger(state.limits, state.budget)
+        budget = budget or BudgetLedger(state.limits, state.budget)
+        if budget.limits != state.limits:
+            raise ValueError("The shared budget must use the same request limits")
         if hasattr(self.retrieval, "capabilities"):
             actual = self.retrieval.capabilities
             state.capabilities.reranking &= actual.reranking
@@ -190,6 +193,20 @@ class OptimizationController:
                     if (context_signature(state.evidence) == old_context
                             and QueryUpdate(rewritten_query=state.query.rewritten_query,
                                             sub_queries=state.query.sub_queries) == old_query):
+                        event("no_context_change", branch=action.branch)
+                        if (state.feedback.evidence_sufficient is not False and (
+                                state.feedback.evidence_sufficient is True
+                                or "answer_defect" in state.feedback.failure_types
+                                or state.feedback.suggested_action == "regenerate")):
+                            # Existing evidence can repair an incomplete answer.
+                            # The next action still consumes the same retry budget.
+                            state.feedback = Feedback.model_validate({
+                                **state.feedback.model_dump(mode="json"),
+                                "decision": "retry", "failure_types": ["answer_defect"],
+                                "evidence_sufficient": True, "suggested_action": "regenerate",
+                            })
+                            feedbacks.append(state.feedback.model_copy(deep=True))
+                            continue
                         return finish("no_context_change")
 
                 generation = GenerationRequest(
@@ -199,6 +216,7 @@ class OptimizationController:
                 )
                 response = await budget.run(lambda: self.generator.generate(generation, budget))
                 response = GeneratedResponse.model_validate(response.model_dump())
+                response.retrieval_round = request.response.retrieval_round + retrieval_rounds
                 candidates.append(response.model_copy(deep=True))
                 state.response = response
                 event("generated", response=response.model_dump(mode="json"),

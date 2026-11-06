@@ -3,6 +3,10 @@
 代码来源为 src/customer_service_rag/schemas.py。所有模型拒绝未知字段，并校验赋值。
 可通过 cs-rag schema --output docs/contracts.schema.json 导出机器可读契约。
 
+2026-11-06 统一入口补充：Part 2 Evidence.passage_id 使用共享 Passage.citation_id，E1/E2 只存在于模型提示词中；在线回复、检索历史与离线 Gold 使用相同的最终引用键。原始 doc/span/offset 保留。
+RunResult 新增 pipeline_backend 和 integration；后者保存 v2 的诊断、实际执行参数、原生动作及预算用量，原字段继续兼容现有评价器。v2 Feedback 区分 evidence_sufficient 与回答 sufficiency，并提供 failure_types、preferred_retriever。
+两套机器契约分别由 cs-rag schema 与 python -m optimization_v2.export_contracts 导出。完整映射见 [统一入口说明](unified_integration.md)。
+
 ## 输入与标注隔离
 
 DialogueInput：

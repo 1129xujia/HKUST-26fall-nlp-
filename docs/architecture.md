@@ -1,6 +1,8 @@
 # D1 架构与技术决策
 
-状态：D1–D3 离线契约 v1。mock 质量循环已实现；正式模型和官方数据接入仍属于后续工作。
+当前状态（2026-11-06）：统一入口已接通成员模块，使用官方 MultiDoc2Dial、DeepSeek API、真实 MiniLM Embedding 与 Cross-Encoder。默认 legacy 配置保留原 D3；pipeline=integrated 通过同一工厂选择新入口。完整结构见 [统一入口说明](unified_integration.md)。
+
+统一路径保留共享 NumPy Dense 索引和原始 grounding，调用 Part 2 的 BM25/RRF/重排以及成员四的并行召回与有界控制器。EvidenceResponseGenerator 同时服务初始生成与改答，专用 v2 Evaluator 输出结构化诊断；每个请求共享一个预算账本。以下为 D1–D3 的历史设计与离线选型。
 
 ## 运行环境与选型
 

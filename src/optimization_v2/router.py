@@ -17,6 +17,10 @@ def apply_policy(state: OptimizationInput) -> Feedback:
             or not state.response.citations
             or not set(state.response.citations) <= valid):
         failures.append("supported_answer")
+    if feedback.evidence_sufficient is False:
+        failures.append("evidence_insufficient")
+    if feedback.failure_types:
+        failures.extend(feedback.failure_types)
     if failures:
         feedback.decision = Decision.RETRY
         feedback.reason = (
@@ -65,9 +69,6 @@ class OptimizationRouter:
                 ) else "regenerate"
         if target == "regenerate" and (
             not state.evidence or f.evidence_sufficient is False
-            or (f.evidence_sufficient is not True
-                and f.sufficiency < state.limits.sufficiency_threshold
-                and "answer_defect" not in f.failure_types)
         ):
             target = "adjust_hybrid"
 

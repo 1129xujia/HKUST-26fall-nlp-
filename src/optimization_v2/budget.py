@@ -49,12 +49,19 @@ class BudgetLedger:
         maximum = getattr(llm, "max_output_tokens", max_output_tokens)
         reservation = len(prompt.encode("utf-8")) + 128 + max(max_output_tokens, maximum)
         self.check(reservation)
+        previous_count = len(getattr(llm, "usage", []))
         try:
             result = await llm.complete(prompt, task=task, payload=payload)
         except (Exception, asyncio.CancelledError):
             # The provider may already have consumed tokens. Never report zero
             # when execution failed/cancelled without a complete usage record.
-            self.used_tokens = None
+            records = getattr(llm, "usage", [])[previous_count:]
+            if records and self.used_tokens is not None:
+                totals = [record.total_tokens for record in records]
+                self.used_tokens = (None if any(total is None for total in totals)
+                                    else self.used_tokens + sum(totals))
+            else:
+                self.used_tokens = None
             raise
         self.record_usage(result.usage)
         return result

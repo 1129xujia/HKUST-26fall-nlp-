@@ -1,0 +1,458 @@
+{
+  "date": "2026-11-06",
+  "synced_main": "858b6d4fd5572d624bc4fc32f33ce1ea66987fa6",
+  "scope": "CLI/interface development checks; no test suite or formal benchmark",
+  "batches": {
+    "real_quality_loop": {
+      "batch_dir": "results/batch_06108cdda3a54777b9bd3483f1a14875",
+      "sample_count": 4,
+      "is_mock": false,
+      "status_counts": {
+        "answered": 3,
+        "escalated": 1
+      },
+      "runs": [
+        {
+          "sample_id": "dmv/77bc47cb30af22bdb77019a87199356c/u8",
+          "run_id": "0a671fe82a2f4ae383fdb6baeb6fa316",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 4286,
+          "token_sources": [
+            "reported"
+          ],
+          "rerank_model": "cross-encoder/ms-marco-MiniLM-L6-v2@233902d25c440f23af6f7d6e94d2946bac0bee0a"
+        },
+        {
+          "sample_id": "ssa/21d1570e4343547a5276c27bcb79427d/u14",
+          "run_id": "fda0228ac7264e2f85a7addff6f1fecf",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 5059,
+          "token_sources": [
+            "reported"
+          ],
+          "rerank_model": "cross-encoder/ms-marco-MiniLM-L6-v2@233902d25c440f23af6f7d6e94d2946bac0bee0a"
+        },
+        {
+          "sample_id": "studentaid/334a5aebde884aa0be540cc57888912e/u10",
+          "run_id": "e9161e4496ca4859bd9e8b5f6450e450",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 3889,
+          "token_sources": [
+            "reported"
+          ],
+          "rerank_model": "cross-encoder/ms-marco-MiniLM-L6-v2@233902d25c440f23af6f7d6e94d2946bac0bee0a"
+        },
+        {
+          "sample_id": "va/17278a822bc82e94b81bdbc41a73879e/u6",
+          "run_id": "060dba0fbd624482aa064d7d8d682c2d",
+          "status": "escalated",
+          "stop_reason": "retry_limit",
+          "evaluations": 3,
+          "retrieval_rounds": 2,
+          "retries": 2,
+          "branches": [
+            "adjust_hybrid",
+            "regenerate"
+          ],
+          "model_calls": 7,
+          "total_tokens": 14144,
+          "token_sources": [
+            "reported"
+          ],
+          "rerank_model": "cross-encoder/ms-marco-MiniLM-L6-v2@233902d25c440f23af6f7d6e94d2946bac0bee0a"
+        }
+      ],
+      "metrics": {
+        "sample_count": 4,
+        "reference_file": "C:\\Users\\1\\Desktop\\nlp\\HKUST-26fall-nlp-\\data\\processed\\multidoc2dial\\mini.jsonl",
+        "is_development_mock": false,
+        "response_f1": 0.13077229733075818,
+        "response_em": 0.0,
+        "response_scored_count": 4,
+        "retrieval_stage": "post-fusion/post-rerank candidates before final context truncation",
+        "retrieval": {
+          "@1": {
+            "recall": 0.125,
+            "hit": 0.25,
+            "complete_coverage": 0.0
+          },
+          "@5": {
+            "recall": 0.25,
+            "hit": 0.25,
+            "complete_coverage": 0.25
+          },
+          "@10": {
+            "recall": 0.25,
+            "hit": 0.25,
+            "complete_coverage": 0.25
+          }
+        },
+        "retrieval_scored_count": 4,
+        "citation_evidence_validity": 1.0,
+        "citation_gold_precision": 0.16666666666666666,
+        "hallucination_rate": null,
+        "grounding_accuracy": null,
+        "dialogue_consistency": null,
+        "task_completion_rate": null,
+        "support_annotation_count": 0,
+        "status_counts": {
+          "answered": 3,
+          "escalated": 1
+        },
+        "status_rates": {
+          "answered": 0.75,
+          "escalated": 0.25
+        },
+        "average_latency_ms": 6363.499999999476,
+        "p95_latency_ms": 10555.149999997227,
+        "average_retrieval_rounds": 1.25,
+        "average_retry_count": 0.5,
+        "average_model_calls": 4,
+        "average_total_tokens": 6844.5,
+        "complete_usage_count": 4,
+        "token_sources": [
+          "reported"
+        ],
+        "notes": [
+          "Unanswered samples with references receive F1/EM zero; evidence metrics exclude unlabelled cases.",
+          "Citation correctness does not prove factual support.",
+          "Hallucination/consistency/completion remain null unless external annotations are supplied.",
+          "Development mini results are wiring checks, not final benchmark results."
+        ]
+      }
+    },
+    "offline_integrated": {
+      "batch_dir": "results/batch_7cd0d24964814fa3aab09b61de412496",
+      "sample_count": 16,
+      "is_mock": true,
+      "status_counts": {
+        "answered": 10,
+        "escalated": 4,
+        "clarification_needed": 2
+      },
+      "runs": [
+        {
+          "sample_id": "mini_001",
+          "run_id": "bb1c5977cf12454ab8a1074db2ccd1a3",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1705,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_002",
+          "run_id": "b10b90c404c34d31b855cfcf114fa766",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1478,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_003",
+          "run_id": "19b1c356ffaf415eb35736e7281d2884",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1720,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_004",
+          "run_id": "9537d14da02b4ddb8d838213a9f555c6",
+          "status": "escalated",
+          "stop_reason": "no_improvement",
+          "evaluations": 2,
+          "retrieval_rounds": 1,
+          "retries": 1,
+          "branches": [
+            "regenerate"
+          ],
+          "model_calls": 5,
+          "total_tokens": 3119,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_005",
+          "run_id": "3756227394e44d468baed9917293ecd9",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1528,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_006",
+          "run_id": "4b0d57872bf44ca694ea5a2decae7b34",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1691,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_007",
+          "run_id": "739a164c3105428ea4794755dd8e880b",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1528,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_008",
+          "run_id": "9304314d20b040e7814f24dae3058d53",
+          "status": "escalated",
+          "stop_reason": "no_improvement",
+          "evaluations": 2,
+          "retrieval_rounds": 1,
+          "retries": 1,
+          "branches": [
+            "regenerate"
+          ],
+          "model_calls": 5,
+          "total_tokens": 3550,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_009",
+          "run_id": "c62bb23df4e94fa29d6a68a2c297a9fe",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1539,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_010",
+          "run_id": "f6c311bf790449c8acea76d080627844",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1761,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_011",
+          "run_id": "4c01c4437c5844cdaa4602e7269b5ea3",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1543,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_012",
+          "run_id": "43713ca48f2149419973981f01e3d936",
+          "status": "answered",
+          "stop_reason": "evaluation_passed",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1562,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_013",
+          "run_id": "8849beeb76c14ebda259634e03b7769f",
+          "status": "clarification_needed",
+          "stop_reason": "clarification_required",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1524,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_014",
+          "run_id": "6286f5fc9fd5403ea1e316fa08a03ca3",
+          "status": "clarification_needed",
+          "stop_reason": "clarification_required",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1527,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_015",
+          "run_id": "5bea4758a6ed43e6886c20ddfc09a273",
+          "status": "escalated",
+          "stop_reason": "escalation_required",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1577,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        },
+        {
+          "sample_id": "mini_016",
+          "run_id": "5b3486d8ae99416bb2d81d500a9919b3",
+          "status": "escalated",
+          "stop_reason": "escalation_required",
+          "evaluations": 1,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 3,
+          "total_tokens": 1569,
+          "token_sources": [
+            "estimated"
+          ],
+          "rerank_model": null
+        }
+      ]
+    },
+    "real_single_pass": {
+      "batch_dir": "results/batch_734be37eb70b4694b5f4ff2b61c6c5b1",
+      "sample_count": 1,
+      "is_mock": false,
+      "status_counts": {
+        "answered": 1
+      },
+      "runs": [
+        {
+          "sample_id": "dmv/77bc47cb30af22bdb77019a87199356c/u8",
+          "run_id": "1b34c371693441288f741c5c6200d481",
+          "status": "answered",
+          "stop_reason": "single_pass_completed",
+          "evaluations": 0,
+          "retrieval_rounds": 1,
+          "retries": 0,
+          "branches": [],
+          "model_calls": 2,
+          "total_tokens": 2186,
+          "token_sources": [
+            "reported"
+          ],
+          "rerank_model": "cross-encoder/ms-marco-MiniLM-L6-v2@233902d25c440f23af6f7d6e94d2946bac0bee0a"
+        }
+      ]
+    }
+  },
+  "retry_example": {
+    "run_id": "0af2c03b7679430ab0162bf8610b0e62",
+    "scope": "Earlier real development run; generation prompt subsequently tightened",
+    "branch": "regenerate",
+    "retrieval_rounds": 1,
+    "evaluations": 2,
+    "retries": 1,
+    "stop_reason": "evaluation_passed"
+  },
+  "fixed_contract_cases": [
+    "contradictory pass -> clarification",
+    "v2 diagnostics accepted",
+    "answer omission -> regenerate",
+    "same context with sufficient evidence -> bounded regeneration",
+    "failed response usage charged",
+    "token and deadline budgets stop request"
+  ]
+}

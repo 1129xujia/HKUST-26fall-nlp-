@@ -29,6 +29,13 @@ def build_orchestrator(
     generator_factory: GeneratorFactory | None = None,
     mock_scenario: str | None = None,
 ) -> LoopOrchestrator:
+    if config.pipeline == "integrated":
+        if any(value is not None for value in (
+            evaluator_factory, optimizer_factory, generator_factory, mock_scenario,
+        )):
+            raise ValueError("Scripted legacy factories require pipeline=legacy")
+        from customer_service_rag.orchestration.integrated import IntegratedOrchestrator
+        return IntegratedOrchestrator(config)
     embedding = build_embedding(config.models.embedding, config.project_root)
     index = load_index(config.resolve_path(config.paths.index_dir), embedding)
     expected = load_passages(config.resolve_path(config.data.passages_path))

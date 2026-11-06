@@ -42,6 +42,7 @@ class LLMConfig(Contract):
     max_new_tokens: int = Field(default=384, ge=32, le=2048)
     max_input_tokens: int = Field(default=3072, ge=256)
     num_threads: int = Field(default=4, ge=1)
+    timeout_seconds: int = Field(default=45, ge=1, le=180)
 
     @model_validator(mode="after")
     def validate_backend(self) -> LLMConfig:
@@ -123,9 +124,17 @@ class PathsConfig(Contract):
     results_dir: Path = Field(default_factory=lambda: Path("results"))
 
 
+class IntegrationConfig(Contract):
+    domain_filter: bool = False
+    dense_top_k: int = Field(default=50, ge=1, le=500)
+    bm25_top_k: int = Field(default=50, ge=1, le=500)
+
+
 class AppConfig(Contract):
     config_version: Literal["1"] = "1"
     seed: int = Field(default=42, ge=0)
+    pipeline: Literal["legacy", "integrated"] = "legacy"
+    integration: IntegrationConfig = Field(default_factory=IntegrationConfig)
     data: DataConfig = Field(default_factory=DataConfig)
     models: ModelsConfig = Field(default_factory=ModelsConfig)
     planning: PlanningConfig = Field(default_factory=PlanningConfig)
@@ -145,6 +154,8 @@ class AppConfig(Contract):
             raise ValueError("escalation requires quality.enabled=true")
         if self.planning.decompose and not self.planning.rewrite:
             raise ValueError("decomposition requires rewriting")
+        if self.pipeline == "integrated" and self.retrieval.fusion != "rrf":
+            raise ValueError("The integrated pipeline requires RRF fusion")
         return self
 
     @property

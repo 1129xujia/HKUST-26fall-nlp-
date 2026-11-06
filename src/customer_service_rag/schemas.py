@@ -293,6 +293,8 @@ class RunResult(Contract):
     mock_scenario: str | None = None
     model_backend: str = "mock"
     model_calls: list[dict[str, Any]] = Field(default_factory=list)
+    pipeline_backend: str = "legacy"
+    integration: dict[str, Any] = Field(default_factory=dict)
 
 
 class GroundingReference(Contract):

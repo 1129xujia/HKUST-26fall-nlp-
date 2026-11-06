@@ -60,6 +60,35 @@ class DeepSeekLLM:
                  max_output_tokens: int = 1024):
         if type(max_output_tokens) is not int or not 1 <= max_output_tokens <= 8192:
             raise ValueError("max_output_tokens must be an integer between 1 and 8192")
+        self._delegate = None
+        if (transport is None and transport_path is None
+                and not os.environ.get("OPTIMIZER_DEEPSEEK_TRANSPORT", "").strip()):
+            from dotenv import load_dotenv
+            from customer_service_rag.config import LLMConfig, project_root
+            from customer_service_rag.models.deepseek_llm import DeepSeekLLM as SharedDeepSeek
+
+            try:
+                root = project_root()
+                load_dotenv(root / ".env", override=False)
+            except FileNotFoundError:
+                root = Path.cwd()
+            configured = config_path or os.environ.get("DEEPSEEK_CONFIG_PATH")
+            self.config_path = Path(configured).resolve() if configured else root / ".env"
+            settings = (json.loads(self.config_path.read_text(encoding="utf-8"))
+                        if configured else {})
+            selected_model = (model or settings.get("model")
+                              or os.environ.get("DEEPSEEK_MODEL") or "deepseek-flash")
+            self._delegate = SharedDeepSeek(
+                LLMConfig(backend="deepseek", model=selected_model,
+                          max_new_tokens=max_output_tokens),
+                api_key=api_key or settings.get("api_key"),
+            )
+            self.model_name = self._delegate.model_name
+            self.max_output_tokens = max_output_tokens
+            self.usage = self._delegate.usage
+            self.calls = self._delegate.calls
+            return
+        # Explicit legacy transport injection remains available for older callers.
         self.transport = transport if transport is not None else load_existing_transport(transport_path)
         configured_path = os.environ.get("DEEPSEEK_CONFIG_PATH", "").strip()
         path = (Path(config_path) if config_path is not None else
@@ -85,6 +114,8 @@ class DeepSeekLLM:
         return f"DeepSeekLLM(model={self.model_name!r}, max_output_tokens={self.max_output_tokens})"
 
     def build_payload(self, prompt: str, *, task: str) -> dict:
+        if self._delegate is not None:
+            return self._delegate.build_payload(prompt, task=task)
         if task not in {"generate", "plan", "evaluate"}:
             raise ValueError(f"Unsupported optimizer LLM task: {task}")
         if not isinstance(prompt, str) or not prompt.strip():
@@ -108,6 +139,8 @@ class DeepSeekLLM:
         }
 
     async def complete(self, prompt: str, *, task: str, payload: dict) -> LLMResult:
+        if self._delegate is not None:
+            return await self._delegate.complete(prompt, task=task, payload=payload)
         # Only the actual prompt is sent; caller payload is not a second hidden
         # upload channel. Neither the credential nor local config enters prompts.
         body = self.build_payload(prompt, task=task)
