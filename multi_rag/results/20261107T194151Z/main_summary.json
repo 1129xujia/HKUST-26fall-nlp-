@@ -1,0 +1,32 @@
+{
+  "sample_count": 20,
+  "judged_count": 20,
+  "judge": "deepseek-flash",
+  "warning": "Same-model judge and synthetic pending-review rubric; provisional answer scores.",
+  "arms": {
+    "A": {
+      "required_point_coverage": 0.48083333333333333,
+      "all_points_covered_count": 1,
+      "source_doc_recall": 0.6,
+      "error_count": 0,
+      "mean_generation_tokens": 1732,
+      "mean_generation_calls": 1
+    },
+    "B": {
+      "required_point_coverage": 0.5675,
+      "all_points_covered_count": 2,
+      "source_doc_recall": 0.75,
+      "error_count": 0,
+      "mean_generation_tokens": 1758.55,
+      "mean_generation_calls": 1
+    },
+    "C": {
+      "required_point_coverage": 0.6066666666666667,
+      "all_points_covered_count": 3,
+      "source_doc_recall": 0.75,
+      "error_count": 0,
+      "mean_generation_tokens": 4528.3,
+      "mean_generation_calls": 3.1
+    }
+  }
+}

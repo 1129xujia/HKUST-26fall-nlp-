@@ -1,0 +1,20 @@
+{"sample_id": "MDD_CROSS_DOMAIN_001_001", "covered": {"A": [], "B": ["cd1_p1", "cd1_p2", "cd1_p4", "cd1_p5"], "C": ["cd1_p1", "cd1_p2", "cd1_p4", "cd1_p5"]}, "judge_usage": [{"input_tokens": 1906, "output_tokens": 55, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_002", "covered": {"A": [], "B": ["cd2_p1"], "C": ["cd2_p1"]}, "judge_usage": [{"input_tokens": 1271, "output_tokens": 25, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_003", "covered": {"A": [], "B": [], "C": []}, "judge_usage": [{"input_tokens": 731, "output_tokens": 15, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_004", "covered": {"A": [], "B": ["cd4_p3", "cd4_p4", "cd4_p5"], "C": ["cd4_p3", "cd4_p4", "cd4_p5"]}, "judge_usage": [{"input_tokens": 1372, "output_tokens": 45, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_005", "covered": {"A": [], "B": ["cd5_p1", "cd5_p3", "cd5_p4"], "C": ["cd5_p1", "cd5_p3", "cd5_p4"]}, "judge_usage": [{"input_tokens": 1725, "output_tokens": 45, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_006", "covered": {"A": [], "B": ["cd6_p1", "cd6_p2", "cd6_p3", "cd6_p4"], "C": ["cd6_p1", "cd6_p2", "cd6_p3", "cd6_p4"]}, "judge_usage": [{"input_tokens": 1548, "output_tokens": 55, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_007", "covered": {"A": ["cd7_p1", "cd7_p3", "cd7_p4"], "B": ["cd7_p1", "cd7_p3", "cd7_p4"], "C": ["cd7_p1", "cd7_p3", "cd7_p4"]}, "judge_usage": [{"input_tokens": 1501, "output_tokens": 60, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_008", "covered": {"A": [], "B": ["cd8_p1", "cd8_p3", "cd8_p4"], "C": ["cd8_p1", "cd8_p3", "cd8_p4"]}, "judge_usage": [{"input_tokens": 1438, "output_tokens": 45, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_009", "covered": {"A": [], "B": [], "C": []}, "judge_usage": [{"input_tokens": 604, "output_tokens": 15, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_010", "covered": {"A": ["cd10_p1", "cd10_p2", "cd10_p3"], "B": ["cd10_p1", "cd10_p2", "cd10_p3"], "C": ["cd10_p1", "cd10_p2", "cd10_p3"]}, "judge_usage": [{"input_tokens": 2113, "output_tokens": 60, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_011", "covered": {"A": [], "B": [], "C": []}, "judge_usage": [{"input_tokens": 574, "output_tokens": 15, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_012", "covered": {"A": [], "B": ["cd12_p2", "cd12_p4"], "C": ["cd12_p2", "cd12_p4"]}, "judge_usage": [{"input_tokens": 1133, "output_tokens": 35, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_013", "covered": {"A": [], "B": [], "C": []}, "judge_usage": [{"input_tokens": 470, "output_tokens": 15, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_014", "covered": {"A": [], "B": ["cd14_p1", "cd14_p3", "cd14_p4"], "C": []}, "judge_usage": [{"input_tokens": 899, "output_tokens": 30, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_015", "covered": {"A": [], "B": [], "C": []}, "judge_usage": [{"input_tokens": 525, "output_tokens": 15, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_016", "covered": {"A": [], "B": ["cd16_p1", "cd16_p2"], "C": ["cd16_p1", "cd16_p2"]}, "judge_usage": [{"input_tokens": 1459, "output_tokens": 35, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_017", "covered": {"A": ["cd17_p1", "cd17_p2", "cd17_p3"], "B": ["cd17_p1", "cd17_p2", "cd17_p3"], "C": ["cd17_p1", "cd17_p2", "cd17_p3", "cd17_p4"]}, "judge_usage": [{"input_tokens": 1786, "output_tokens": 65, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_018", "covered": {"A": [], "B": [], "C": []}, "judge_usage": [{"input_tokens": 817, "output_tokens": 15, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_019", "covered": {"A": [], "B": [], "C": []}, "judge_usage": [{"input_tokens": 571, "output_tokens": 15, "source": "reported"}]}
+{"sample_id": "MDD_CROSS_DOMAIN_001_020", "covered": {"A": [], "B": ["cd20_p1", "cd20_p3"], "C": ["cd20_p1", "cd20_p3"]}, "judge_usage": [{"input_tokens": 1435, "output_tokens": 35, "source": "reported"}]}

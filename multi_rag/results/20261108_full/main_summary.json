@@ -1,0 +1,191 @@
+{
+  "sample_count": 20,
+  "judged_count": 20,
+  "judge": "deepseek-flash",
+  "warning": "Same-model judge and synthetic pending-review rubric; provisional answer scores.",
+  "mean_shared_planner_tokens": 321.4,
+  "offline_judge_total_tokens": 24573,
+  "arms": {
+    "A": {
+      "required_point_coverage": 0.125,
+      "all_points_covered_count": 1,
+      "source_doc_recall": 0.55,
+      "error_count": 0,
+      "mean_generation_tokens": 3532.05,
+      "mean_generation_calls": 1.75,
+      "final_context_at_1": {
+        "source_doc_precision": 0.55,
+        "source_doc_recall": 0.275,
+        "source_doc_f1": 0.36666666666666664,
+        "source_doc_hit": 0.55,
+        "source_doc_complete": 0.0,
+        "annotated_span_recall": 0.10395016730775244
+      },
+      "final_context_at_3": {
+        "source_doc_precision": 0.4166666666666667,
+        "source_doc_recall": 0.425,
+        "source_doc_f1": 0.4066666666666667,
+        "source_doc_hit": 0.8,
+        "source_doc_complete": 0.05,
+        "annotated_span_recall": 0.23529069182165158
+      },
+      "final_context_at_6": {
+        "source_doc_precision": 0.30416666666666664,
+        "source_doc_recall": 0.55,
+        "source_doc_f1": 0.3705952380952381,
+        "source_doc_hit": 0.85,
+        "source_doc_complete": 0.25,
+        "annotated_span_recall": 0.36715719631818705
+      },
+      "citation_evidence_validity": 1.0,
+      "cited_source_doc_precision": 0.5555555555555556,
+      "status_counts": {
+        "answered": 3,
+        "escalated": 17
+      },
+      "mean_pipeline_tokens": 7312.55,
+      "mean_pipeline_calls": 3.45,
+      "mean_evaluations": 1.7,
+      "mean_retries": 1.4,
+      "mean_added_seconds": 7.6786118549993265,
+      "final_evaluation_pass_rate": 0.15,
+      "initial_evaluation_pass_rate": 0.1,
+      "mean_optimization_actions": 1.4,
+      "stop_reason_counts": {
+        "evaluation_passed": 3,
+        "no_context_change": 14,
+        "retry_limit": 3
+      },
+      "last_evaluated_candidate_scores": {
+        "relevance": 0.705,
+        "sufficiency": 0.56,
+        "groundedness": 0.91,
+        "dialogue_consistency": 0.99
+      }
+    },
+    "B": {
+      "required_point_coverage": 0.45,
+      "all_points_covered_count": 2,
+      "source_doc_recall": 0.75,
+      "error_count": 0,
+      "mean_generation_tokens": 3297.65,
+      "mean_generation_calls": 1.6,
+      "final_context_at_1": {
+        "source_doc_precision": 0.4,
+        "source_doc_recall": 0.2,
+        "source_doc_f1": 0.26666666666666666,
+        "source_doc_hit": 0.4,
+        "source_doc_complete": 0.0,
+        "annotated_span_recall": 0.06562121212121212
+      },
+      "final_context_at_3": {
+        "source_doc_precision": 0.39166666666666666,
+        "source_doc_recall": 0.525,
+        "source_doc_f1": 0.445,
+        "source_doc_hit": 0.85,
+        "source_doc_complete": 0.2,
+        "annotated_span_recall": 0.23885358002850263
+      },
+      "final_context_at_6": {
+        "source_doc_precision": 0.3541666666666667,
+        "source_doc_recall": 0.75,
+        "source_doc_f1": 0.4780952380952381,
+        "source_doc_hit": 0.95,
+        "source_doc_complete": 0.55,
+        "annotated_span_recall": 0.4213740653624555
+      },
+      "citation_evidence_validity": 1.0,
+      "cited_source_doc_precision": 0.6845238095238095,
+      "status_counts": {
+        "answered": 14,
+        "escalated": 6
+      },
+      "mean_pipeline_tokens": 6865.8,
+      "mean_pipeline_calls": 3.2,
+      "mean_evaluations": 1.6,
+      "mean_retries": 0.65,
+      "mean_added_seconds": 5.150150495005073,
+      "final_evaluation_pass_rate": 0.7,
+      "initial_evaluation_pass_rate": 0.65,
+      "mean_optimization_actions": 0.65,
+      "stop_reason_counts": {
+        "evaluation_passed": 14,
+        "no_context_change": 1,
+        "retry_limit": 5
+      },
+      "last_evaluated_candidate_scores": {
+        "relevance": 0.9175,
+        "sufficiency": 0.7975,
+        "groundedness": 0.9075,
+        "dialogue_consistency": 0.9825
+      }
+    },
+    "C": {
+      "required_point_coverage": 0.4325,
+      "all_points_covered_count": 3,
+      "source_doc_recall": 0.675,
+      "error_count": 0,
+      "mean_generation_tokens": 7178.6,
+      "mean_generation_calls": 4.7,
+      "final_context_at_1": {
+        "source_doc_precision": 0.4,
+        "source_doc_recall": 0.2,
+        "source_doc_f1": 0.26666666666666666,
+        "source_doc_hit": 0.4,
+        "source_doc_complete": 0.0,
+        "annotated_span_recall": 0.06562121212121212
+      },
+      "final_context_at_3": {
+        "source_doc_precision": 0.375,
+        "source_doc_recall": 0.5,
+        "source_doc_f1": 0.42500000000000004,
+        "source_doc_hit": 0.85,
+        "source_doc_complete": 0.15,
+        "annotated_span_recall": 0.21780094844955525
+      },
+      "final_context_at_6": {
+        "source_doc_precision": 0.3125,
+        "source_doc_recall": 0.675,
+        "source_doc_f1": 0.4247619047619048,
+        "source_doc_hit": 0.9,
+        "source_doc_complete": 0.45,
+        "annotated_span_recall": 0.4033593594801025
+      },
+      "citation_evidence_validity": 1.0,
+      "cited_source_doc_precision": 0.5875,
+      "status_counts": {
+        "answered": 12,
+        "escalated": 8
+      },
+      "mean_pipeline_tokens": 14755.9,
+      "mean_pipeline_calls": 9.05,
+      "mean_evaluations": 4.35,
+      "mean_retries": 2.4,
+      "mean_added_seconds": 13.781038045010064,
+      "final_evaluation_pass_rate": 0.6,
+      "initial_evaluation_pass_rate": 0.55,
+      "mean_optimization_actions": 2.4,
+      "stop_reason_counts": {
+        "evaluation_passed": 12,
+        "no_context_change": 8
+      },
+      "last_evaluated_candidate_scores": {
+        "relevance": 0.9,
+        "sufficiency": 0.7275,
+        "groundedness": 0.92,
+        "dialogue_consistency": 0.9725
+      },
+      "domain_initial_evaluation_pass_rate": 0.425,
+      "domain_evaluation_pass_rate": 0.55,
+      "domain_status_counts": {
+        "answered": 22,
+        "error": 1,
+        "escalated": 17
+      }
+    }
+  },
+  "routing_exact_match_rate": 1,
+  "response_f1": null,
+  "response_em": null,
+  "response_reference_note": "Main's token F1 and exact match require independent reference answers; this synthetic annotation set has required points but no reference answers. The reported source_doc_f1 is retrieval document-set F1, not response F1."
+}

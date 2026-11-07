@@ -1,0 +1,16 @@
+{
+  "source": "main",
+  "config": "C:\\Users\\Astrella\\Desktop\\codex-multi-agent\\main\\configs\\integrated.yaml",
+  "corpus_sha256": "bbeb6f08d3e9d3ad2a6cd9b29b032310f53f7547fd7d3c72569b722e8deb9f71",
+  "passage_count": 3798,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2@1110a243fdf4706b3f48f1d95db1a4f5529b4d41;mean;max_length=256",
+  "reranker": "cross-encoder/ms-marco-MiniLM-L6-v2",
+  "reranker_revision": "233902d25c440f23af6f7d6e94d2946bac0bee0a",
+  "llm": "deepseek-flash",
+  "top_k_total": 6,
+  "annotation_sha256": "5474087d145f64618d18e68a34ae8302cbea373168eac346991cb1df4da238ab",
+  "runtime_checkout_commit": "ccf59332410099b631b643940649d957ffb1bb0c",
+  "verified_remote_main_commit": "50d7acba431d99c7a048f3b6ff557fcecd49986c",
+  "runtime_files_changed_between_commits": false,
+  "remote_change_scope": "validation A report and two report runner scripts only"
+}

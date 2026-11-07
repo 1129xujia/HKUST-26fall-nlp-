@@ -1,0 +1,11 @@
+{
+  "source_batch": "results\\20261107T194151Z",
+  "source_cases_sha256": "7cdd6b92c6ce1cb8c35f9eb4b77757e460faa47c9cd5aa8f778a2f19c54b9313",
+  "annotation_sha256": "5474087d145f64618d18e68a34ae8302cbea373168eac346991cb1df4da238ab",
+  "config": "main/configs/integrated.yaml",
+  "max_retries": 2,
+  "max_total_tokens": 30000,
+  "max_latency_seconds": 180.0,
+  "evidence_cap": 6,
+  "reuse_saved_initial_answers": true
+}
