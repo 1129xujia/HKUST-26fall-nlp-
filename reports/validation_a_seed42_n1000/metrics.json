@@ -1,0 +1,43 @@
+{
+  "sample_count": 1000,
+  "status_counts": {
+    "insufficient_evidence": 25,
+    "answered": 973,
+    "error": 2
+  },
+  "response_f1": 0.2080205480772497,
+  "response_em": 0.0,
+  "retrieval": {
+    "@1": {
+      "recall": 0.4,
+      "hit": 0.411,
+      "complete_coverage": 0.389
+    },
+    "@5": {
+      "recall": 0.6813333333333333,
+      "hit": 0.691,
+      "complete_coverage": 0.671
+    },
+    "@10": {
+      "recall": 0.7703333333333333,
+      "hit": 0.778,
+      "complete_coverage": 0.762
+    }
+  },
+  "retrieval_scored_count": 1000,
+  "citation_evidence_validity": 1.0,
+  "citation_gold_precision": 0.3221822541966427,
+  "average_latency_ms": 4726.0729999999585,
+  "p95_latency_ms": 6047.749999998813,
+  "average_model_calls": 2.02,
+  "average_total_tokens": 2127.047,
+  "complete_usage_count": 1000,
+  "hallucination_rate": null,
+  "grounding_accuracy": null,
+  "dialogue_consistency": null,
+  "task_completion_rate": null,
+  "notes": [
+    "Error and insufficient-evidence responses score zero against a reference.",
+    "Factual support and task completion need external annotations."
+  ]
+}
