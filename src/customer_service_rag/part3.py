@@ -7,7 +7,7 @@ import re
 from dataclasses import dataclass
 from typing import Any, Callable
 
-from retrieval_v2.retrieval import Evidence, RetrievalRequest
+from retrieval import Evidence, RetrievalRequest
 
 from customer_service_rag.interfaces import LLMClient, Planner
 from customer_service_rag.schemas import DialogueInput, GeneratedResponse, QueryPlan, ResponseStatus

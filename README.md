@@ -1,5 +1,7 @@
 # 在线客服多智能体 RAG 系统
 
+检索主服务可选择 section/struct 切分及原始模型重排/微调 Dense 链路，见 [检索服务与本地验收](src/retrieval/SERVICE_GUIDE.md)。
+
 HKUST 26fall NLP Course Project
 
 Struct Dense 微调训练、验证选模及 A–D 对照评测代码见 [微调实验说明](retrieval_finetune/struct_finetune/README.md)。该目录独立运行，不更改服务默认检索配置。
@@ -29,7 +31,7 @@ Struct Dense 微调训练、验证选模及 A–D 对照评测代码见 [微调�
 .\.venv\Scripts\cs-rag.exe evaluate --config configs/integrated.yaml --run-dir results/<batch_id>
 ```
 
-统一模式保留共享语料的引用 ID 和 grounding。Dense 复用已有 NumPy 索引；BM25、RRF、Cross-Encoder 重排和优化执行接入队友模块。该路径使用根项目环境，不需混装 `src/retrieval_v2/requirements.txt` 的旧版独立依赖。原来的 default/D3 配置继续提供历史离线入口。
+统一模式保留共享语料的引用 ID 和 grounding。Dense 复用已有 NumPy 索引；BM25、RRF、Cross-Encoder 重排和优化执行接入队友模块。该路径使用根项目环境，不需混装 `src/retrieval/requirements.txt` 的旧版独立依赖。原来的 default/D3 配置继续提供历史离线入口。
 
 本轮四领域开发样例：3 条通过在线质量策略，1 条达到重试上限并准备转接；参考答案 F1 为 13.08%，不能作为正式质量达标结论。实际摘要见 [integration_summary.json](reports/integration_summary.json)。
 

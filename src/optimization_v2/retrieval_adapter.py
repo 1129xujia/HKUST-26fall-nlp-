@@ -1,4 +1,4 @@
-"""Request-local extensions around retrieval_v2; never mutate its source/config.
+"""Request-local extensions around retrieval; never mutate its source/config.
 
 Raw rankings are cached before truncation. Weight/rerank changes reuse recall,
 whereas query/domain/quota/corpus changes invalidate it. Model loading stays in
@@ -16,9 +16,9 @@ import threading
 from concurrent.futures import ThreadPoolExecutor
 from time import perf_counter
 
-from retrieval_v2.retrieval.reranker import CrossEncoderReranker, NoOpReranker
-from retrieval_v2.retrieval.fusion import reciprocal_rank_fusion
-from retrieval_v2.retrieval.schemas import Evidence, FusedHit, RetrievalRequest
+from retrieval.reranker import CrossEncoderReranker, NoOpReranker
+from retrieval.fusion import reciprocal_rank_fusion
+from retrieval.schemas import Evidence, FusedHit, RetrievalRequest
 
 from .schemas import Capabilities, ExecutionOptions, RetrievalSnapshot
 
@@ -155,7 +155,10 @@ class Part2RetrievalAdapter:
                     retriever.search, text, domain=request.domain, top_k=quota,
                 ) for retriever, text, quota in jobs]
                 rankings = [future.result() for future in futures]
-        fused = weighted_rrf(rankings, options)[:options.candidate_top_k]
+        tuned = self.pipeline.config.mode == "finetuned"
+        if tuned and (options.bm25_top_k or options.rerank):
+            raise ValueError("Fine-tuned chain does not support BM25 or reranking; select the rerank profile")
+        fused = (self.pipeline.dense_candidates(rankings) if tuned else weighted_rrf(rankings, options))[:options.candidate_top_k]
         candidates = copy.deepcopy(fused)
         rerank_elapsed_ms = 0.0
         rerank_model = None
@@ -186,7 +189,7 @@ class Part2RetrievalAdapter:
                 )
                 rerank_elapsed_ms = (perf_counter() - rerank_started) * 1000
                 rerank_model = getattr(reranker, "model_name", type(reranker).__name__)
-        else:
+        elif not tuned:
             candidates = NoOpReranker().rerank(request.query, [], candidates)
         available = {item.passage.passage_id for item in fused}
         if ({item.passage.passage_id for item in candidates} != available

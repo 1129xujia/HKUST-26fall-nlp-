@@ -52,7 +52,7 @@ apply_policy检查四项分数、回答状态和引用列表，不检查pass与f
 
 ## 5. P2：当前接口下“使用用户历史重排”通常退化为identity
 
-位置：`retrieval_adapter.py:103–108`及重排调用、`retrieval_v2/retrieval/reranker.py:78–87`。
+位置：`retrieval_adapter.py:103–108`及重排调用、`retrieval/retrieval/reranker.py:78–87`。
 
 适配器把rewritten_query传给检索和重排，没有把QueryPlan.dialogue_history单独传给Cross-Encoder。current_first_user_history策略只会从query字符串中提取字面User:行；普通独立query没有这种行时就原样返回。
 

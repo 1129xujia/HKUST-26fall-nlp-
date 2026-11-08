@@ -12,7 +12,7 @@ from customer_service_rag.models.llm import MockLLM
 from customer_service_rag.part3 import EvidenceResponseGenerator
 from customer_service_rag.planning.planner import QueryPlanner
 from customer_service_rag.schemas import DialogueInput
-from retrieval_v2.retrieval import Evidence
+from retrieval import Evidence
 
 
 ROOT = Path(__file__).resolve().parents[1]

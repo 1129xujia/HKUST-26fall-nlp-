@@ -192,7 +192,7 @@ class IntegratedOrchestrator:
             is_mock=llm.is_mock or config.models.embedding.backend == "hash",
             model_backend=config.models.llm.backend, model_calls=list(getattr(llm, "calls", [])),
             pipeline_backend="integrated", integration={
-                "components": ["retrieval_v2", "customer_service_rag.part3", "optimization_v2"],
+                "components": ["retrieval", "customer_service_rag.part3", "optimization_v2"],
                 "index_backend": "shared_numpy", "citation_scheme": "shared_corpus_citation_id",
                 "used_tokens": budget.used_tokens,
                 "options": options.model_dump(mode="json"),

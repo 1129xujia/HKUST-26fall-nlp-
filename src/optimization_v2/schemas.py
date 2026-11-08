@@ -13,7 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 from customer_service_rag.schemas import (
     EvaluationFeedback, GeneratedResponse, QueryPlan,
 )
-from retrieval_v2.retrieval.schemas import Evidence, FusedHit, SearchHit
+from retrieval.schemas import Evidence, FusedHit, SearchHit
 
 FailureType = Literal[
     "answer_defect", "query_misunderstanding", "retrieval_coverage",

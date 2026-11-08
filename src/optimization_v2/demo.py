@@ -4,9 +4,9 @@ import asyncio
 import json
 
 from customer_service_rag.schemas import GeneratedResponse, QueryPlan
-from retrieval_v2.retrieval.config import RetrievalConfig
-from retrieval_v2.retrieval.pipeline import HybridRetrievalPipeline
-from retrieval_v2.retrieval.schemas import Passage, SearchHit
+from retrieval.config import RetrievalConfig
+from retrieval.pipeline import HybridRetrievalPipeline
+from retrieval.schemas import Passage, SearchHit
 
 from .controller import OptimizationController
 from .retrieval_adapter import Part2RetrievalAdapter

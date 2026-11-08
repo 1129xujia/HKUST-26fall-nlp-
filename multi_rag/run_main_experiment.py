@@ -228,7 +228,7 @@ async def run(args):
                 assert all(e["domain"] == domain for e in c_branches[domain]["evidence"])
             # Evidence objects are recovered by stable citation ID from the main retriever's converted corpus.
             def original(items):
-                from retrieval_v2.retrieval.schemas import Evidence
+                from retrieval.schemas import Evidence
                 return [Evidence(passage_id=e["passage_id"], doc_id=e["doc_id"], domain=e["domain"],
                                  title=e["title"], section_title="", text=e["text"], span_ids=e["span_ids"],
                                  source_retrievers=e["source_retrievers"], matched_query=query.rewritten_query,

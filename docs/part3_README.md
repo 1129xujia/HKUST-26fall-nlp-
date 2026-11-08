@@ -58,13 +58,13 @@ from customer_service_rag.models.llm import MockLLM
 from customer_service_rag.part3 import EvidenceResponseGenerator, run_once
 from customer_service_rag.planning.planner import QueryPlanner
 from customer_service_rag.schemas import DialogueInput
-from retrieval_v2.retrieval import HybridRetrievalPipeline, RetrievalConfig
-from retrieval_v2.retrieval.graph_node import make_retrieval_node
+from retrieval import HybridRetrievalPipeline, RetrievalConfig
+from retrieval.graph_node import make_retrieval_node
 
 llm = MockLLM()
 pipeline = HybridRetrievalPipeline.from_artifacts(
-    artifact_dir="src/retrieval_v2/artifacts",
-    config=RetrievalConfig.for_mode("bm25", artifact_dir="src/retrieval_v2/artifacts"),
+    artifact_dir="src/retrieval/artifacts",
+    config=RetrievalConfig.for_mode("bm25", artifact_dir="src/retrieval/artifacts"),
     device="cpu",
 )
 dialogue = DialogueInput(

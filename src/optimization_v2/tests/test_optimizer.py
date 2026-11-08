@@ -12,23 +12,23 @@ from customer_service_rag.schemas import (
     GeneratedResponse, LLMResult, QueryPlan, RunState, TokenUsage,
     RetrievalOptions, RetrievalResult,
 )
-from optimaization_v2 import (
+from optimization_v2 import (
     BudgetState, Capabilities, ExecutionOptions, Feedback, Limits,
     LLMQueryRewriter, LLMRevisionGenerator, MainEvaluatorAdapter,
     OptimizationController, OptimizationInput, OptimizationRouter,
     Part2RetrievalAdapter, from_main_state,
 )
-from optimaization_v2.adapters import to_main_passages
-from optimaization_v2.budget import BudgetExceeded, BudgetLedger
-from optimaization_v2.retrieval_adapter import context_signature
-from optimaization_v2.router import apply_policy
-from optimaization_v2.schemas import (
+from optimization_v2.adapters import to_main_passages
+from optimization_v2.budget import BudgetExceeded, BudgetLedger
+from optimization_v2.retrieval_adapter import context_signature
+from optimization_v2.router import apply_policy
+from optimization_v2.schemas import (
     EvaluationRequest, GenerationRequest, QueryUpdate, Revision, RewriteRequest,
 )
-from retrieval_v2.retrieval.config import RetrievalConfig
-from retrieval_v2.retrieval.pipeline import HybridRetrievalPipeline
-from retrieval_v2.retrieval.reranker import CrossEncoderReranker
-from retrieval_v2.retrieval.schemas import Evidence, Passage, SearchHit
+from retrieval.config import RetrievalConfig
+from retrieval.pipeline import HybridRetrievalPipeline
+from retrieval.reranker import CrossEncoderReranker
+from retrieval.schemas import Evidence, Passage, SearchHit
 
 
 def passage(name):
@@ -326,7 +326,7 @@ class RetrievalTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(a.bm25_weight, 1)
 
     async def test_original_request_and_output_contracts_still_work(self):
-        from retrieval_v2.retrieval.schemas import RetrievalRequest
+        from retrieval.schemas import RetrievalRequest
 
         adapter, _, _ = retrieval_service()
         items = adapter.pipeline.retrieve(RetrievalRequest(query="license", top_k=2))
@@ -504,8 +504,9 @@ class LLMAdapterAndBudgetTests(unittest.IsolatedAsyncioTestCase):
         self.assertIsNone(budget.used_tokens)
 
     async def test_generator_maps_exact_main_mock_citation(self):
-        passages, _ = to_main_passages([evidence("CaseSensitive::1")])
-        llm = RecordingLLM({"answer": "fixed", "citations": [passages[0].citation_id]})
+        # Current Part 3 consumes native Evidence and accepts its legacy mock alias.
+        item = evidence("CaseSensitive::1")
+        llm = RecordingLLM({"answer": "fixed", "citations": [f"{item.doc_id}:{item.passage_id}"], "status": "answered"})
         state = make_input()
         request = GenerationRequest(
             query=state.query, evidence=[evidence("CaseSensitive::1")],
@@ -556,7 +557,7 @@ class StopConditionTests(unittest.IsolatedAsyncioTestCase):
         ).run(make_input(
             evidence=snapshot.evidence, snapshot=snapshot,
             response=GeneratedResponse(answer="rejected draft", citations=["a"]),
-            feedback=feedback(failure_types=["retrieval_coverage"]),
+            feedback=feedback(failure_types=["retrieval_coverage"], evidence_sufficient=False),
         ))
         self.assertEqual(result.stop_reason, "no_context_change")
         self.assertFalse(generator.requests)

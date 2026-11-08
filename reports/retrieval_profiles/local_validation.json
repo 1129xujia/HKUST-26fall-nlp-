@@ -1,0 +1,2443 @@
+{
+  "scope": "Real encoders/FAISS/BM25/Cross-Encoder; mock generation/evaluation, not a quality benchmark",
+  "device": "cpu",
+  "max_docs_per_domain": 1,
+  "original_documents_sha256": "7205be05b7c260fd3c0eda4d98a4abddf7af66c364238f1be509aa139414012d",
+  "profiles": [
+    {
+      "segmentation": "section",
+      "chain": "rerank",
+      "passage_count": 103,
+      "built_index_this_run": true,
+      "artifact_dir": "artifacts/indexes/acceptance/section/rerank",
+      "embedding_model": "local_models/bge-base-en-v1.5",
+      "local_model_fingerprint": "a5b0a5c4f39ef9630906cb5db6fdc9e8c9a0a19200082eb13338142bece53f16",
+      "elapsed_s_including_build_and_load": 9.49947295896709,
+      "top10": [
+        {
+          "passage_id": "Registrations#3_0::6",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Other transactions",
+          "text": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+          "span_ids": [
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 1,
+          "bm25_rank": 7,
+          "rrf_score": 0.05928509154315606,
+          "rerank_score": -2.4728760719299316
+        },
+        {
+          "passage_id": "Registrations#3_0::4",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Renew",
+          "text": "You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail. Please note: If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances , you cannot renew your registration online. See additional information and other ways to renew a registration [3].",
+          "span_ids": [
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 3,
+          "bm25_rank": 40,
+          "rrf_score": 0.04458874458874459,
+          "rerank_score": -4.471462249755859
+        },
+        {
+          "passage_id": "Registrations#3_0::2",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "",
+          "text": "You or your business must register and title at a DMV office any vehicle you own or lease. Registrations do not need to be in the owner's name, or for only one person. Auto dealers can register and title vehicles, and issue plates and charge a fee for this.",
+          "span_ids": [
+            "2",
+            "3",
+            "4"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 5,
+          "bm25_rank": 19,
+          "rrf_score": 0.04897959183673469,
+          "rerank_score": -8.197303771972656
+        },
+        {
+          "passage_id": "Registrations#3_0::14",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Resources",
+          "text": "DMV does not handle parking violations or regulate parking. If you receive a parking ticket you must respond to the locality where they were issued. Do not contact DMV. If you fail to answer parking tickets , the locality can notify the DMV which can prevent the renewal of your vehicle registration, or suspend your vehicle registration. See a list of local Traffic Courts in New York State [41 ]",
+          "span_ids": [
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 7,
+          "bm25_rank": 23,
+          "rrf_score": 0.04589495155532891,
+          "rerank_score": -8.304220199584961
+        },
+        {
+          "passage_id": "Registrations#3_0::12",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "More information",
+          "text": "Abandoned and unclaimed vehicles [28 ] Apply for Clean Pass [29 ] that cannot be registered in New York [30 ] Motorized devices Power of attorney [31 ] Transfer vehicle ownership to another person [32 ] Vehicle modifications and registration class [33 ] Salvage vehicles [34 ]",
+          "span_ids": [
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 2,
+          "bm25_rank": null,
+          "rrf_score": 0.03125,
+          "rerank_score": -8.614688873291016
+        },
+        {
+          "passage_id": "Registrations#3_0::11",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Special situations",
+          "text": "Agricultural and farm vehicles [18 ] Deceased owner [19 ] Homemade vehicles and trailers [20 ] Imported vehicles [21 ] More than one owner or registrant [22 ] No title for a newly purchased vehicle [23 ] Pick - up trucks as' passenger' class [24 ] Register a vehicle for someone else [25 ] Register a vehicle while you are out - of - state [26 ] Register an out - of - state vehicle [27 ]",
+          "span_ids": [
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 10,
+          "bm25_rank": 34,
+          "rrf_score": 0.040625,
+          "rerank_score": -9.624763488769531
+        },
+        {
+          "passage_id": "Registrations#3_0::5",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Renew",
+          "text": "Renew registration online [4 ]",
+          "span_ids": [
+            "13"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 6,
+          "bm25_rank": null,
+          "rrf_score": 0.027777777777777776,
+          "rerank_score": -9.926937103271484
+        },
+        {
+          "passage_id": "Registrations#3_0::13",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Resources",
+          "text": "Businesses regulated by DMV [35] Inspection Stations, Dealers and Transporters, Repair Shops, etc. Determine if a car was flooded or stolen [36 ] If a family member has died [37 ] Military and Veteran's Resources [38 ] Moving to New York or out of New York [39 ] Tips for buying a vehicle [40 ]",
+          "span_ids": [
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 9,
+          "bm25_rank": 32,
+          "rrf_score": 0.041770057899090156,
+          "rerank_score": -10.245058059692383
+        },
+        {
+          "passage_id": "Registrations#3_0::9",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "What you need to register",
+          "text": "Complete DMV s Document Guide to make sure you have the correct proofs of identification and other documents before you come to the DMV.",
+          "span_ids": [
+            "31"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 4,
+          "bm25_rank": null,
+          "rrf_score": 0.029411764705882353,
+          "rerank_score": -10.301040649414062
+        },
+        {
+          "passage_id": "Registrations#3_0::t_9",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "What you need to register",
+          "text": "What you need to register",
+          "span_ids": [
+            "30"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 18,
+          "bm25_rank": 36,
+          "rrf_score": 0.03598484848484848,
+          "rerank_score": -10.440323829650879
+        }
+      ],
+      "native_main": {
+        "response": {
+          "answer": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::6"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "query": {
+          "conversation_id": "profile-acceptance",
+          "current_message": "How do I replace a lost driver's license?",
+          "dialogue_history": [],
+          "rewritten_query": "How do I replace a lost driver's license?",
+          "intent": "unknown",
+          "domain": "dmv",
+          "sub_queries": []
+        },
+        "evidence": [
+          {
+            "passage_id": "Registrations#3_0::6",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": 7,
+            "rrf_score": 0.05928509154315606,
+            "rerank_score": -2.4728760719299316
+          },
+          {
+            "passage_id": "Registrations#3_0::4",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Renew",
+            "text": "You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail. Please note: If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances , you cannot renew your registration online. See additional information and other ways to renew a registration [3].",
+            "span_ids": [
+              "8",
+              "9",
+              "10",
+              "11",
+              "12"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 4,
+            "bm25_rank": 40,
+            "rrf_score": 0.043697478991596636,
+            "rerank_score": -4.471462249755859
+          },
+          {
+            "passage_id": "Registrations#3_0::2",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "",
+            "text": "You or your business must register and title at a DMV office any vehicle you own or lease. Registrations do not need to be in the owner's name, or for only one person. Auto dealers can register and title vehicles, and issue plates and charge a fee for this.",
+            "span_ids": [
+              "2",
+              "3",
+              "4"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 6,
+            "bm25_rank": 19,
+            "rrf_score": 0.048185941043083894,
+            "rerank_score": -8.197303771972656
+          }
+        ],
+        "options": {
+          "dense_top_k": 100,
+          "bm25_top_k": 50,
+          "dense_weight": 1.0,
+          "bm25_weight": 1.0,
+          "rrf_k": 30,
+          "candidate_top_k": 50,
+          "final_top_k": 3,
+          "rerank": true,
+          "reranker_query_strategy": "current_first_user_history",
+          "reranker_use_sub_queries": false,
+          "reranker_skip_acknowledgements": true,
+          "domain_filter": false
+        },
+        "feedback_history": [
+          {
+            "relevance": 0.8,
+            "sufficiency": 0.9,
+            "groundedness": 1.0,
+            "dialogue_consistency": 0.9,
+            "decision": "pass",
+            "missing_information": "",
+            "suggested_action": "",
+            "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+            "clarification_question": null,
+            "suggested_queries": [],
+            "failure_types": [],
+            "evidence_sufficient": null,
+            "preferred_retriever": null
+          }
+        ],
+        "candidate_history": [
+          {
+            "answer": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+            "citations": [
+              "Registrations#3_0::6"
+            ],
+            "retrieval_round": 0,
+            "status": "answered"
+          }
+        ],
+        "actions": [],
+        "trace": [
+          {
+            "event": "input_received",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1810,
+              "elapsed_seconds": 0.8899060420226306,
+              "raw_feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "query": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              },
+              "evidence_ids": [
+                "Registrations#3_0::6",
+                "Registrations#3_0::4",
+                "Registrations#3_0::2"
+              ]
+            }
+          },
+          {
+            "event": "routed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1810,
+              "elapsed_seconds": 0.8899850840680301,
+              "action": {
+                "branch": "pass",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "revision": null,
+                "options": null,
+                "clarification_question": null
+              },
+              "feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "capabilities": {
+                "generation": true,
+                "rewriting": true,
+                "hybrid": true,
+                "reranking": true,
+                "retrievers": [
+                  "dense",
+                  "bm25"
+                ]
+              },
+              "options_before": {
+                "dense_top_k": 100,
+                "bm25_top_k": 50,
+                "dense_weight": 1.0,
+                "bm25_weight": 1.0,
+                "rrf_k": 30,
+                "candidate_top_k": 50,
+                "final_top_k": 3,
+                "rerank": true,
+                "reranker_query_strategy": "current_first_user_history",
+                "reranker_use_sub_queries": false,
+                "reranker_skip_acknowledgements": true,
+                "domain_filter": false
+              },
+              "query_before": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              }
+            }
+          },
+          {
+            "event": "completed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1810,
+              "elapsed_seconds": 0.8899946250021458,
+              "reason": "evaluation_passed",
+              "status": "answered"
+            }
+          }
+        ],
+        "retry_count": 0,
+        "retrieval_rounds": 0,
+        "evaluations": 0,
+        "used_tokens": 1810,
+        "elapsed_seconds": 0.8899970839265734,
+        "stop_reason": "evaluation_passed",
+        "escalation": null,
+        "initial_response": {
+          "answer": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::6"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "initial_evidence": [
+          {
+            "passage_id": "Registrations#3_0::6",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": 7,
+            "rrf_score": 0.05928509154315606,
+            "rerank_score": -2.4728760719299316
+          },
+          {
+            "passage_id": "Registrations#3_0::4",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Renew",
+            "text": "You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail. Please note: If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances , you cannot renew your registration online. See additional information and other ways to renew a registration [3].",
+            "span_ids": [
+              "8",
+              "9",
+              "10",
+              "11",
+              "12"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 4,
+            "bm25_rank": 40,
+            "rrf_score": 0.043697478991596636,
+            "rerank_score": -4.471462249755859
+          },
+          {
+            "passage_id": "Registrations#3_0::2",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "",
+            "text": "You or your business must register and title at a DMV office any vehicle you own or lease. Registrations do not need to be in the owner's name, or for only one person. Auto dealers can register and title vehicles, and issue plates and charge a fee for this.",
+            "span_ids": [
+              "2",
+              "3",
+              "4"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 6,
+            "bm25_rank": 19,
+            "rrf_score": 0.048185941043083894,
+            "rerank_score": -8.197303771972656
+          }
+        ],
+        "retrieval_rounds_total": 1,
+        "evaluations_total": 1,
+        "retrieval_backend": "bge_faiss_section",
+        "corpus_version": "3974c0fcbc4484ea736522fe8d75b1e3355fb674e8f851999cb571f0b982b6e6",
+        "segmentation": "section",
+        "retrieval_chain": "rerank",
+        "llm_backend": "mock",
+        "embedding_model": "local_models/bge-base-en-v1.5",
+        "reranker_model": "local_models/ms-marco-MiniLM-L6-v2",
+        "citation_scheme": "native_doc::section"
+      }
+    },
+    {
+      "segmentation": "section",
+      "chain": "finetuned",
+      "passage_count": 103,
+      "built_index_this_run": true,
+      "artifact_dir": "artifacts/indexes/acceptance/section/finetuned",
+      "embedding_model": "models/bge-base-en-v1.5-struct-ft/checkpoint-2000",
+      "local_model_fingerprint": "4c8be0a300bffb6ed0a62733cca2725603b4b1db34740e966926ccd931a2269a",
+      "elapsed_s_including_build_and_load": 3.7024989158380777,
+      "top10": [
+        {
+          "passage_id": "Registrations#3_0::6",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Other transactions",
+          "text": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+          "span_ids": [
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 1,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.3030659556388855
+        },
+        {
+          "passage_id": "Registrations#3_0::12",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "More information",
+          "text": "Abandoned and unclaimed vehicles [28 ] Apply for Clean Pass [29 ] that cannot be registered in New York [30 ] Motorized devices Power of attorney [31 ] Transfer vehicle ownership to another person [32 ] Vehicle modifications and registration class [33 ] Salvage vehicles [34 ]",
+          "span_ids": [
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 2,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.21263758838176727
+        },
+        {
+          "passage_id": "Registrations#3_0::9",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "What you need to register",
+          "text": "Complete DMV s Document Guide to make sure you have the correct proofs of identification and other documents before you come to the DMV.",
+          "span_ids": [
+            "31"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 3,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.19054532051086426
+        },
+        {
+          "passage_id": "Registrations#3_0::4",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Renew",
+          "text": "You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail. Please note: If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances , you cannot renew your registration online. See additional information and other ways to renew a registration [3].",
+          "span_ids": [
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 4,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.18790976703166962
+        },
+        {
+          "passage_id": "Registrations#3_0::5",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Renew",
+          "text": "Renew registration online [4 ]",
+          "span_ids": [
+            "13"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 5,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.14154434204101562
+        },
+        {
+          "passage_id": "Registrations#3_0::14",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Resources",
+          "text": "DMV does not handle parking violations or regulate parking. If you receive a parking ticket you must respond to the locality where they were issued. Do not contact DMV. If you fail to answer parking tickets , the locality can notify the DMV which can prevent the renewal of your vehicle registration, or suspend your vehicle registration. See a list of local Traffic Courts in New York State [41 ]",
+          "span_ids": [
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 6,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.14073169231414795
+        },
+        {
+          "passage_id": "Registrations#3_0::1",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "",
+          "text": "Your' registration' is the sticker placed on your windshield and the paper registration certificate that you must keep in your vehicle.",
+          "span_ids": [
+            "1"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 7,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.13588455319404602
+        },
+        {
+          "passage_id": "Registrations#3_0::2",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "",
+          "text": "You or your business must register and title at a DMV office any vehicle you own or lease. Registrations do not need to be in the owner's name, or for only one person. Auto dealers can register and title vehicles, and issue plates and charge a fee for this.",
+          "span_ids": [
+            "2",
+            "3",
+            "4"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 8,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.13557305932044983
+        },
+        {
+          "passage_id": "Registrations#3_0::13",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Resources",
+          "text": "Businesses regulated by DMV [35] Inspection Stations, Dealers and Transporters, Repair Shops, etc. Determine if a car was flooded or stolen [36 ] If a family member has died [37 ] Military and Veteran's Resources [38 ] Moving to New York or out of New York [39 ] Tips for buying a vehicle [40 ]",
+          "span_ids": [
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 9,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.12595276534557343
+        },
+        {
+          "passage_id": "Registrations#3_0::t_4",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Renew",
+          "text": "Renew",
+          "span_ids": [
+            "7"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 10,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.10699931532144547
+        }
+      ],
+      "native_main": {
+        "response": {
+          "answer": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::6"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "query": {
+          "conversation_id": "profile-acceptance",
+          "current_message": "How do I replace a lost driver's license?",
+          "dialogue_history": [],
+          "rewritten_query": "User: How do I replace a lost driver's license?",
+          "intent": "unknown",
+          "domain": "dmv",
+          "sub_queries": []
+        },
+        "evidence": [
+          {
+            "passage_id": "Registrations#3_0::6",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.3030659556388855
+          },
+          {
+            "passage_id": "Registrations#3_0::12",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "More information",
+            "text": "Abandoned and unclaimed vehicles [28 ] Apply for Clean Pass [29 ] that cannot be registered in New York [30 ] Motorized devices Power of attorney [31 ] Transfer vehicle ownership to another person [32 ] Vehicle modifications and registration class [33 ] Salvage vehicles [34 ]",
+            "span_ids": [
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50",
+              "51",
+              "52"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 2,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.21263758838176727
+          },
+          {
+            "passage_id": "Registrations#3_0::9",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "What you need to register",
+            "text": "Complete DMV s Document Guide to make sure you have the correct proofs of identification and other documents before you come to the DMV.",
+            "span_ids": [
+              "31"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 3,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.19054532051086426
+          }
+        ],
+        "options": {
+          "dense_top_k": 100,
+          "bm25_top_k": 0,
+          "dense_weight": 1.0,
+          "bm25_weight": 1.0,
+          "rrf_k": 30,
+          "candidate_top_k": 50,
+          "final_top_k": 3,
+          "rerank": false,
+          "reranker_query_strategy": "current_first_user_history",
+          "reranker_use_sub_queries": false,
+          "reranker_skip_acknowledgements": true,
+          "domain_filter": false
+        },
+        "feedback_history": [
+          {
+            "relevance": 0.8,
+            "sufficiency": 0.9,
+            "groundedness": 1.0,
+            "dialogue_consistency": 0.9,
+            "decision": "pass",
+            "missing_information": "",
+            "suggested_action": "",
+            "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+            "clarification_question": null,
+            "suggested_queries": [],
+            "failure_types": [],
+            "evidence_sufficient": null,
+            "preferred_retriever": null
+          }
+        ],
+        "candidate_history": [
+          {
+            "answer": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+            "citations": [
+              "Registrations#3_0::6"
+            ],
+            "retrieval_round": 0,
+            "status": "answered"
+          }
+        ],
+        "actions": [],
+        "trace": [
+          {
+            "event": "input_received",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1720,
+              "elapsed_seconds": 0.027287874836474657,
+              "raw_feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "query": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "User: How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              },
+              "evidence_ids": [
+                "Registrations#3_0::6",
+                "Registrations#3_0::12",
+                "Registrations#3_0::9"
+              ]
+            }
+          },
+          {
+            "event": "routed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1720,
+              "elapsed_seconds": 0.027371415868401527,
+              "action": {
+                "branch": "pass",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "revision": null,
+                "options": null,
+                "clarification_question": null
+              },
+              "feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "capabilities": {
+                "generation": true,
+                "rewriting": true,
+                "hybrid": true,
+                "reranking": false,
+                "retrievers": [
+                  "dense"
+                ]
+              },
+              "options_before": {
+                "dense_top_k": 100,
+                "bm25_top_k": 0,
+                "dense_weight": 1.0,
+                "bm25_weight": 1.0,
+                "rrf_k": 30,
+                "candidate_top_k": 50,
+                "final_top_k": 3,
+                "rerank": false,
+                "reranker_query_strategy": "current_first_user_history",
+                "reranker_use_sub_queries": false,
+                "reranker_skip_acknowledgements": true,
+                "domain_filter": false
+              },
+              "query_before": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "User: How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              }
+            }
+          },
+          {
+            "event": "completed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1720,
+              "elapsed_seconds": 0.027379625011235476,
+              "reason": "evaluation_passed",
+              "status": "answered"
+            }
+          }
+        ],
+        "retry_count": 0,
+        "retrieval_rounds": 0,
+        "evaluations": 0,
+        "used_tokens": 1720,
+        "elapsed_seconds": 0.027382040861994028,
+        "stop_reason": "evaluation_passed",
+        "escalation": null,
+        "initial_response": {
+          "answer": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::6"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "initial_evidence": [
+          {
+            "passage_id": "Registrations#3_0::6",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Change address [5 ] Change name or other information [6 ] Check registration status [7 ] Replace registration [8] and get a temporary document Surrender return plates and cancel registration [9 ] Tell DMV your new registration has not come in the mail [10 ] Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.3030659556388855
+          },
+          {
+            "passage_id": "Registrations#3_0::12",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "More information",
+            "text": "Abandoned and unclaimed vehicles [28 ] Apply for Clean Pass [29 ] that cannot be registered in New York [30 ] Motorized devices Power of attorney [31 ] Transfer vehicle ownership to another person [32 ] Vehicle modifications and registration class [33 ] Salvage vehicles [34 ]",
+            "span_ids": [
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50",
+              "51",
+              "52"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 2,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.21263758838176727
+          },
+          {
+            "passage_id": "Registrations#3_0::9",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "What you need to register",
+            "text": "Complete DMV s Document Guide to make sure you have the correct proofs of identification and other documents before you come to the DMV.",
+            "span_ids": [
+              "31"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 3,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.19054532051086426
+          }
+        ],
+        "retrieval_rounds_total": 1,
+        "evaluations_total": 1,
+        "retrieval_backend": "bge_faiss_section",
+        "corpus_version": "3974c0fcbc4484ea736522fe8d75b1e3355fb674e8f851999cb571f0b982b6e6",
+        "segmentation": "section",
+        "retrieval_chain": "finetuned",
+        "llm_backend": "mock",
+        "embedding_model": "models/bge-base-en-v1.5-struct-ft/checkpoint-2000",
+        "reranker_model": null,
+        "citation_scheme": "native_doc::section"
+      }
+    },
+    {
+      "segmentation": "struct",
+      "chain": "rerank",
+      "passage_count": 35,
+      "built_index_this_run": true,
+      "artifact_dir": "artifacts/indexes/acceptance/struct/rerank",
+      "embedding_model": "local_models/bge-base-en-v1.5",
+      "local_model_fingerprint": "a5b0a5c4f39ef9630906cb5db6fdc9e8c9a0a19200082eb13338142bece53f16",
+      "elapsed_s_including_build_and_load": 8.075900625204667,
+      "top10": [
+        {
+          "passage_id": "Registrations#3_0::structure_3",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Other transactions",
+          "text": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+          "span_ids": [
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 2,
+          "bm25_rank": 4,
+          "rrf_score": 0.06066176470588235,
+          "rerank_score": -4.520740509033203
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_2",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Renew",
+          "text": "Registrations //   Renew   You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail.  Please note:  If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances ,  you cannot renew your registration online.  See additional information and other ways to renew a registration [3].  Renew registration online [4 ]",
+          "span_ids": [
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 6,
+          "bm25_rank": 17,
+          "rrf_score": 0.04905437352245863,
+          "rerank_score": -6.5388007164001465
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_0",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "",
+          "text": "Registrations // Your' registration' is the sticker placed on your windshield and the paper registration certificate that you must keep in your vehicle.  You or your business must register and title at a DMV office any vehicle you own or lease.  Registrations do not need to be in the owner's name, or for only one person.  Auto dealers can register and title vehicles, and issue plates and charge a fee for this.  See information about vehicle plates [1] or vehicle titles [2].",
+          "span_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 3,
+          "bm25_rank": 9,
+          "rrf_score": 0.055944055944055944,
+          "rerank_score": -7.816411018371582
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_9",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Resources",
+          "text": "Registrations //   Resources   Businesses regulated by DMV [35] Inspection Stations, Dealers and Transporters, Repair Shops, etc.  Determine if a car was flooded or stolen [36 ]  If a family member has died [37 ]  Military and Veteran's Resources [38 ]  Moving to New York or out of New York [39 ]  Tips for buying a vehicle [40 ]  DMV does not handle parking violations or regulate parking.  If you receive a parking ticket  you must respond to the locality where they were issued.  Do not contact DMV.  If you fail to answer parking tickets ,  the locality can notify the DMV which can prevent the renewal of your vehicle registration, or suspend your vehicle registration.  See a list of local Traffic Courts in New York State [41 ]  This includes all of these types of vehicles if you plan to drive them on a public road  Cars  SUVS  Vans  Pick - up trucks  Motorcycles  Trailers  Custom and homemade trailers  Agricultural and farm vehicles  Boats  ATVs  Mopeds  Snowmobiles  There are some motorized devices that cannot be registered in New York [30].",
+          "span_ids": [
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59",
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66",
+            "67",
+            "68",
+            "69",
+            "70",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "76",
+            "77",
+            "78",
+            "79",
+            "80"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 4,
+          "bm25_rank": 11,
+          "rrf_score": 0.05380200860832138,
+          "rerank_score": -8.07730770111084
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_8",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "More information",
+          "text": "Registrations //   More information   Abandoned and unclaimed vehicles [28 ]  Apply for Clean Pass [29 ]  that cannot be registered in New York [30 ]  Motorized devices  Power of attorney [31 ]  Transfer vehicle ownership to another person [32 ]  Vehicle modifications and registration class [33 ]  Salvage vehicles [34 ]",
+          "span_ids": [
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 1,
+          "bm25_rank": null,
+          "rrf_score": 0.03225806451612903,
+          "rerank_score": -8.6639404296875
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_7",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Special situations",
+          "text": "Registrations //   Special situations   Agricultural and farm vehicles [18 ]  Deceased owner [19 ]  Homemade vehicles and trailers [20 ]  Imported vehicles [21 ]  More than one owner or registrant [22 ]  No title for a newly purchased vehicle [23 ]  Pick - up trucks as' passenger' class [24 ]  Register a vehicle for someone else [25 ]  Register a vehicle while you are out - of - state [26 ]  Register an out - of - state vehicle [27 ]",
+          "span_ids": [
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 9,
+          "bm25_rank": 15,
+          "rrf_score": 0.04786324786324786,
+          "rerank_score": -9.64534854888916
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_6",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "What you need to register",
+          "text": "Registrations //   What you need to register   Complete DMV s Document Guide to make sure you have the correct proofs of identification and other documents before you come to the DMV.  Find your proofs [17 ]",
+          "span_ids": [
+            "30",
+            "31",
+            "32"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 5,
+          "bm25_rank": 18,
+          "rrf_score": 0.0494047619047619,
+          "rerank_score": -9.745302200317383
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_5",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Register a vehicle in New York",
+          "text": "Registrations //   Register a vehicle in New York   You must register any vehicle owned by you or your business at a DMV office.  2 See general information about registering a vehicle [15] and specific requirements for different vehicle types [16].",
+          "span_ids": [
+            "27",
+            "28",
+            "29"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 7,
+          "bm25_rank": 14,
+          "rrf_score": 0.049754299754299756,
+          "rerank_score": -10.352762222290039
+        },
+        {
+          "passage_id": "Apply for Income-Driven Student Loan Repayment | Federal Student Aid#1_0::structure_10",
+          "doc_id": "Apply for Income-Driven Student Loan Repayment | Federal Student Aid#1_0",
+          "domain": "studentaid",
+          "title": "Apply for Income-Driven Student Loan Repayment | Federal Student Aid#1",
+          "section_title": "Switch my current plan to a new plan",
+          "text": "Apply for Income-Driven Student Loan Repayment | Federal Student Aid //   Switch my current plan to a new plan   If you are currently enrolled in an income - driven repayment plan and would like to switch to another income - driven repayment plan.  LOG IN TO START  Preview a read - only version of the complete form",
+          "span_ids": [
+            "31",
+            "32",
+            "33",
+            "34"
+          ],
+          "source_retrievers": [
+            "bm25",
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 10,
+          "bm25_rank": 16,
+          "rrf_score": 0.04673913043478261,
+          "rerank_score": -10.731512069702148
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_4",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Suspensions",
+          "text": "Registrations //   Suspensions   See information on registration suspensions due to  Parking tickets [12] 1  Toll violations [13 ]  Insurance lapses [14 ]",
+          "span_ids": [
+            "22",
+            "23",
+            "24",
+            "25",
+            "26"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "How do I replace a lost driver's license?",
+          "dense_rank": 11,
+          "bm25_rank": null,
+          "rrf_score": 0.024390243902439025,
+          "rerank_score": -10.837162017822266
+        }
+      ],
+      "native_main": {
+        "response": {
+          "answer": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::structure_3"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "query": {
+          "conversation_id": "profile-acceptance",
+          "current_message": "How do I replace a lost driver's license?",
+          "dialogue_history": [],
+          "rewritten_query": "How do I replace a lost driver's license?",
+          "intent": "unknown",
+          "domain": "dmv",
+          "sub_queries": []
+        },
+        "evidence": [
+          {
+            "passage_id": "Registrations#3_0::structure_3",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": 4,
+            "rrf_score": 0.061669829222011384,
+            "rerank_score": -4.520740509033203
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_2",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Renew",
+            "text": "Registrations //   Renew   You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail.  Please note:  If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances ,  you cannot renew your registration online.  See additional information and other ways to renew a registration [3].  Renew registration online [4 ]",
+            "span_ids": [
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 6,
+            "bm25_rank": 17,
+            "rrf_score": 0.04905437352245863,
+            "rerank_score": -6.5388007164001465
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_0",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "",
+            "text": "Registrations // Your' registration' is the sticker placed on your windshield and the paper registration certificate that you must keep in your vehicle.  You or your business must register and title at a DMV office any vehicle you own or lease.  Registrations do not need to be in the owner's name, or for only one person.  Auto dealers can register and title vehicles, and issue plates and charge a fee for this.  See information about vehicle plates [1] or vehicle titles [2].",
+            "span_ids": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 5,
+            "bm25_rank": 9,
+            "rrf_score": 0.054212454212454214,
+            "rerank_score": -7.816411018371582
+          }
+        ],
+        "options": {
+          "dense_top_k": 100,
+          "bm25_top_k": 50,
+          "dense_weight": 1.0,
+          "bm25_weight": 1.0,
+          "rrf_k": 30,
+          "candidate_top_k": 50,
+          "final_top_k": 3,
+          "rerank": true,
+          "reranker_query_strategy": "current_first_user_history",
+          "reranker_use_sub_queries": false,
+          "reranker_skip_acknowledgements": true,
+          "domain_filter": false
+        },
+        "feedback_history": [
+          {
+            "relevance": 0.8,
+            "sufficiency": 0.9,
+            "groundedness": 1.0,
+            "dialogue_consistency": 0.9,
+            "decision": "pass",
+            "missing_information": "",
+            "suggested_action": "",
+            "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+            "clarification_question": null,
+            "suggested_queries": [],
+            "failure_types": [],
+            "evidence_sufficient": null,
+            "preferred_retriever": null
+          }
+        ],
+        "candidate_history": [
+          {
+            "answer": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+            "citations": [
+              "Registrations#3_0::structure_3"
+            ],
+            "retrieval_round": 0,
+            "status": "answered"
+          }
+        ],
+        "actions": [],
+        "trace": [
+          {
+            "event": "input_received",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 2000,
+              "elapsed_seconds": 1.4044898750726134,
+              "raw_feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "query": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              },
+              "evidence_ids": [
+                "Registrations#3_0::structure_3",
+                "Registrations#3_0::structure_2",
+                "Registrations#3_0::structure_0"
+              ]
+            }
+          },
+          {
+            "event": "routed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 2000,
+              "elapsed_seconds": 1.4045600830577314,
+              "action": {
+                "branch": "pass",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "revision": null,
+                "options": null,
+                "clarification_question": null
+              },
+              "feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "capabilities": {
+                "generation": true,
+                "rewriting": true,
+                "hybrid": true,
+                "reranking": true,
+                "retrievers": [
+                  "dense",
+                  "bm25"
+                ]
+              },
+              "options_before": {
+                "dense_top_k": 100,
+                "bm25_top_k": 50,
+                "dense_weight": 1.0,
+                "bm25_weight": 1.0,
+                "rrf_k": 30,
+                "candidate_top_k": 50,
+                "final_top_k": 3,
+                "rerank": true,
+                "reranker_query_strategy": "current_first_user_history",
+                "reranker_use_sub_queries": false,
+                "reranker_skip_acknowledgements": true,
+                "domain_filter": false
+              },
+              "query_before": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              }
+            }
+          },
+          {
+            "event": "completed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 2000,
+              "elapsed_seconds": 1.4045677499379963,
+              "reason": "evaluation_passed",
+              "status": "answered"
+            }
+          }
+        ],
+        "retry_count": 0,
+        "retrieval_rounds": 0,
+        "evaluations": 0,
+        "used_tokens": 2000,
+        "elapsed_seconds": 1.4045697909314185,
+        "stop_reason": "evaluation_passed",
+        "escalation": null,
+        "initial_response": {
+          "answer": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::structure_3"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "initial_evidence": [
+          {
+            "passage_id": "Registrations#3_0::structure_3",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": 4,
+            "rrf_score": 0.061669829222011384,
+            "rerank_score": -4.520740509033203
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_2",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Renew",
+            "text": "Registrations //   Renew   You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail.  Please note:  If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances ,  you cannot renew your registration online.  See additional information and other ways to renew a registration [3].  Renew registration online [4 ]",
+            "span_ids": [
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 6,
+            "bm25_rank": 17,
+            "rrf_score": 0.04905437352245863,
+            "rerank_score": -6.5388007164001465
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_0",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "",
+            "text": "Registrations // Your' registration' is the sticker placed on your windshield and the paper registration certificate that you must keep in your vehicle.  You or your business must register and title at a DMV office any vehicle you own or lease.  Registrations do not need to be in the owner's name, or for only one person.  Auto dealers can register and title vehicles, and issue plates and charge a fee for this.  See information about vehicle plates [1] or vehicle titles [2].",
+            "span_ids": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ],
+            "source_retrievers": [
+              "bm25",
+              "dense"
+            ],
+            "matched_query": "How do I replace a lost driver's license?",
+            "dense_rank": 5,
+            "bm25_rank": 9,
+            "rrf_score": 0.054212454212454214,
+            "rerank_score": -7.816411018371582
+          }
+        ],
+        "retrieval_rounds_total": 1,
+        "evaluations_total": 1,
+        "retrieval_backend": "bge_faiss_struct",
+        "corpus_version": "5139b60ca8a6f835409b31c473e906522b7322e20e57851ed054231bc2569dea",
+        "segmentation": "struct",
+        "retrieval_chain": "rerank",
+        "llm_backend": "mock",
+        "embedding_model": "local_models/bge-base-en-v1.5",
+        "reranker_model": "local_models/ms-marco-MiniLM-L6-v2",
+        "citation_scheme": "native_doc::struct"
+      }
+    },
+    {
+      "segmentation": "struct",
+      "chain": "finetuned",
+      "passage_count": 35,
+      "built_index_this_run": true,
+      "artifact_dir": "artifacts/indexes/acceptance/struct/finetuned",
+      "embedding_model": "models/bge-base-en-v1.5-struct-ft/checkpoint-2000",
+      "local_model_fingerprint": "4c8be0a300bffb6ed0a62733cca2725603b4b1db34740e966926ccd931a2269a",
+      "elapsed_s_including_build_and_load": 4.0882701659575105,
+      "top10": [
+        {
+          "passage_id": "Registrations#3_0::structure_3",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Other transactions",
+          "text": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+          "span_ids": [
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 1,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.24756211042404175
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_2",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Renew",
+          "text": "Registrations //   Renew   You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail.  Please note:  If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances ,  you cannot renew your registration online.  See additional information and other ways to renew a registration [3].  Renew registration online [4 ]",
+          "span_ids": [
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 2,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.17579123377799988
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_8",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "More information",
+          "text": "Registrations //   More information   Abandoned and unclaimed vehicles [28 ]  Apply for Clean Pass [29 ]  that cannot be registered in New York [30 ]  Motorized devices  Power of attorney [31 ]  Transfer vehicle ownership to another person [32 ]  Vehicle modifications and registration class [33 ]  Salvage vehicles [34 ]",
+          "span_ids": [
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 3,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.16723139584064484
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_0",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "",
+          "text": "Registrations // Your' registration' is the sticker placed on your windshield and the paper registration certificate that you must keep in your vehicle.  You or your business must register and title at a DMV office any vehicle you own or lease.  Registrations do not need to be in the owner's name, or for only one person.  Auto dealers can register and title vehicles, and issue plates and charge a fee for this.  See information about vehicle plates [1] or vehicle titles [2].",
+          "span_ids": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 4,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.14239580929279327
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_9",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Resources",
+          "text": "Registrations //   Resources   Businesses regulated by DMV [35] Inspection Stations, Dealers and Transporters, Repair Shops, etc.  Determine if a car was flooded or stolen [36 ]  If a family member has died [37 ]  Military and Veteran's Resources [38 ]  Moving to New York or out of New York [39 ]  Tips for buying a vehicle [40 ]  DMV does not handle parking violations or regulate parking.  If you receive a parking ticket  you must respond to the locality where they were issued.  Do not contact DMV.  If you fail to answer parking tickets ,  the locality can notify the DMV which can prevent the renewal of your vehicle registration, or suspend your vehicle registration.  See a list of local Traffic Courts in New York State [41 ]  This includes all of these types of vehicles if you plan to drive them on a public road  Cars  SUVS  Vans  Pick - up trucks  Motorcycles  Trailers  Custom and homemade trailers  Agricultural and farm vehicles  Boats  ATVs  Mopeds  Snowmobiles  There are some motorized devices that cannot be registered in New York [30].",
+          "span_ids": [
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59",
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66",
+            "67",
+            "68",
+            "69",
+            "70",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "76",
+            "77",
+            "78",
+            "79",
+            "80"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 5,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.13472966849803925
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_6",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "What you need to register",
+          "text": "Registrations //   What you need to register   Complete DMV s Document Guide to make sure you have the correct proofs of identification and other documents before you come to the DMV.  Find your proofs [17 ]",
+          "span_ids": [
+            "30",
+            "31",
+            "32"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 6,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.12265921384096146
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_4",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Suspensions",
+          "text": "Registrations //   Suspensions   See information on registration suspensions due to  Parking tickets [12] 1  Toll violations [13 ]  Insurance lapses [14 ]",
+          "span_ids": [
+            "22",
+            "23",
+            "24",
+            "25",
+            "26"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 7,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.09585277736186981
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_5",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Register a vehicle in New York",
+          "text": "Registrations //   Register a vehicle in New York   You must register any vehicle owned by you or your business at a DMV office.  2 See general information about registering a vehicle [15] and specific requirements for different vehicle types [16].",
+          "span_ids": [
+            "27",
+            "28",
+            "29"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 8,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.08576695621013641
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_7",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Special situations",
+          "text": "Registrations //   Special situations   Agricultural and farm vehicles [18 ]  Deceased owner [19 ]  Homemade vehicles and trailers [20 ]  Imported vehicles [21 ]  More than one owner or registrant [22 ]  No title for a newly purchased vehicle [23 ]  Pick - up trucks as' passenger' class [24 ]  Register a vehicle for someone else [25 ]  Register a vehicle while you are out - of - state [26 ]  Register an out - of - state vehicle [27 ]",
+          "span_ids": [
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 9,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.043158888816833496
+        },
+        {
+          "passage_id": "Registrations#3_0::structure_1",
+          "doc_id": "Registrations#3_0",
+          "domain": "dmv",
+          "title": "Registrations#3",
+          "section_title": "Vehicles already registered in New York",
+          "text": "Registrations //   Vehicles already registered in New York",
+          "span_ids": [
+            "6"
+          ],
+          "source_retrievers": [
+            "dense"
+          ],
+          "matched_query": "User: How do I replace a lost driver's license?",
+          "dense_rank": 10,
+          "bm25_rank": null,
+          "rrf_score": 0.0,
+          "rerank_score": 0.03625493496656418
+        }
+      ],
+      "native_main": {
+        "response": {
+          "answer": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::structure_3"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "query": {
+          "conversation_id": "profile-acceptance",
+          "current_message": "How do I replace a lost driver's license?",
+          "dialogue_history": [],
+          "rewritten_query": "User: How do I replace a lost driver's license?",
+          "intent": "unknown",
+          "domain": "dmv",
+          "sub_queries": []
+        },
+        "evidence": [
+          {
+            "passage_id": "Registrations#3_0::structure_3",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.24756211042404175
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_2",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Renew",
+            "text": "Registrations //   Renew   You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail.  Please note:  If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances ,  you cannot renew your registration online.  See additional information and other ways to renew a registration [3].  Renew registration online [4 ]",
+            "span_ids": [
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 2,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.17579123377799988
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_8",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "More information",
+            "text": "Registrations //   More information   Abandoned and unclaimed vehicles [28 ]  Apply for Clean Pass [29 ]  that cannot be registered in New York [30 ]  Motorized devices  Power of attorney [31 ]  Transfer vehicle ownership to another person [32 ]  Vehicle modifications and registration class [33 ]  Salvage vehicles [34 ]",
+            "span_ids": [
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50",
+              "51",
+              "52"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 3,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.16723139584064484
+          }
+        ],
+        "options": {
+          "dense_top_k": 100,
+          "bm25_top_k": 0,
+          "dense_weight": 1.0,
+          "bm25_weight": 1.0,
+          "rrf_k": 30,
+          "candidate_top_k": 50,
+          "final_top_k": 3,
+          "rerank": false,
+          "reranker_query_strategy": "current_first_user_history",
+          "reranker_use_sub_queries": false,
+          "reranker_skip_acknowledgements": true,
+          "domain_filter": false
+        },
+        "feedback_history": [
+          {
+            "relevance": 0.8,
+            "sufficiency": 0.9,
+            "groundedness": 1.0,
+            "dialogue_consistency": 0.9,
+            "decision": "pass",
+            "missing_information": "",
+            "suggested_action": "",
+            "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+            "clarification_question": null,
+            "suggested_queries": [],
+            "failure_types": [],
+            "evidence_sufficient": null,
+            "preferred_retriever": null
+          }
+        ],
+        "candidate_history": [
+          {
+            "answer": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+            "citations": [
+              "Registrations#3_0::structure_3"
+            ],
+            "retrieval_round": 0,
+            "status": "answered"
+          }
+        ],
+        "actions": [],
+        "trace": [
+          {
+            "event": "input_received",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1933,
+              "elapsed_seconds": 0.03209141711704433,
+              "raw_feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "query": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "User: How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              },
+              "evidence_ids": [
+                "Registrations#3_0::structure_3",
+                "Registrations#3_0::structure_2",
+                "Registrations#3_0::structure_8"
+              ]
+            }
+          },
+          {
+            "event": "routed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1933,
+              "elapsed_seconds": 0.03215479222126305,
+              "action": {
+                "branch": "pass",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "revision": null,
+                "options": null,
+                "clarification_question": null
+              },
+              "feedback": {
+                "relevance": 0.8,
+                "sufficiency": 0.9,
+                "groundedness": 1.0,
+                "dialogue_consistency": 0.9,
+                "decision": "pass",
+                "missing_information": "",
+                "suggested_action": "",
+                "reason": "Mock lexical checks found no blocking issue; not a semantic quality guarantee.",
+                "clarification_question": null,
+                "suggested_queries": [],
+                "failure_types": [],
+                "evidence_sufficient": null,
+                "preferred_retriever": null
+              },
+              "capabilities": {
+                "generation": true,
+                "rewriting": true,
+                "hybrid": true,
+                "reranking": false,
+                "retrievers": [
+                  "dense"
+                ]
+              },
+              "options_before": {
+                "dense_top_k": 100,
+                "bm25_top_k": 0,
+                "dense_weight": 1.0,
+                "bm25_weight": 1.0,
+                "rrf_k": 30,
+                "candidate_top_k": 50,
+                "final_top_k": 3,
+                "rerank": false,
+                "reranker_query_strategy": "current_first_user_history",
+                "reranker_use_sub_queries": false,
+                "reranker_skip_acknowledgements": true,
+                "domain_filter": false
+              },
+              "query_before": {
+                "conversation_id": "profile-acceptance",
+                "current_message": "How do I replace a lost driver's license?",
+                "dialogue_history": [],
+                "rewritten_query": "User: How do I replace a lost driver's license?",
+                "intent": "unknown",
+                "domain": "dmv",
+                "sub_queries": []
+              }
+            }
+          },
+          {
+            "event": "completed",
+            "details": {
+              "retry_count": 0,
+              "used_tokens": 1933,
+              "elapsed_seconds": 0.032163208117708564,
+              "reason": "evaluation_passed",
+              "status": "answered"
+            }
+          }
+        ],
+        "retry_count": 0,
+        "retrieval_rounds": 0,
+        "evaluations": 0,
+        "used_tokens": 1933,
+        "elapsed_seconds": 0.03216554201208055,
+        "stop_reason": "evaluation_passed",
+        "escalation": null,
+        "initial_response": {
+          "answer": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+          "citations": [
+            "Registrations#3_0::structure_3"
+          ],
+          "retrieval_round": 0,
+          "status": "answered"
+        },
+        "initial_evidence": [
+          {
+            "passage_id": "Registrations#3_0::structure_3",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Other transactions",
+            "text": "Registrations //   Other transactions   Change address [5 ]  Change name or other information [6 ]  Check registration status [7 ]  Replace registration [8] and get a temporary document  Surrender return plates and cancel registration [9 ]  Tell DMV your new registration has not come in the mail [10 ]  Transfer a registration to another vehicle you own [11 ]",
+            "span_ids": [
+              "14",
+              "15",
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 1,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.24756211042404175
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_2",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "Renew",
+            "text": "Registrations //   Renew   You can renew your registration online and print a 10 day document to use until your new registration arrives in the mail.  Please note:  If your vehicle has been altered or stretched to increase the number of passengers or if there are other special circumstances ,  you cannot renew your registration online.  See additional information and other ways to renew a registration [3].  Renew registration online [4 ]",
+            "span_ids": [
+              "7",
+              "8",
+              "9",
+              "10",
+              "11",
+              "12",
+              "13"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 2,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.17579123377799988
+          },
+          {
+            "passage_id": "Registrations#3_0::structure_8",
+            "doc_id": "Registrations#3_0",
+            "domain": "dmv",
+            "title": "Registrations#3",
+            "section_title": "More information",
+            "text": "Registrations //   More information   Abandoned and unclaimed vehicles [28 ]  Apply for Clean Pass [29 ]  that cannot be registered in New York [30 ]  Motorized devices  Power of attorney [31 ]  Transfer vehicle ownership to another person [32 ]  Vehicle modifications and registration class [33 ]  Salvage vehicles [34 ]",
+            "span_ids": [
+              "44",
+              "45",
+              "46",
+              "47",
+              "48",
+              "49",
+              "50",
+              "51",
+              "52"
+            ],
+            "source_retrievers": [
+              "dense"
+            ],
+            "matched_query": "User: How do I replace a lost driver's license?",
+            "dense_rank": 3,
+            "bm25_rank": null,
+            "rrf_score": 0.0,
+            "rerank_score": 0.16723139584064484
+          }
+        ],
+        "retrieval_rounds_total": 1,
+        "evaluations_total": 1,
+        "retrieval_backend": "bge_faiss_struct",
+        "corpus_version": "5139b60ca8a6f835409b31c473e906522b7322e20e57851ed054231bc2569dea",
+        "segmentation": "struct",
+        "retrieval_chain": "finetuned",
+        "llm_backend": "mock",
+        "embedding_model": "models/bge-base-en-v1.5-struct-ft/checkpoint-2000",
+        "reranker_model": null,
+        "citation_scheme": "native_doc::struct"
+      }
+    }
+  ]
+}

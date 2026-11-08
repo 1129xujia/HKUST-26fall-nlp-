@@ -6,12 +6,12 @@ from pathlib import Path
 from unittest import IsolatedAsyncioTestCase, TestCase
 from unittest.mock import patch
 
-from optimaization_v2 import (
+from optimization_v2 import (
     DeepSeekLLM, LLMQueryRewriter, LLMRevisionGenerator, MainEvaluatorAdapter,
     create_deepseek_controller,
 )
-from optimaization_v2.budget import BudgetExceeded, BudgetLedger
-from optimaization_v2.schemas import BudgetState, Limits
+from optimization_v2.budget import BudgetExceeded, BudgetLedger
+from optimization_v2.schemas import BudgetState, Limits
 
 
 class Transport:
@@ -58,7 +58,7 @@ class DeepSeekConfigurationTests(TestCase):
 
     def test_default_adapters_resolve_deepseek(self):
         client = DeepSeekLLM(transport=Transport())
-        with patch("optimaization_v2.deepseek.DeepSeekLLM", return_value=client):
+        with patch("optimization_v2.deepseek.DeepSeekLLM", return_value=client):
             for adapter in (LLMRevisionGenerator(), LLMQueryRewriter(), MainEvaluatorAdapter()):
                 self.assertIs(adapter.llm, client)
                 self.assertEqual(adapter.max_output_tokens, client.max_output_tokens)
@@ -145,7 +145,7 @@ class DeepSeekCompletionTests(IsolatedAsyncioTestCase):
         async def pending(*args):
             await asyncio.sleep(1)
 
-        with patch("optimaization_v2.deepseek.asyncio.to_thread", side_effect=pending):
+        with patch("optimization_v2.deepseek.asyncio.to_thread", side_effect=pending):
             task = asyncio.create_task(client.complete("x", task="generate", payload={}))
             await asyncio.sleep(0)
             task.cancel()

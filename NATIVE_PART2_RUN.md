@@ -1,10 +1,12 @@
 # 本地 BGE/FAISS 接入最新 main
 
+正式模块已更名为 `src/retrieval`，当前运行与测试以 [SERVICE_GUIDE.md](src/retrieval/SERVICE_GUIDE.md) 为准。下文保留早期联调环境记录。
+
 结论：可以跑通。已在 main e9dc3d0 的副本中新增 Part 2 原生入口，复用 main 现有 Planner、EvidenceResponseGenerator、MainEvaluatorAdapter、OptimizationController 和共享 BudgetLedger。
 
 新增文件：
 
-- `src/retrieval_v2/native_main.py`：原生检索连接与 CLI。
+- `src/retrieval/native_main.py`：原生检索连接与 CLI。
 - `tests/test_native_part2_main.py`：3 项跨模块边界测试。
 
 原有业务文件、main 的 `cs-rag` 默认行为和本地索引均未改动。该入口不需要官方字符窗口预处理数据，但需要已有 Part 2 section 索引和 BGE 模型。
@@ -33,7 +35,7 @@ export HF_HUB_OFFLINE=1
 export TOKENIZERS_PARALLELISM=false
 
 PYTHONPATH=src:../team_integration/.deps ../.venv/bin/python \
-  -m retrieval_v2.native_main \
+  -m retrieval.native_main \
   "How do I replace a lost driver's license?" \
   --artifact-dir ../artifacts \
   --mode rrf --llm mock --top-k 3 --domain-filter \

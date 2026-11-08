@@ -6,7 +6,7 @@ import json
 from pathlib import Path
 
 from customer_service_rag.schemas import GeneratedResponse, QueryPlan
-from retrieval_v2.retrieval.schemas import Evidence
+from retrieval.schemas import Evidence
 
 from .budget import BudgetLedger
 from .deepseek import DeepSeekLLM, create_deepseek_controller

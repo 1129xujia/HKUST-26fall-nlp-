@@ -25,7 +25,7 @@ from optimization_v2.controller import OptimizationController
 from optimization_v2.schemas import (
     BudgetState, EvaluationRequest, Limits, OptimizationInput, RetrievalSnapshot,
 )
-from retrieval_v2.retrieval.schemas import Evidence
+from retrieval.schemas import Evidence
 
 from prepare_main import model_config
 from run_main_experiment import evidence_record, score_retrieval, summarize_main, usage

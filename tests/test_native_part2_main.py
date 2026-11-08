@@ -6,9 +6,9 @@ import unittest
 from customer_service_rag.models.llm import MockLLM
 from customer_service_rag.schemas import DialogueInput, LLMResult, TokenUsage
 from optimization_v2.schemas import Limits
-from retrieval_v2.native_main import run_native
-from retrieval_v2.retrieval import HybridRetrievalPipeline, Passage, RetrievalConfig
-from retrieval_v2.retrieval.schemas import SearchHit
+from retrieval.native_main import run_native
+from retrieval import HybridRetrievalPipeline, Passage, RetrievalConfig
+from retrieval.schemas import SearchHit
 
 
 class Search:

@@ -10,7 +10,7 @@ from jinja2 import Environment, StrictUndefined
 
 from customer_service_rag.part3 import EvidenceResponseGenerator
 from customer_service_rag.schemas import GeneratedResponse, Passage
-from retrieval_v2.retrieval.schemas import Evidence
+from retrieval.schemas import Evidence
 
 from .budget import BudgetedLLM
 from .schemas import (
@@ -26,9 +26,9 @@ def to_main_passages(evidence):
     for item in evidence:
         safe_id = base64.urlsafe_b64encode(item.passage_id.encode()).decode().rstrip("=")
         passage = Passage(
-            doc_id="retrieval_v2", passage_id=safe_id,
+            doc_id="retrieval", passage_id=safe_id,
             title=item.title, text=item.text, domain=item.domain,
-            span_ids=item.span_ids, source="retrieval_v2", original_doc_id=item.doc_id,
+            span_ids=item.span_ids, source="retrieval", original_doc_id=item.doc_id,
         )
         passages.append(passage)
         to_original[passage.citation_id] = item.passage_id

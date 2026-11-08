@@ -19,11 +19,11 @@ from customer_service_rag.schemas import (
 )
 from optimization_v2.retrieval_adapter import Part2RetrievalAdapter
 from optimization_v2.schemas import ExecutionOptions
-from retrieval_v2.retrieval.bm25 import BM25Retriever
-from retrieval_v2.retrieval.config import RetrievalConfig
-from retrieval_v2.retrieval.pipeline import HybridRetrievalPipeline
-from retrieval_v2.retrieval.reranker import CrossEncoderReranker
-from retrieval_v2.retrieval.schemas import Passage, SearchHit
+from retrieval.bm25 import BM25Retriever
+from retrieval.config import RetrievalConfig
+from retrieval.pipeline import HybridRetrievalPipeline
+from retrieval.reranker import CrossEncoderReranker
+from retrieval.schemas import Passage, SearchHit
 
 
 class SharedDenseRetriever:

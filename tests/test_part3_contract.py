@@ -5,8 +5,8 @@ import unittest
 
 from customer_service_rag.part3 import EvidenceResponseGenerator, run_once
 from customer_service_rag.schemas import DialogueInput, LLMResult, QueryPlan
-from retrieval_v2.retrieval import Evidence
-from retrieval_v2.retrieval.graph_node import make_retrieval_node
+from retrieval import Evidence
+from retrieval.graph_node import make_retrieval_node
 
 
 class FixedPlanner:
