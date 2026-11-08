@@ -1,0 +1,60 @@
+{
+  "selection_split": "dev_only",
+  "criterion": "Hit@10, then MRR@10, then nDCG@10",
+  "selected": {
+    "model": "experiments/struct_finetune/run/checkpoint-2000",
+    "result_file": "experiments/struct_finetune/results/dev_checkpoint-2000.json",
+    "summary": {
+      "hit@10": 0.7875,
+      "recall@10": 0.7875,
+      "mrr@10": 0.5416046626984127,
+      "ndcg@10": 0.6003618819841903,
+      "hit@50": 0.90625,
+      "recall@50": 0.90625,
+      "span_recall@10": 0.7875,
+      "span_hit@10": 0.7875,
+      "n": 160,
+      "latency_mean_ms": 8.49999170168303,
+      "latency_p50_ms": 8.365185931324959,
+      "latency_p95_ms": 9.659381257370113
+    }
+  },
+  "candidates": [
+    {
+      "model": "experiments/struct_finetune/run/checkpoint-1000",
+      "result_file": "experiments/struct_finetune/results/dev_checkpoint-1000.json",
+      "summary": {
+        "hit@10": 0.775,
+        "recall@10": 0.775,
+        "mrr@10": 0.5228869047619048,
+        "ndcg@10": 0.5830456575667984,
+        "hit@50": 0.93125,
+        "recall@50": 0.93125,
+        "span_recall@10": 0.775,
+        "span_hit@10": 0.775,
+        "n": 160,
+        "latency_mean_ms": 10.546955111203715,
+        "latency_p50_ms": 10.863789822906256,
+        "latency_p95_ms": 12.741890549659725
+      }
+    },
+    {
+      "model": "experiments/struct_finetune/run/checkpoint-2000",
+      "result_file": "experiments/struct_finetune/results/dev_checkpoint-2000.json",
+      "summary": {
+        "hit@10": 0.7875,
+        "recall@10": 0.7875,
+        "mrr@10": 0.5416046626984127,
+        "ndcg@10": 0.6003618819841903,
+        "hit@50": 0.90625,
+        "recall@50": 0.90625,
+        "span_recall@10": 0.7875,
+        "span_hit@10": 0.7875,
+        "n": 160,
+        "latency_mean_ms": 8.49999170168303,
+        "latency_p50_ms": 8.365185931324959,
+        "latency_p95_ms": 9.659381257370113
+      }
+    }
+  ]
+}

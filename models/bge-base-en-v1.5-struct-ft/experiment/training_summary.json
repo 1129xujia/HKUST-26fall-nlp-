@@ -1,0 +1,12 @@
+{
+  "elapsed_s": 222.7775781461969,
+  "steps": 2000,
+  "unique_queries_seen": 11114,
+  "available_train_queries": 20607,
+  "examples_drawn": 16000,
+  "reload_max_abs_error": 0.0,
+  "first_loss": 0.6965546607971191,
+  "last_loss": 0.017439842224121094,
+  "mean_last_20_loss": 0.06325348913669586,
+  "model_bytes": 438903172
+}

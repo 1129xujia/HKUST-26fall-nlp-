@@ -1,0 +1,1 @@
+models/bge-base-en-v1.5-struct-ft/checkpoint-2000/model.safetensors filter=lfs diff=lfs merge=lfs -text

@@ -1,0 +1,343 @@
+{
+  "arms": {
+    "A": {
+      "summary": {
+        "hit@10": 0.5975,
+        "recall@10": 0.5975,
+        "mrr@10": 0.3505218253968254,
+        "ndcg@10": 0.41000747001128474,
+        "hit@50": 0.8275,
+        "recall@50": 0.8275,
+        "span_recall@10": 0.5975,
+        "span_hit@10": 0.5975,
+        "n": 400,
+        "latency_mean_ms": 8.521479410119355,
+        "latency_p50_ms": 8.128914516419172,
+        "latency_p95_ms": 10.992324445396658
+      },
+      "by_domain": {
+        "dmv": {
+          "hit@10": 0.53,
+          "recall@10": 0.53,
+          "mrr@10": 0.3239404761904761,
+          "ndcg@10": 0.37328913051909796,
+          "hit@50": 0.8,
+          "recall@50": 0.8,
+          "span_recall@10": 0.53,
+          "span_hit@10": 0.53,
+          "n": 100,
+          "latency_mean_ms": 8.536398941650987,
+          "latency_p50_ms": 8.154929149895906,
+          "latency_p95_ms": 11.15985126234591
+        },
+        "ssa": {
+          "hit@10": 0.47,
+          "recall@10": 0.47,
+          "mrr@10": 0.229218253968254,
+          "ndcg@10": 0.2872268627266184,
+          "hit@50": 0.71,
+          "recall@50": 0.71,
+          "span_recall@10": 0.47,
+          "span_hit@10": 0.47,
+          "n": 100,
+          "latency_mean_ms": 8.523890702053905,
+          "latency_p50_ms": 8.098090533167124,
+          "latency_p95_ms": 11.123585049062967
+        },
+        "studentaid": {
+          "hit@10": 0.69,
+          "recall@10": 0.69,
+          "mrr@10": 0.48084523809523816,
+          "ndcg@10": 0.5313347871788954,
+          "hit@50": 0.88,
+          "recall@50": 0.88,
+          "span_recall@10": 0.69,
+          "span_hit@10": 0.69,
+          "n": 100,
+          "latency_mean_ms": 8.52293978445232,
+          "latency_p50_ms": 8.14414955675602,
+          "latency_p95_ms": 10.888695251196623
+        },
+        "va": {
+          "hit@10": 0.7,
+          "recall@10": 0.7,
+          "mrr@10": 0.3680833333333334,
+          "ndcg@10": 0.4481790996205273,
+          "hit@50": 0.92,
+          "recall@50": 0.92,
+          "span_recall@10": 0.7,
+          "span_hit@10": 0.7,
+          "n": 100,
+          "latency_mean_ms": 8.502688212320209,
+          "latency_p50_ms": 8.105465210974216,
+          "latency_p95_ms": 10.892874328419566
+        }
+      }
+    },
+    "B": {
+      "summary": {
+        "hit@10": 0.7825,
+        "recall@10": 0.7825,
+        "mrr@10": 0.5286101190476191,
+        "ndcg@10": 0.5903812327521263,
+        "hit@50": 0.9325,
+        "recall@50": 0.9325,
+        "span_recall@10": 0.7825,
+        "span_hit@10": 0.7825,
+        "n": 400,
+        "latency_mean_ms": 10.422941548749804,
+        "latency_p50_ms": 10.758595075458288,
+        "latency_p95_ms": 12.75775772519409
+      },
+      "by_domain": {
+        "dmv": {
+          "hit@10": 0.77,
+          "recall@10": 0.77,
+          "mrr@10": 0.5061230158730159,
+          "ndcg@10": 0.5690097037395777,
+          "hit@50": 0.91,
+          "recall@50": 0.91,
+          "span_recall@10": 0.77,
+          "span_hit@10": 0.77,
+          "n": 100,
+          "latency_mean_ms": 10.461524371057749,
+          "latency_p50_ms": 10.89336583390832,
+          "latency_p95_ms": 12.757757725194097
+        },
+        "ssa": {
+          "hit@10": 0.7,
+          "recall@10": 0.7,
+          "mrr@10": 0.4121666666666667,
+          "ndcg@10": 0.48292961091490705,
+          "hit@50": 0.92,
+          "recall@50": 0.92,
+          "span_recall@10": 0.7,
+          "span_hit@10": 0.7,
+          "n": 100,
+          "latency_mean_ms": 10.397887453436852,
+          "latency_p50_ms": 10.680928360670805,
+          "latency_p95_ms": 12.456451542675495
+        },
+        "studentaid": {
+          "hit@10": 0.83,
+          "recall@10": 0.83,
+          "mrr@10": 0.6099722222222222,
+          "ndcg@10": 0.6635346212355983,
+          "hit@50": 0.96,
+          "recall@50": 0.96,
+          "span_recall@10": 0.83,
+          "span_hit@10": 0.83,
+          "n": 100,
+          "latency_mean_ms": 10.347431572154164,
+          "latency_p50_ms": 10.77473210170865,
+          "latency_p95_ms": 12.426818674430251
+        },
+        "va": {
+          "hit@10": 0.83,
+          "recall@10": 0.83,
+          "mrr@10": 0.5861785714285714,
+          "ndcg@10": 0.6460509951184222,
+          "hit@50": 0.94,
+          "recall@50": 0.94,
+          "span_recall@10": 0.83,
+          "span_hit@10": 0.83,
+          "n": 100,
+          "latency_mean_ms": 10.484922798350453,
+          "latency_p50_ms": 10.732296388596296,
+          "latency_p95_ms": 14.00172817520797
+        }
+      }
+    },
+    "C": {
+      "summary": {
+        "hit@10": 0.6625,
+        "recall@10": 0.6625,
+        "mrr@10": 0.3831795634920635,
+        "ndcg@10": 0.4495876428976952,
+        "hit@50": 0.87,
+        "recall@50": 0.87,
+        "span_recall@10": 0.6625,
+        "span_hit@10": 0.6625,
+        "n": 400,
+        "latency_mean_ms": 45.35946787567809,
+        "latency_p50_ms": 44.14803767576814,
+        "latency_p95_ms": 80.51447067409745
+      },
+      "by_domain": {
+        "dmv": {
+          "hit@10": 0.66,
+          "recall@10": 0.66,
+          "mrr@10": 0.373186507936508,
+          "ndcg@10": 0.441153698199384,
+          "hit@50": 0.89,
+          "recall@50": 0.89,
+          "span_recall@10": 0.66,
+          "span_hit@10": 0.66,
+          "n": 100,
+          "latency_mean_ms": 46.06128953397274,
+          "latency_p50_ms": 45.19496904686093,
+          "latency_p95_ms": 79.63184230029583
+        },
+        "ssa": {
+          "hit@10": 0.47,
+          "recall@10": 0.47,
+          "mrr@10": 0.2584246031746032,
+          "ndcg@10": 0.30870775988991833,
+          "hit@50": 0.78,
+          "recall@50": 0.78,
+          "span_recall@10": 0.47,
+          "span_hit@10": 0.47,
+          "n": 100,
+          "latency_mean_ms": 42.88385972380638,
+          "latency_p50_ms": 41.485541965812445,
+          "latency_p95_ms": 75.46181147918102
+        },
+        "studentaid": {
+          "hit@10": 0.72,
+          "recall@10": 0.72,
+          "mrr@10": 0.48225,
+          "ndcg@10": 0.5391229477775539,
+          "hit@50": 0.88,
+          "recall@50": 0.88,
+          "span_recall@10": 0.72,
+          "span_hit@10": 0.72,
+          "n": 100,
+          "latency_mean_ms": 49.37442483380437,
+          "latency_p50_ms": 46.6397344134748,
+          "latency_p95_ms": 82.41619267500936
+        },
+        "va": {
+          "hit@10": 0.8,
+          "recall@10": 0.8,
+          "mrr@10": 0.41885714285714293,
+          "ndcg@10": 0.5093661657239248,
+          "hit@50": 0.93,
+          "recall@50": 0.93,
+          "span_recall@10": 0.8,
+          "span_hit@10": 0.8,
+          "n": 100,
+          "latency_mean_ms": 43.11829741112888,
+          "latency_p50_ms": 42.107193265110254,
+          "latency_p95_ms": 79.54550059512256
+        }
+      }
+    },
+    "D": {
+      "summary": {
+        "hit@10": 0.745,
+        "recall@10": 0.745,
+        "mrr@10": 0.5307430555555556,
+        "ndcg@10": 0.5833658931003414,
+        "hit@50": 0.87,
+        "recall@50": 0.87,
+        "span_recall@10": 0.745,
+        "span_hit@10": 0.745,
+        "n": 400,
+        "latency_mean_ms": 100.8365796203725,
+        "latency_p50_ms": 101.97319881990552,
+        "latency_p95_ms": 152.79959216713902
+      },
+      "by_domain": {
+        "dmv": {
+          "hit@10": 0.84,
+          "recall@10": 0.84,
+          "mrr@10": 0.579015873015873,
+          "ndcg@10": 0.6422200844359587,
+          "hit@50": 0.89,
+          "recall@50": 0.89,
+          "span_recall@10": 0.84,
+          "span_hit@10": 0.84,
+          "n": 100,
+          "latency_mean_ms": 102.76462241075933,
+          "latency_p50_ms": 102.5616847909987,
+          "latency_p95_ms": 152.79959216713905
+        },
+        "ssa": {
+          "hit@10": 0.59,
+          "recall@10": 0.59,
+          "mrr@10": 0.3660000000000001,
+          "ndcg@10": 0.4208464956982361,
+          "hit@50": 0.78,
+          "recall@50": 0.78,
+          "span_recall@10": 0.59,
+          "span_hit@10": 0.59,
+          "n": 100,
+          "latency_mean_ms": 98.03154714405537,
+          "latency_p50_ms": 100.27431510388851,
+          "latency_p95_ms": 147.4175131879747
+        },
+        "studentaid": {
+          "hit@10": 0.78,
+          "recall@10": 0.78,
+          "mrr@10": 0.6449285714285715,
+          "ndcg@10": 0.6787565155736169,
+          "hit@50": 0.88,
+          "recall@50": 0.88,
+          "span_recall@10": 0.78,
+          "span_hit@10": 0.78,
+          "n": 100,
+          "latency_mean_ms": 110.30216465704143,
+          "latency_p50_ms": 108.42640185728669,
+          "latency_p95_ms": 154.26106406375766
+        },
+        "va": {
+          "hit@10": 0.77,
+          "recall@10": 0.77,
+          "mrr@10": 0.5330277777777779,
+          "ndcg@10": 0.5916404766935537,
+          "hit@50": 0.93,
+          "recall@50": 0.93,
+          "span_recall@10": 0.77,
+          "span_hit@10": 0.77,
+          "n": 100,
+          "latency_mean_ms": 92.24798426963389,
+          "latency_p50_ms": 93.70179707184434,
+          "latency_p95_ms": 145.19790662452579
+        }
+      }
+    }
+  },
+  "comparisons": {
+    "B_minus_D": {
+      "delta_hit10": 0.0375,
+      "dialogue_cluster_bootstrap_95ci": [
+        -0.007213288834951457,
+        0.08168823551089598
+      ],
+      "wins": 46,
+      "losses": 31,
+      "ties": 323,
+      "mcnemar_exact_query_level_p": 0.11001559898513334,
+      "inference_note": "Primary CI resamples dialogue clusters. Exact McNemar is supplemental and assumes independent queries."
+    },
+    "B_minus_A": {
+      "delta_hit10": 0.185,
+      "dialogue_cluster_bootstrap_95ci": [
+        0.13922103213242454,
+        0.23117585349427539
+      ],
+      "wins": 86,
+      "losses": 12,
+      "ties": 302,
+      "mcnemar_exact_query_level_p": 5.9330047473754754e-15,
+      "inference_note": "Primary CI resamples dialogue clusters. Exact McNemar is supplemental and assumes independent queries."
+    },
+    "D_minus_C": {
+      "delta_hit10": 0.0825,
+      "dialogue_cluster_bootstrap_95ci": [
+        0.04271356783919598,
+        0.12114184581368706
+      ],
+      "wins": 52,
+      "losses": 19,
+      "ties": 329,
+      "mcnemar_exact_query_level_p": 0.000112268646894988,
+      "inference_note": "Primary CI resamples dialogue clusters. Exact McNemar is supplemental and assumes independent queries."
+    }
+  },
+  "evidence": {
+    "base": "experiments/struct_finetune/results/base_test.json",
+    "tuned": "experiments/struct_finetune/results/tuned_test.json",
+    "samples": "experiments/struct_finetune/data/test.json"
+  }
+}

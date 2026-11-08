@@ -1,0 +1,53 @@
+{
+  "checkpoint": "checkpoint-2000",
+  "files": {
+    "1_Pooling/config.json": {
+      "bytes": 296,
+      "sha256": "d02ebf56344d20f773449b15d0c10ee9a86a9178f3b3c9bfecb8b87d4350ce38"
+    },
+    "README.md": {
+      "bytes": 3711,
+      "sha256": "1221d1b61b9e5ce260821c01b65c5108230a5bd56791bd98a73992097fc6a52d"
+    },
+    "config.json": {
+      "bytes": 748,
+      "sha256": "9e389dd381a986182bcf1ebbfa033ea097f4e4c39c0d60e091da17834c582966"
+    },
+    "config_sentence_transformers.json": {
+      "bytes": 205,
+      "sha256": "bc5ffa9a7d6063d20ea4afd13d8b852a84d6c0ba0a6069d24dd70e4334173f5e"
+    },
+    "experiment_provenance.json": {
+      "bytes": 1359,
+      "sha256": "0ac3e065d3219f9112556301a28d7d45eafa6a37ce1abb738ec0a97f21483099"
+    },
+    "model.safetensors": {
+      "bytes": 437951328,
+      "sha256": "6b800fc06ab42182b69e8de46770c48e0b2940833d4c8e99b1ae8d34e6390aa6"
+    },
+    "modules.json": {
+      "bytes": 349,
+      "sha256": "84e40c8e006c9b1d6c122e02cba9b02458120b5fb0c87b746c41e0207cf642cf"
+    },
+    "sentence_bert_config.json": {
+      "bytes": 52,
+      "sha256": "84e39fda68ccbff05bfa723ae9c0e70e23e2ec373b76e0f8c6e71af72a693cbf"
+    },
+    "special_tokens_map.json": {
+      "bytes": 695,
+      "sha256": "5d5b662e421ea9fac075174bb0688ee0d9431699900b90662acd44b2a350503a"
+    },
+    "tokenizer.json": {
+      "bytes": 711649,
+      "sha256": "91f1def9b9391fdabe028cd3f3fcc4efd34e5d1f08c3bf2de513ebb5911a1854"
+    },
+    "tokenizer_config.json": {
+      "bytes": 1272,
+      "sha256": "7b082b48a08a0b5c5939d99472e33addce3d96202155e33f7928cecd171186a0"
+    },
+    "vocab.txt": {
+      "bytes": 231508,
+      "sha256": "07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3"
+    }
+  }
+}
