@@ -22,3 +22,9 @@ artifacts/cache/
 results/*
 !results/.gitkeep
 *.log
+# Independent fine-tuning inputs and generated artifacts
+/multidoc2dial/
+/artifacts_struct_bge/
+/local_models/
+/.model_cache/
+/autodl_results.tar.gz

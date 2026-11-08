@@ -2,6 +2,8 @@
 
 HKUST 26fall NLP Course Project
 
+Struct Dense 微调训练、验证选模及 A–D 对照评测代码见 [微调实验说明](retrieval_finetune/struct_finetune/README.md)。该目录独立运行，不更改服务默认检索配置。
+
 基于并行检索融合与评估—优化循环的在线客服多智能体 RAG 系统。
 
 > 当前阶段：已同步队友提交，并通过统一 CLI 接通 Part 2 检索/融合/重排、Part 3 理解/生成与 optimization_v2。已用官方 MultiDoc2Dial、真实 MiniLM 与 DeepSeek 完成小样例联调；正式实验、质量提升验证和 HotpotQA 适配仍待完成。测试套件按要求暂缓。

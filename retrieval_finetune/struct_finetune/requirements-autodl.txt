@@ -1,0 +1,9 @@
+# Use an environment with CUDA-enabled PyTorch already installed.
+# PyTorch is intentionally not listed: retain the AutoDL image's build.
+sentence-transformers==3.4.1
+transformers==4.48.3
+numpy==1.26.4
+faiss-cpu==1.12.0
+rank-bm25==0.2.2
+pytest==8.3.5
+scipy==1.15.3
