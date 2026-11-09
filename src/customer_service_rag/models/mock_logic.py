@@ -120,29 +120,3 @@ def evaluate_payload(payload: dict[str, Any]) -> dict[str, Any]:
             reason="Mock lexical support check failed.",
         )
     return result
-
-
-def optimize_payload(payload: dict[str, Any]) -> dict[str, Any]:
-    feedback = payload["feedback"]
-    reason = feedback.get("reason") or feedback.get("missing_information") or "Improve the candidate."
-    if feedback["decision"] == "clarify":
-        return {
-            "action": "clarify", "reason": reason,
-            "clarification_question": feedback.get("clarification_question")
-            or "Which service or program are you asking about?",
-        }
-    if feedback["decision"] == "escalate":
-        return {"action": "escalate", "reason": reason}
-    if feedback.get("suggested_action") == "regenerate":
-        return {"action": "regenerate", "reason": reason}
-    queries = feedback.get("suggested_queries", [])
-    if queries:
-        if feedback.get("suggested_action") == "rewrite_query":
-            return {"action": "rewrite_query", "rewritten_query": queries[0], "reason": reason}
-        return {"action": "add_sub_queries", "sub_queries": queries, "reason": reason}
-    options = dict(payload["retrieval_options"])
-    options["branches"] = list(dict.fromkeys([*options["branches"], "dense", "bm25"]))
-    options["per_branch_top_k"] = min(100, options["per_branch_top_k"] * 2)
-    options["final_top_k"] = min(20, options["final_top_k"] + 3)
-    options["candidate_top_k"] = max(options["candidate_top_k"], options["final_top_k"])
-    return {"action": "adjust_retrieval", "reason": reason, "retrieval_options": options}

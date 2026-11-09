@@ -20,12 +20,16 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["ruff==0.12.1"]
+dev = ["ruff==0.12.1", "pytest==8.3.5"]
 local = [
     "torch==2.8.0",
     "transformers==4.56.2",
     "huggingface-hub==0.35.3",
     "safetensors==0.6.2",
+]
+native = [
+    "sentence-transformers==3.4.1",
+    "faiss-cpu==1.12.0",
 ]
 
 [project.scripts]
@@ -33,6 +37,9 @@ cs-rag = "customer_service_rag.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["customer_service_rag", "customer_service_rag.*"]
+exclude = ["*.tests", "*.tests.*"]
+namespaces = false
 
 [tool.setuptools.package-data]
 customer_service_rag = ["prompts/*.jinja2"]

@@ -1,9 +1,0 @@
-# No credentials required. Uses the same member-module boundaries with mock models.
-base_config: d3.yaml
-pipeline: integrated
-integration:
-  dense_top_k: 10
-  bm25_top_k: 10
-budget:
-  max_latency_seconds: 30
-  max_total_tokens: 20000

@@ -98,7 +98,9 @@ def download_dataset(root: Path) -> dict:
     return manifest
 
 
-def download_models(root: Path, endpoint: str = "https://hf-mirror.com") -> dict:
+def download_models(
+    root: Path, endpoint: str = "https://hf-mirror.com", *, include_llm: bool = False,
+) -> dict:
     directory = root / "artifacts/models"
     directory.mkdir(parents=True, exist_ok=True)
     registry_path = directory / "registry.json"
@@ -110,6 +112,8 @@ def download_models(root: Path, endpoint: str = "https://hf-mirror.com") -> dict
         "README.md", "LICENSE",
     }
     for kind, (repo_id, revision) in MODEL_SPECS.items():
+        if kind == "llm" and not include_llm:
+            continue
         url = f"{endpoint}/api/models/{repo_id}/revision/{revision}?blobs=true"
         with urllib.request.urlopen(url, timeout=30) as response:
             metadata = json.load(response)

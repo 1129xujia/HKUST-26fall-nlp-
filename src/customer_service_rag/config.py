@@ -107,7 +107,6 @@ class QualityConfig(Contract):
 class OptimizationConfig(Contract):
     enabled: bool = False
     max_retries: int = Field(default=2, ge=0, le=2)
-    stop_if_no_new_evidence: bool = True
 
 
 class BudgetConfig(Contract):
@@ -124,21 +123,28 @@ class PathsConfig(Contract):
     results_dir: Path = Field(default_factory=lambda: Path("results"))
 
 
-class IntegrationConfig(Contract):
+class RetrievalConfig(RetrievalOptions):
+    """One retrieval policy, implemented by the team's retrieval package."""
+
+    backend: Literal["shared", "native"] = "shared"
     domain_filter: bool = False
     dense_top_k: int = Field(default=50, ge=1, le=500)
     bm25_top_k: int = Field(default=50, ge=1, le=500)
+    segmentation: Literal["section", "struct"] = "section"
+    chain: Literal["rerank", "finetuned"] = "rerank"
+    device: Literal["cpu", "cuda"] = "cpu"
+    native_embedding_model: str | None = None
+    native_reranker_model: str | None = None
+    documents: Path | None = None
 
 
 class AppConfig(Contract):
     config_version: Literal["1"] = "1"
     seed: int = Field(default=42, ge=0)
-    pipeline: Literal["legacy", "integrated"] = "legacy"
-    integration: IntegrationConfig = Field(default_factory=IntegrationConfig)
     data: DataConfig = Field(default_factory=DataConfig)
     models: ModelsConfig = Field(default_factory=ModelsConfig)
     planning: PlanningConfig = Field(default_factory=PlanningConfig)
-    retrieval: RetrievalOptions = Field(default_factory=RetrievalOptions)
+    retrieval: RetrievalConfig = Field(default_factory=RetrievalConfig)
     quality: QualityConfig = Field(default_factory=QualityConfig)
     optimization: OptimizationConfig = Field(default_factory=OptimizationConfig)
     budget: BudgetConfig = Field(default_factory=BudgetConfig)
@@ -154,8 +160,13 @@ class AppConfig(Contract):
             raise ValueError("escalation requires quality.enabled=true")
         if self.planning.decompose and not self.planning.rewrite:
             raise ValueError("decomposition requires rewriting")
-        if self.pipeline == "integrated" and self.retrieval.fusion != "rrf":
-            raise ValueError("The integrated pipeline requires RRF fusion")
+        if self.retrieval.fusion != "rrf":
+            raise ValueError("The team retrieval pipeline requires RRF fusion")
+        if self.retrieval.backend == "native" and self.retrieval.chain == "finetuned":
+            if self.retrieval.branches != ["dense"] or self.retrieval.rerank:
+                raise ValueError("The finetuned chain requires branches: [dense] and rerank: false")
+            if self.planning.decompose:
+                raise ValueError("The finetuned chain uses visible dialogue without subquery expansion")
         return self
 
     @property
@@ -200,6 +211,18 @@ def deep_merge(base: dict[str, Any], update: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+def normalize_settings(value: dict[str, Any]) -> dict[str, Any]:
+    """Read historical expanded settings before applying current defaults."""
+    value = deepcopy(value)
+    value.pop("pipeline", None)
+    old = value.pop("integration", {})
+    if old:
+        value["retrieval"] = deep_merge(old, value.get("retrieval", {}))
+    if "optimization" in value:
+        value["optimization"].pop("stop_if_no_new_evidence", None)
+    return value
+
+
 def load_config(
     config_path: str | Path | None = None,
     *,
@@ -212,15 +235,15 @@ def load_config(
     else:
         selected = Path(config_path).resolve()
         root = selected.parent.parent if selected.parent.name == "configs" else project_root()
-    data = read_yaml(root / "configs/default.yaml")
+    data = normalize_settings(read_yaml(root / "configs/default.yaml"))
     if selected != root / "configs/default.yaml":
-        selected_data = read_yaml(selected)
+        selected_data = normalize_settings(read_yaml(selected))
         base_name = selected_data.pop("base_config", None)
         if base_name is not None:
             base_path = (selected.parent / base_name).resolve()
             if base_path == selected or base_path.parent != selected.parent:
                 raise ValueError("base_config must name another file in the same config directory")
-            base_data = read_yaml(base_path)
+            base_data = normalize_settings(read_yaml(base_path))
             if "base_config" in base_data:
                 raise ValueError("Only one explicit base_config layer is supported")
             data = deep_merge(data, base_data)
@@ -230,8 +253,9 @@ def load_config(
         profiles = suite["profiles"]
         if experiment not in profiles:
             raise ValueError(f"Unknown experiment {experiment!r}; choose {', '.join(profiles)}")
-        data = deep_merge(data, read_yaml(root / "configs" / suite["base"]))
-        data = deep_merge(data, profiles[experiment])
+        if config_path is None:
+            data = deep_merge(data, normalize_settings(read_yaml(root / "configs" / suite["base"])))
+        data = deep_merge(data, normalize_settings(profiles[experiment]))
     load_dotenv(root / ".env", override=False)
     environment: dict[str, Any] = {}
     if "CS_RAG_SEED" in os.environ:
@@ -239,7 +263,7 @@ def load_config(
     if "CS_RAG_INDEX_DIR" in os.environ:
         environment["paths"] = {"index_dir": os.environ["CS_RAG_INDEX_DIR"]}
     data = deep_merge(data, environment)
-    data = deep_merge(data, overrides or {})
+    data = deep_merge(data, normalize_settings(overrides or {}))
     config = AppConfig.model_validate(data)
     config._root = root
     return config

@@ -1,32 +1,36 @@
-# Declarative profiles for later experiments; E3+ require unfinished modules.
-# All profiles inherit baseline.yaml, then apply their overrides.
-base: baseline.yaml
+base: deepseek.yaml
 profiles:
-  E0: {}
-  E1:
+  dense:
+    quality: &id001
+      enabled: false
+    optimization: &id002
+      enabled: false
+    escalation: &id003
+      enabled: false
+    planning:
+      use_history: false
+      rewrite: false
+      decompose: false
     retrieval:
-      branches: [dense, bm25]
-  E2:
+      branches:
+      - dense
+      rerank: false
+  bm25:
+    quality: *id001
+    optimization: *id002
+    escalation: *id003
     retrieval:
-      branches: [dense, bm25]
-      fusion: rrf
-  E3:
-    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
-  E4:
-    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
-    planning: {use_history: true, rewrite: true, decompose: false}
-  E5:
-    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
-    planning: {use_history: true, rewrite: true, decompose: false}
-    quality: {enabled: true}
-  E6:
-    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
-    planning: {use_history: true, rewrite: true, decompose: false}
-    quality: {enabled: true}
-    optimization: {enabled: true}
-  E7:
-    retrieval: {branches: [dense, bm25], fusion: rrf, rerank: true}
-    planning: {use_history: true, rewrite: true, decompose: false}
-    quality: {enabled: true}
-    optimization: {enabled: true}
-    escalation: {enabled: true}
+      branches:
+      - bm25
+      rerank: false
+  hybrid:
+    quality: *id001
+    optimization: *id002
+    escalation: *id003
+    retrieval:
+      rerank: false
+  single:
+    quality: *id001
+    optimization: *id002
+    escalation: *id003
+  full: {}

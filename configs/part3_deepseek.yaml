@@ -1,9 +1,0 @@
-models:
-  llm:
-    backend: deepseek
-    model: deepseek-flash
-    max_new_tokens: 512
-planning:
-  use_history: true
-  rewrite: true
-  decompose: false

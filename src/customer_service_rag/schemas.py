@@ -63,12 +63,18 @@ class Passage(Contract):
             raise ValueError("char_start and char_end must be supplied together")
         if self.char_start is not None and self.char_end <= self.char_start:
             raise ValueError("char_end must be greater than char_start")
-        if ":" in self.doc_id or ":" in self.passage_id:
+        if self.source.startswith("native_") and self.source not in {"native_section", "native_struct"}:
+            raise ValueError("Unsupported native citation scheme")
+        if self.source not in {"native_section", "native_struct"} and (
+            ":" in self.doc_id or ":" in self.passage_id
+        ):
             raise ValueError("IDs must not contain the citation separator ':'")
         return self
 
     @property
     def citation_id(self) -> str:
+        if self.source in {"native_section", "native_struct"}:
+            return self.passage_id
         return f"{self.doc_id}:{self.passage_id}"
 
 
@@ -233,28 +239,6 @@ class TraceEvent(Contract):
     details: dict[str, Any] = Field(default_factory=dict)
 
 
-class RunState(Contract):
-    run_id: NonEmpty
-    dialogue: DialogueInput
-    phase: RunPhase = RunPhase.CREATED
-    query: QueryPlan | None = None
-    retrieval: RetrievalResult | None = None
-    response: GeneratedResponse | None = None
-    feedback: list[EvaluationFeedback] = Field(default_factory=list)
-    actions: list[OptimizationAction] = Field(default_factory=list)
-    retrieval_options: RetrievalOptions | None = None
-    reranker_available: bool = False
-    retrieval_history: list[RetrievalResult] = Field(default_factory=list)
-    candidate_history: list[GeneratedResponse] = Field(default_factory=list)
-    iteration: int = Field(default=0, ge=0)
-    retrieval_round: int = Field(default=0, ge=0)
-    retry_count: int = Field(default=0, ge=0)
-    seen_evidence_ids: set[str] = Field(default_factory=set)
-    usage: list[TokenUsage] = Field(default_factory=list)
-    trace: list[TraceEvent] = Field(default_factory=list)
-    stop_reason: str | None = None
-
-
 class EscalationPackage(Contract):
     reason: NonEmpty
     conversation_id: NonEmpty
@@ -293,7 +277,7 @@ class RunResult(Contract):
     mock_scenario: str | None = None
     model_backend: str = "mock"
     model_calls: list[dict[str, Any]] = Field(default_factory=list)
-    pipeline_backend: str = "legacy"
+    pipeline_backend: str = "unified"
     integration: dict[str, Any] = Field(default_factory=dict)
 
 

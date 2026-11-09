@@ -1,9 +1,0 @@
-# Offline quality loop. default.yaml remains the D2 single-pass configuration.
-quality:
-  enabled: true
-optimization:
-  enabled: true
-  max_retries: 2
-  stop_if_no_new_evidence: true
-escalation:
-  enabled: true

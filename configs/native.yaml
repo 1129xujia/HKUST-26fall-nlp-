@@ -1,0 +1,17 @@
+base_config: deepseek.yaml
+planning:
+  decompose: false
+retrieval:
+  backend: native
+  segmentation: struct
+  chain: finetuned
+  branches:
+  - dense
+  rerank: false
+  native_embedding_model: models/bge-base-en-v1.5-struct-ft/checkpoint-2000
+  final_top_k: 10
+  candidate_top_k: 50
+  dense_top_k: 100
+  device: cpu
+paths:
+  index_dir: artifacts/indexes/struct/finetuned

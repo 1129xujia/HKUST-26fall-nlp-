@@ -7,6 +7,7 @@ import json
 from collections import Counter
 from pathlib import Path
 from statistics import mean
+from urllib.parse import unquote
 
 import numpy as np
 
@@ -24,7 +25,7 @@ def _average(values) -> float | None:
 
 def evaluate_saved(
     directory: Path, examples_path: Path, *, annotations_path: Path | None = None,
-    include_mock: bool = False,
+    include_mock: bool = False, native_corpus_path: Path | None = None,
 ) -> dict:
     if (directory / "result.json").is_file():
         results = [RunResult.model_validate_json((directory / "result.json").read_text(encoding="utf-8"))]
@@ -42,6 +43,46 @@ def evaluate_saved(
     examples = {example.sample_id: example for example in load_examples(examples_path)}
     if not set(ids).issubset(examples):
         raise ValueError("Some prediction IDs do not occur in the selected reference file")
+    native = [r.integration.get("citation_scheme", "").startswith("native_doc::") for r in results]
+    if any(native):
+        schemes = {r.integration.get("citation_scheme") for r in results}
+        if not all(native) or len(schemes) != 1 or native_corpus_path is None:
+            raise ValueError("Native evaluation needs one matching native corpus and citation scheme")
+        from customer_service_rag.retrieval.corpus import load_passages_jsonl, passage_fingerprint
+
+        corpus = load_passages_jsonl(native_corpus_path)
+        fingerprint = passage_fingerprint(corpus)
+        span_index = {}
+        for passage in corpus:
+            for span_id in passage.span_ids:
+                key = (passage.domain, passage.doc_id, str(span_id))
+                if key in span_index:
+                    raise ValueError("Native corpus maps a span to multiple passages")
+                span_index[key] = passage.passage_id
+        for result in results:
+            saved_corpus = result.integration.get("corpus", {})
+            expected = (result.integration.get("corpus_version")
+                        or saved_corpus.get("corpus_metadata", {}).get("passage_fingerprint")
+                        or saved_corpus.get("dense_metadata", {}).get("passage_fingerprint"))
+            if expected != fingerprint:
+                raise ValueError("The native evaluation corpus differs from the run corpus")
+            example = examples[result.sample_id]
+            gold = set()
+            for reference in example.grounding:
+                domain = (unquote(reference.doc_id.split("/", 1)[0])
+                          if "/" in reference.doc_id else example.domain)
+                doc_id = reference.original_doc_id or unquote(reference.doc_id.split("/", 1)[-1])
+                for span_id in reference.span_ids:
+                    key = (domain, doc_id, str(span_id))
+                    if key not in span_index:
+                        raise ValueError(f"Unmapped native grounding reference: {key}")
+                    gold.add(span_index[key])
+            if not example.grounding and example.gold_citations:
+                raise ValueError("Native gold projection requires original grounding spans")
+            examples[result.sample_id] = example.model_copy(update={
+                "gold_citations": sorted(gold),
+                "gold_evidence_groups": [[citation] for citation in sorted(gold)],
+            })
     annotations = {}
     if annotations_path:
         for line in annotations_path.read_text(encoding="utf-8-sig").splitlines():
@@ -73,6 +114,9 @@ def evaluate_saved(
     ]
     report = {
         "sample_count": len(results),
+        "citation_schemes": sorted({r.integration.get("citation_scheme", "shared_corpus_citation_id")
+                                    for r in results}),
+        "gold_unit": "native_passage" if any(native) else "grounding_fragment_group",
         "reference_file": str(examples_path.resolve()),
         "is_development_mock": any(result.is_mock for result in results),
         "response_f1": _average(row["response"]["f1"] for row in rows),

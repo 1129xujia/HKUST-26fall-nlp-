@@ -1,6 +1,0 @@
-base_config: local.yaml
-planning: {use_history: false, rewrite: false, decompose: false}
-retrieval: {branches: [dense], fusion: interleave, rerank: false}
-quality: {enabled: false}
-optimization: {enabled: false}
-escalation: {enabled: false}

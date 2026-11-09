@@ -8,7 +8,7 @@ from typing import Any, Callable
 from pathlib import Path
 
 from customer_service_rag.config import LLMConfig
-from customer_service_rag.models.mock_logic import evaluate_payload, optimize_payload
+from customer_service_rag.models.mock_logic import evaluate_payload
 from customer_service_rag.schemas import LLMResult, TokenUsage
 
 
@@ -51,8 +51,6 @@ class MockLLM:
                 }
         elif task == "evaluate":
             value = evaluate_payload(payload)
-        elif task == "optimize":
-            value = optimize_payload(payload)
         else:
             raise NotImplementedError(f"No mock completion implemented for task {task!r}")
         text = json.dumps(value, ensure_ascii=False)
