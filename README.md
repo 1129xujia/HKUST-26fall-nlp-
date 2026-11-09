@@ -2,6 +2,10 @@
 
 HKUST 26fall NLP 项目。以队友实现的并行检索、带引用生成和 Evaluator–Optimizer 为正式模块，通过一个 `cs-rag` 入口运行。
 
+## 项目报告
+
+[8页 ACL 英文报告](reports/project_report/customer_service_rag_report.pdf)、[中文说明与待完成工作](reports/project_report/customer_service_rag_report_notes_zh.docx)、[可编辑 LaTeX 源码](reports/project_report/latex/) 和队友的检索原稿统一放在 [reports/project_report](reports/project_report/README.md)。总报告已区分当前微调 Dense 直排配置与历史 MiniLM 混合重排实验。
+
 ## 目录
 
 ```text

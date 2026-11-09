@@ -1,0 +1,27 @@
+\section{System Methodology}
+\label{sec:method}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/architecture.pdf}
+\caption{The selectable native fine-tuned configuration. Dense ranks are used directly without BM25, RRF, or Cross-Encoder reranking. Corrections are restricted to supported actions. Historical shared-model runs use the separate hybrid path; cross-domain continuation follows the branch-level protocol in Section~\ref{sec:setup}.}
+\label{fig:architecture}
+\end{figure*}
+
+\subsection{Dialogue Planning}
+The planner receives the current message and visible preceding turns. It returns a standalone query, intent, domain label, and optional subquestions. The domain is one of DMV, SSA, StudentAid, VA, or unknown. Unknown predictions may fall back to lexical cues in visible dialogue. The shared-model configuration allows at most three initial subquestions, normalizes whitespace, and removes duplicates. Gold domains, future turns, reference answers, and grounding labels remain outside online inputs.
+
+The shared-model hybrid experiments use the standalone rewrite. For native fine-tuned retrieval, the initial query instead joins the last four visible user/agent turns with role labels and clears subqueries, matching retriever training. Domain prediction is advisory: global search is used unless a routing experiment explicitly applies predicted-domain filters. Gold metadata is not supplied to the planner.
+
+\input{sections/03_retrieval}
+\subsection{Cited Response Generation}
+The generator receives the original request, standalone query, visible history, and retrieved evidence. The prompt exposes local aliases such as E1 and E2 and requests a JSON answer, citation list, and status. Aliases are mapped back to stable source IDs. An answered response must cite at least one supplied passage; an insufficient-evidence response must have no citations. Unknown citations and inconsistent recognized inline markers are rejected. One additional format-correction call is allowed using the same evidence and budget. These checks validate output structure and citation membership, rather than entailment.
+
+\subsection{Evaluation and Action Selection}
+The evaluator scores relevance, answer sufficiency, groundedness, and dialogue consistency on a zero-to-one scale. The respective thresholds are 0.7, 0.7, 0.8, and 0.8. A separate evidence-sufficiency field asks whether the current context could support a complete revision. This distinction prevents an answer omission from automatically being diagnosed as a retrieval failure.
+
+Feedback specifies missing information, failure categories, suggested queries, and a proposed decision. Structured diagnoses take priority: misunderstanding suggests query rewriting, retrieval coverage suggests recall adjustment, ranking suggests reranking where supported, and answer defects suggest regeneration. The native fine-tuned path exposes no reranking capability; unsupported actions cannot silently enable a Cross-Encoder. Explicitly insufficient evidence redirects regeneration toward retrieval. Negative diagnoses, low scores, invalid citations, or non-answer status block approval. Missing user information may trigger clarification.
+
+\subsection{Budgets and Stopping}
+The application creates one ledger before planning and retains it throughout initial retrieval, generation, evaluation, and optimization. The real-model configuration allows 30,000 total tokens, 180 seconds, and two optimization retries, with a maximum of 1,024 output tokens per call. Before a call, the ledger reserves a conservative allowance; afterward it charges reported usage, including usage from rejected malformed responses. Unknown usage remains unavailable rather than becoming zero.
+
+The controller stops on approval, clarification, escalation, a resource limit, unsupported actions, ineffective changes, or repeated unchanged state. Reusing adequate evidence for revision avoids unnecessary recall. An unchanged retrieval context normally stops the loop unless the diagnosis justifies answer revision. The retry bound counts optimization actions, not all model calls: format correction and separate evaluation calls also consume resources. Escalation prepares the dialogue, evidence, feedback, and attempted actions for handoff; the implementation does not deliver that package to a live human-service platform.

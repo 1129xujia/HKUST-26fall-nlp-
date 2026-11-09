@@ -1,0 +1,59 @@
+% Results integrated from retrievalreport_en.docx. The original DOCX is unchanged.
+% The 400-query cohort is corrected to development because its source is dummy test.
+\subsection{Conversational Retrieval and Reranking}
+\label{sec:retrieval-study}
+We first evaluate the native retrieval methods in Section~\ref{sec:retrieval-method}, before studying downstream orchestration. Table~\ref{tab:segmentation} summarizes corpus sizes and encoder input lengths, including special tokens.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrr}
+\toprule
+Corpus & Passages & Median & P95 & $>512$\\
+\midrule
+Section & 13,421 & 47 & 129.0 & 0.06\%\\
+Struct & 4,110 & 116 & 390.5 & 2.70\%\\
+\bottomrule
+\end{tabular}
+\caption{Native corpus sizes and input token lengths.}
+\label{tab:segmentation}
+\end{table}
+
+A matched comparison uses the same 160 validation queries, visible four-turn history, BGE model, and global search. Original span IDs map next-agent grounding into each corpus. Struct improves Dense and RRF Hit@10 by approximately 20.6 and 22.5 points (Table~\ref{tab:segment-results}), while storing 69.4\% fewer passage vectors. However, grouping and title formatting change together; longer passages also consume more context and can mix conditions. Equal Top-10 counts are not equal token budgets, and 2.70\% of struct inputs exceed 512 tokens. These results support the combined struct design here without isolating its mechanisms.
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+Corpus and method & Hit@10 & Recall@10 & MRR@10\\
+\midrule
+Section Dense & 41.88 & 41.88 & .1957\\
+Section RRF & 46.88 & 46.88 & .2109\\
+Struct Dense & 62.50 & 62.50 & .3369\\
+Struct RRF & 69.38 & 69.38 & .4267\\
+\bottomrule
+\end{tabular}
+\caption{Matched segmentation comparison ($n=160$). Hit, passage recall, and span recall coincide on this cohort; percentages are reported for Hit and recall.}
+\label{tab:segment-results}
+\end{table}
+
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{3.5pt}
+\begin{tabular}{lrrrrr}
+\toprule
+Arm & H/R@10 & MRR & nDCG & H@50 & ms\\
+\midrule
+R1 & 59.75 & .3505 & .4100 & 82.75 & 8.5\\
+R2 & 78.25 & .5286 & .5904 & 93.25 & 10.4\\
+R3 & 66.25 & .3832 & .4496 & 87.00 & 45.4\\
+R4 & 74.50 & .5307 & .5834 & 87.00 & 100.8\\
+\bottomrule
+\end{tabular}
+\caption{Balanced 400-query dummy-file development comparison. R1: untuned Dense; R2: adapted Dense; R3: hybrid RRF; R4: R3 + Cross-Encoder. Hit/Recall (H/R) coincide because each query has one gold passage. MRR and nDCG use cutoff 10; H@50 is candidate hit rate. Hit/Recall are percentages; latency is mean CUDA query time.}
+\label{tab:retrieval-adaptation}
+\end{table}
+
+Adapted Dense has the highest observed Hit@10: 18.50 points above untuned Dense and 3.75 above hybrid reranking (Table~\ref{tab:retrieval-adaptation}). Reranking has slightly higher MRR (.5307 versus .5286), whereas adaptation has higher nDCG and candidate coverage. Adaptation's recorded query latency is about 89.7\% lower than reranking's. Its 3.75-point Hit advantage has a dialogue-cluster bootstrap interval of $[-0.72,8.17]$ points; a reliable superiority claim is unwarranted even before considering dummy-file provenance and a single seed.
+R4 reranks untuned hybrid retrieval, not adapted Dense. No adapted-Dense-plus-Cross-Encoder arm was evaluated, so omitting reranking is a configuration choice, not proof that it could never help an adapted encoder.

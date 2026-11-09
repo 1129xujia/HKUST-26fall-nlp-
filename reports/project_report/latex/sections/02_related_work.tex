@@ -1,0 +1,9 @@
+\section{Related Work}
+\paragraph{Document-grounded dialogue and retrieval.}
+MultiDoc2Dial \citep{feng2021multidoc2dial} studies goal-oriented dialogue grounded in multiple documents. Its service domains make contextual interpretation and policy qualifications central to answering. RAG \citep{lewis2020rag} combines retrieved evidence with generation. BM25 \citep{robertson2009bm25} provides lexical matching, while reciprocal rank fusion \citep{cormack2009rrf} combines rankings without requiring comparable raw scores. We investigate these established components as complementary evidence sources.
+
+\paragraph{Conversational planning and iterative retrieval.}
+CONQRR \citep{wu2022conqrr} learns to rewrite conversational questions for retrieval. Our planner instead uses prompted structured generation and does not train a rewriting policy. IRCoT \citep{trivedi2023ircot} interleaves retrieval with multi-step reasoning. Our loop acts on evidence and answer diagnoses; it does not reproduce IRCoT's reasoning procedure or its published evaluation. The cross-domain cases in our study are mostly parallel compound requests, so they should not be treated as a multi-hop benchmark.
+
+\paragraph{Feedback and model-based evaluation.}
+Self-Refine \citep{madaan2023selfrefine} iteratively improves outputs using model feedback, and Self-RAG \citep{asai2024selfrag} incorporates learned retrieval and reflection behavior. We use an external prompted evaluator and a deterministic action router, without training reflection tokens. Model judges can make evaluation scalable but exhibit biases and reasoning limitations \citep{zheng2023judging}. We therefore distinguish online policy decisions, automatic required-point grading, and reference-based metrics, and inspect cases where these signals disagree.

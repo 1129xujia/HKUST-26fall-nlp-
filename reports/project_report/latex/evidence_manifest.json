@@ -1,0 +1,176 @@
+{
+  "scope": "Saved historical results and supplied report; no new model experiments",
+  "sources": [
+    {
+      "path": "reports/validation_a_seed42_n1000/config.yaml",
+      "sha256": "b363988d75547c3b470d0f9a5a204d68842c42ad52a485fdfb58aa9adf205c64",
+      "bytes": 1775,
+      "original_workspace_sha256": "4766ce6dd2a7b46e427799e9ed32d8c75b554e1dec7ea22ee3301a979a32871c"
+    },
+    {
+      "path": "reports/validation_a_seed42_n1000/metrics.json",
+      "sha256": "28708b8a69480e44a22f494e727c837fb21990d8a00966de93a0bb9d0546f2db",
+      "bytes": 1105,
+      "original_workspace_sha256": "67ef9d804737b11631497ef44c444b87547e8d3e295908048476513e2b117f69"
+    },
+    {
+      "path": "reports/validation_a_seed42_n1000/predictions.jsonl",
+      "sha256": "d9866e2d9f2a6f9c931a5fb07d7dbff6631153c75c6f937e638e2375c284c321",
+      "bytes": 1123801,
+      "original_workspace_sha256": "d932d819c1780233534ce6566524deef4c1f407932b5b7f41a0ac2c25d5c072d"
+    },
+    {
+      "path": "reports/validation_a_seed42_n1000/selection.json",
+      "sha256": "8bcbf391d94a39cb1652c7f0386431a6964ba62e29ca6e88648fbbebdb5ee154",
+      "bytes": 48554,
+      "original_workspace_sha256": "4ed7b9d2e377eed842a1becf94984bcd2f9001b4151770ded11e50ab35aa56a3"
+    },
+    {
+      "path": "reports/validation_a_seed42_n1000/summary.csv",
+      "sha256": "c694fc88e14a5a45bfbfc42c7b1746f4d3e09cce3f6ddfd47930013ab1aaefdc",
+      "bytes": 84997,
+      "original_workspace_sha256": "302565af236580294a38f636a9cb4a7bb7cd8d4377293bf896801b135478a4f3"
+    },
+    {
+      "path": "reports/cross_domain/20261107T194151Z/manifest.json",
+      "sha256": "efc9f792aa8b658826957b05e37998632d9481cdd6535f144786cc22ae9e5ade",
+      "bytes": 894,
+      "original_workspace_sha256": "52eb227060f01283ff630b126309d3616267db7b9c319df03773ffe47af9be00"
+    },
+    {
+      "path": "reports/cross_domain/20261107T194151Z/main_summary.json",
+      "sha256": "fe0e7970f71771d2e747f23d2f7ca959684f6a6353902dfc5e2ea3b82e1fddb1",
+      "bytes": 891,
+      "original_workspace_sha256": "cf863dda6d61b8fd2be0c896b8cf1ff9333a8d7b03c1a6b4970c7c98456333be"
+    },
+    {
+      "path": "reports/cross_domain/20261107T194151Z/cases.jsonl",
+      "sha256": "b4ff9d071c30d0a24239154fa475a2f30ed8540af9e366bd163edb3640466056",
+      "bytes": 1150083,
+      "original_workspace_sha256": "7cdd6b92c6ce1cb8c35f9eb4b77757e460faa47c9cd5aa8f778a2f19c54b9313"
+    },
+    {
+      "path": "reports/cross_domain/20261107T194151Z/case_summary.csv",
+      "sha256": "2d2c357fef5f4ed91a6a78291ce3f7415809a1d6b7728e80c3b7ed73b1bee913",
+      "bytes": 1848,
+      "original_workspace_sha256": "8a0c72ddd7d3fff3feac070f1b26b00bf6a5aca4a1e1f61519f3cbf17be5cd19"
+    },
+    {
+      "path": "reports/cross_domain/20261107T194151Z/point_grades.jsonl",
+      "sha256": "bce0195e1b6db91236fb93e71ed8216c43bf9a93fb146abadc1f77ea6ad836b2",
+      "bytes": 4608,
+      "original_workspace_sha256": "0b714f284e19d283d301931138c1c36546ec58f1d522ed376e3762f6271c0f77"
+    },
+    {
+      "path": "reports/cross_domain/20261108_full/manifest.json",
+      "sha256": "829192078c6ce82a208905679e13022a1268de04d7828bf9c553116974c5e506",
+      "bytes": 418,
+      "original_workspace_sha256": "52823cacbd0472e51202eece8894b9c386d81c88c357ad731c8d15d4a730142c"
+    },
+    {
+      "path": "reports/cross_domain/20261108_full/main_summary.json",
+      "sha256": "68300c76abc179ce161a262400516ead2ac3a99ca0e025cf0a438cc72c0d246d",
+      "bytes": 6374,
+      "original_workspace_sha256": "fced6263ac7428e25fa899df80a5ceef236f32b8352528c6bd8cd699e93b1c73"
+    },
+    {
+      "path": "reports/cross_domain/20261108_full/cases.jsonl",
+      "sha256": "87b076400d91478a6009364499793cbfb4a19c47fe83618d447b9d8f3b37181c",
+      "bytes": 2324427,
+      "original_workspace_sha256": "b77bdd04f3636fb322c47c1141affac33e22b3f7a7d9fbb9783882b800ebd337"
+    },
+    {
+      "path": "reports/cross_domain/20261108_full/case_summary.csv",
+      "sha256": "140a400411f378ec21ebbc239ebfe7cf5097595ea2e1c1b0a2a5f39d299340ac",
+      "bytes": 4078,
+      "original_workspace_sha256": "fb27e389c2599c2b19ec022a8a424dfe1cb80b0b0632fd54ba74dc35e97dfd13"
+    },
+    {
+      "path": "reports/cross_domain/20261108_full/point_grades.jsonl",
+      "sha256": "5d7393df57200d7e472f2457fb9a627931da83fe36915b71cb6b2f4ce834343f",
+      "bytes": 4080,
+      "original_workspace_sha256": "5e5ecb89fb7795c530c5741403d4de6d9f1b5de3e2073d82eba1d2b9877ec981"
+    },
+    {
+      "path": "data/cross_domain/cross_domain_20_annotations.json",
+      "sha256": "5474087d145f64618d18e68a34ae8302cbea373168eac346991cb1df4da238ab",
+      "bytes": 262238,
+      "original_workspace_sha256": "a83dc361d83f6237e83637688d3db4d15c8b0dbc1a497667fd5e064ce09e10eb"
+    },
+    {
+      "path": "reports/cross_domain/annotation_review.md",
+      "sha256": "96a6440402a92f7ab899308b44dd2ea6114bcc9c92702a860cff800a764b6862",
+      "bytes": 45387,
+      "original_workspace_sha256": "831e56d2252f02aff0a3fb88e406a660d75421d2dbc8c69e77ccc94f799eca7b"
+    },
+    {
+      "path": "reports/project_report/retrievalreport_en.docx",
+      "sha256": "22461f7b17bb5fafa4c74614bd1c0609f9b0bbe5ebb9e58b934f869a3307d898",
+      "bytes": 36297,
+      "original_workspace_sha256": "22461f7b17bb5fafa4c74614bd1c0609f9b0bbe5ebb9e58b934f869a3307d898"
+    },
+    {
+      "path": "models/bge-base-en-v1.5-struct-ft/experiment/final_comparison.json",
+      "sha256": "7f12e11cfa1e40efd161cd8559a6d0b5f555336bc5ec1e53921a7486a7cb0206",
+      "bytes": 10534,
+      "original_workspace_sha256": "7d229805b645116d476af92d8d260244f7fd3619561f8042ce5e51cd6eecf235"
+    },
+    {
+      "path": "models/bge-base-en-v1.5-struct-ft/experiment/selection.json",
+      "sha256": "8d486c3a556464fa4aaa4e0ec390a6c0b19257f97e6e663ebee4063195a6d12d",
+      "bytes": 1877,
+      "original_workspace_sha256": "a9f14ce3b05863e33b2ec938b2fd9f154eee49f792b5c711eb657767467d6851"
+    },
+    {
+      "path": "models/bge-base-en-v1.5-struct-ft/experiment/training_config.json",
+      "sha256": "ce76d888922323bea44c455217fd303dfff38c5ec961a9d79489c29db776510e",
+      "bytes": 1343,
+      "original_workspace_sha256": "adfd93e0b4460afca7dabb77dc925baeed0c5e56c91a0a5e4d8e46e283b3a694"
+    },
+    {
+      "path": "models/bge-base-en-v1.5-struct-ft/experiment/training_summary.json",
+      "sha256": "f61a3dd6e5abdfb907256ecfdb9bc92dc7913c18fd3f380b89b14975e5a45499",
+      "bytes": 325,
+      "original_workspace_sha256": "008b188c834b671a089b4023f21f7f072aece9b36f83841c02d3ab5d5236b4fd"
+    },
+    {
+      "path": "configs/native.yaml",
+      "sha256": "5630cf5ebf6e87b4aff14b1d8e97ea5a217f93046b42cefdd574a699cd0264ac",
+      "bytes": 369,
+      "original_workspace_sha256": "acf775f6516c8a9124536b20ee11953eab1a73cd19eae5541e0e1ecfe38a5029"
+    },
+    {
+      "path": "configs/deepseek.yaml",
+      "sha256": "88b2eb69bd4b971ae621f77abfdf0d525c4eb51f0377d731f6535ebd130808c4",
+      "bytes": 1162,
+      "original_workspace_sha256": "6d703d7ce23c735124be8ee16ade0ee8472ed32978a28b06432702fc865cac5e"
+    },
+    {
+      "path": "src/customer_service_rag/retrieval/config.py",
+      "sha256": "5c3af346837f428f8ad9f25bcf08a69740908a6e0c63bd96e5cb7224e4865e89",
+      "bytes": 4995,
+      "original_workspace_sha256": "f94747f2bde5f6ca3822b0e8e7ce5c890c9f3a68bcee792348b208676b292b67"
+    },
+    {
+      "path": "src/customer_service_rag/retrieval/pipeline.py",
+      "sha256": "7294c1fe47fdbf6e165a920cb508961bdecc1e9371c45420995cb25619a23aee",
+      "bytes": 10823,
+      "original_workspace_sha256": "62a16b05d3d8241fe76eaee7a653d7617f2d6efe402346dc90c71134d7abe73b"
+    },
+    {
+      "path": "src/customer_service_rag/optimization/retrieval_adapter.py",
+      "sha256": "ca1e94156e83c0da5046a8b18e6de3e5d1b988e0959a7aaa9498d5f1681d5271",
+      "bytes": 10498,
+      "original_workspace_sha256": "79686478d1c740fac52131c28674a3d27b9efaca32f671890937b5e26e2a2360"
+    },
+    {
+      "path": "src/customer_service_rag/orchestration/retrieval.py",
+      "sha256": "be173509ac7f92cf8e5e48969e9fa1b60397d28db3b100481e7093998aa537e1",
+      "bytes": 18231,
+      "original_workspace_sha256": "c3cc2f71a05b97adb1faecdc91b4415eff7309dc0aba17fb94f639d154bd2afc"
+    }
+  ],
+  "repository_root_from_manifest": "../../..",
+  "implementation_commit": "80542b4acd3c25e601ff728614010fb5d0770635",
+  "hash_basis": "SHA-256 of committed Git blob bytes; the supplied DOCX uses its unchanged binary bytes. Original workspace hashes are retained separately."
+}

@@ -1,0 +1,60 @@
+\subsection{Official Validation Single Pass}
+\label{sec:official-results}
+\begin{table}[t]
+\centering\small
+\begin{tabular}{lr}
+\toprule
+Metric ($n=1,000$) & Value\\
+\midrule
+Answered / insufficient / error & 973 / 25 / 2\\
+Response token F1 / EM & 20.80 / 0.00\\
+Evidence Recall@1 / @5 / @10 & 40.00 / 68.13 / 77.03\\
+Citation ID validity & 100.00\\
+Citation gold precision & 32.22\\
+Mean / P95 latency (seconds) & 4.73 / 6.05\\
+Mean model calls / tokens & 2.02 / 2,127\\
+\bottomrule
+\end{tabular}
+\caption{Single-pass validation development results. Quality metrics are percentages. Costs describe each sample's final attempt; citation membership does not establish factual support.}
+\label{tab:official}
+\end{table}
+
+Table~\ref{tab:official} establishes a functioning reference-based comparator, not an improvement from optimization. Evidence Recall@10 exceeds Recall@5 by 8.90 points, suggesting that some annotated evidence remains below the five-passage final context. Increasing context is therefore a plausible coverage intervention, but its effect on answer quality and token use requires a matched experiment.
+
+The gap between valid citations and gold precision shows that structural citation checks solve only one problem. A supplied passage can fall outside the annotated gold alternative-passage set; this mismatch does not itself establish unsupported claims. Token F1 and EM are sensitive to wording and answer length, so they cannot independently diagnose factual errors. The two retained errors violate the output contract by attaching citations to insufficient-evidence answers after format correction. No full-loop run on the same 1,000 requests is available.
+
+\subsection{Routing and Independent Generation}
+\begin{table}[t]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{lrrr}
+\toprule
+Metric ($n=20$) & A & B & C\\
+\midrule
+\multicolumn{4}{l}{Initial single pass}\\
+Source-document recall & 60.00 & 75.00 & 75.00\\
+Required-point coverage & 48.08 & 56.75 & 60.67\\
+All points covered (count) & 1 & 2 & 3\\
+Mean generation tokens & 1,732 & 1,759 & 4,528\\
+\midrule
+\multicolumn{4}{l}{After evaluation and bounded optimization}\\
+Source-document recall & 55.00 & 75.00 & 67.50\\
+Delivered point coverage & 12.50 & 45.00 & 43.25\\
+Answered (count) & 3 & 14 & 12\\
+All points covered (count) & 1 & 2 & 3\\
+Mean pipeline tokens & 7,313 & 6,866 & 14,756\\
+Mean pipeline calls & 3.45 & 3.20 & 9.05\\
+\bottomrule
+\end{tabular}
+\caption{Cross-domain development study. Coverage and recall are percentages; non-answered outputs receive zero delivered point coverage. A: global retrieval; B: routed retrieval and pooled generation; C: routed retrieval, separate answers, and synthesis.}
+\label{tab:crossdomain}
+\end{table}
+
+Under the same initial context limit, routed retrieval raises annotated document recall by 15 points (Table~\ref{tab:crossdomain}). B improves initial point coverage over A by 8.67 points, but its exploratory paired interval spans zero ($[-0.33,17.83]$). Many questions directly name their agencies, and predicted domain sets match annotations for all 20 requests; this does not establish routing accuracy for implicit or unseen requests.
+
+Because initial B/C evidence matches, their comparison isolates answer composition more closely. C initially gains 3.92 coverage points, concentrated in three questions, while consuming 2.58 times B's generation tokens. After evaluation and optimization, C's coverage is 1.75 points below B ($[-9.00,3.75]$), and its pipeline token use is 2.15 times higher. The added computation has no aggregate coverage advantage on this cohort.
+
+\subsection{What the Loop Changes}
+Final online acceptance increases from 10 to 15\% for A, 65 to 70\% for B, and 55 to 60\% for C's final synthesis. Each arm adds only one accepted question, case 010. C's domain-level workflows separately improve from 17/40 to 22/40 accepted outputs and include one internal contract error. Domain-level counts should not be added to final-answer acceptance.
+
+The larger final B--A coverage difference of 32.50 points ($[17.25,48.33]$) partly reflects abstention: A returns an escalated status on 17 questions. Fourteen A workflows stop after unchanged context and three reach the retry limit. Thirty initially credited points in those questions disappear from final delivery when generic handoff messages replace drafts. Lower delivered coverage therefore does not demonstrate that every revised draft became worse, while higher acceptance does not prove factual correctness.

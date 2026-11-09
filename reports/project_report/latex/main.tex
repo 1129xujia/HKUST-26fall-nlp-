@@ -1,0 +1,30 @@
+\documentclass[11pt]{article}
+\usepackage[preprint]{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\title{Parallel Retrieval and Bounded Evaluation for Conversational Customer Service}
+\author{HKUST NLP Project Team}
+\begin{document}
+\maketitle
+\begin{abstract}
+Customer-service questions depend on dialogue history and conditions distributed across policy documents. We integrate query planning, alternative retrieval paths, cited generation, and bounded evaluator-driven revision. The native fine-tuned path uses Dense rankings directly, without fusion or reranking; hybrid retrieval remains a comparator. Adapted Dense reaches 78.25 Hit@10 on a historical dummy-file development cohort, without establishing final-test superiority. Separately, saved MiniLM hybrid-pipeline results on 1,000 MultiDoc2Dial validation requests obtain token F1 of 20.80 and evidence Recall@5 of 68.13. On 20 synthetic cross-domain requests using that earlier backend, domain routing raises initial document recall from 60 to 75 percent. Independent domain generation costs more without a final coverage advantage. Evaluation adds one accepted question per arm but often replaces useful drafts with handoff messages. Conditional errors and unstable automatic grading motivate calibrated evaluation and stopping.
+\end{abstract}
+\input{sections/01_introduction}
+\input{sections/02_related_work}
+\input{sections/03_method}
+\input{sections/04_setup}
+\section{Results}
+\label{sec:results}
+\input{sections/05_retrieval_existing}
+\input{sections/06_results}
+\input{sections/07_discussion}
+\input{sections/08_conclusion}
+\bibliography{references}
+\end{document}

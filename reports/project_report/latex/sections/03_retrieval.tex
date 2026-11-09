@@ -1,0 +1,21 @@
+% Integrated from retrievalreport_en.docx. Results are in 05_retrieval_existing.tex.
+\subsection{Fine-Tuned and Hybrid Retrieval}
+\label{sec:retrieval-method}
+Two alternative paths share an evidence contract with stable document/passage IDs, source spans, and provenance. The current native fine-tuned preset selects struct passages and BGE checkpoint-2000, returning Dense cosine Top-10 directly. It disables BM25, RRF, Cross-Encoder reranking, subqueries, and additional semantic/per-document filtering. The retained hybrid path searches dense and lexical indexes in parallel, then fuses and optionally reranks candidates. These are alternatives, not consecutive stages of the fine-tuned path.
+
+\paragraph{Structure-aware passages.}
+Native index text joins the document title, ancestor titles, section title, and body. \emph{Section} groups spans by section ID and preserves standalone headings. \emph{Struct} merges adjacent spans sharing a section ID or stripped title, retaining a title path and coherent body. This keeps related policy sentences and conditions together, gives dense encoding a clearer subject, and lets BM25 match related terms within one passage. Fewer heading-only fragments compete for the final evidence slots. These are plausible mechanisms, rather than separately isolated effects.
+
+\paragraph{Hybrid comparator and fusion.}
+BGE-base-en-v1.5 uses 768-dimensional normalized CLS embeddings, a 512-token limit, its retrieval query prefix, and FAISS exact inner-product search. BM25 indexes the same passage text and removes user/agent query labels. Dense matching captures semantic similarity, while BM25 preserves exact service terms and form numbers. For the native hybrid study, Dense Top-100 and BM25 Top-50 are deduplicated and combined as
+\begin{equation}
+ \mathrm{RRF}(p)=\sum_{r:p\in L_r}
+ \frac{1}{30+\mathrm{rank}_{L_r}(p)},
+\end{equation}
+where $L_r$ is a branch's ranked list. Fusion retains 50 candidates without comparing the branches' raw score scales.
+
+\paragraph{Optional hybrid reranking.}
+In the hybrid comparator, the MiniLM-L6-v2 MS MARCO Cross-Encoder jointly scores query--passage pairs. Its query places the current user question before earlier user questions. Short confirmations such as \emph{yes} keep RRF order because their meaning depends on the preceding agent turn. Pairwise inference adds query cost as candidate count and traffic grow. The fine-tuned path neither loads nor calls this model.
+
+\paragraph{Dense adaptation.}
+We also investigate replacing query-time reranking with an adapted Dense retriever. Training uses 20,607 deduplicated struct inputs and all 109.5M BGE parameters: AdamW, learning rate $2\!\times\!10^{-5}$, weight decay .01, batch size 8, 2,000 steps, gradient clipping at 1.0, warmup/decay, and seed 20261108. A scale-20 multi-positive contrastive loss rewards any labeled positive and masks unlabeled same-document negatives. Checkpoint 2000 is selected on dev160 (Hit@10 78.75, versus 77.50 at step 1000); document vectors are rebuilt for it. Adapted Dense directly ranks passages without BM25, RRF, or a Cross-Encoder. Section~\ref{sec:retrieval-study} compares the four native configurations.

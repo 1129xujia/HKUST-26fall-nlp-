@@ -1,0 +1,28 @@
+\section{Experimental Setup}
+\label{sec:setup}
+\subsection{Data and Evaluation Cohorts}
+We use MultiDoc2Dial's 488 documents across DMV, SSA, StudentAid, and VA. The shared preprocessing produces 3,798 character-window passages with a maximum window size of 800 characters and 120-character overlap. Consecutive user turns and following agent turns form request--response examples. A seeded dialogue-level split of the official training data yields 20,558 training and 2,248 development requests; official validation contains 4,427 requests. Earlier turns alone form online history.
+
+Official grounding offsets define evidence groups: overlapping windows that cover the same fragment are alternatives, while fragments needed for a long span are jointly required. The development mini set is drawn from the training-derived development split.
+
+We keep three evaluation cohorts separate. First, the retrieval component compares section/struct corpora and encoder variants. The distributed v1.0 test file is explicitly documented as a dummy file; its 400-query historical comparison is reported only as development evidence. Second, a seed-42 sample of 1,000 official validation requests measures the single-pass downstream pipeline. Third, 20 AI-assisted synthetic cross-domain requests compare three orchestration designs. Their 84 required points and source annotations await independent human review; 19 requests are parallel compound questions. Validation has been used for development, so it is not an untouched final test set. HotpotQA was considered but has not been adapted or evaluated.
+
+\subsection{Models and Controlled Comparisons}
+The retrieval study uses BGE-base-en-v1.5 with 768-dimensional embeddings and native FAISS indexes. The current native preset selects adapted Dense without reranking. The saved downstream studies instead use frozen 384-dimensional all-MiniLM-L6-v2 embeddings, the character-window corpus, a MiniLM Cross-Encoder, and \texttt{deepseek-flash} at temperature zero. Their results are not reattributed to fine-tuned BGE; no matched large-scale downstream rerun with it is available.
+
+The 1,000-request pipeline includes planning, hybrid retrieval, RRF, reranking, and generation, with evaluation and optimization disabled. It is a single-pass hybrid comparator, not a Dense-only Single-RAG baseline.
+
+For the 20-request study, A retrieves globally and generates jointly; B retrieves separately within predicted domains and pools evidence for one answer; C generates domain-specific answers and then synthesizes them against the original evidence. One multilabel plan is shared across arms, and initial B/C evidence IDs and order match for every request. The final context budget is six passages. With two domains, each receives three passages and half the nominal Dense/BM25 candidate quota. A uses Dense/BM25 Top-50, RRF candidate depth 30; B/C use Top-25 and depth 15 per domain.
+
+The later batch reuses saved initial answers. A continues to search globally, B retains domain-filtered branches, and C optimizes domain answers separately before final synthesis. C's final revision cannot fetch new cross-domain evidence. Each historical branch workflow has its own 30,000-token/180-second ledger and two-retry limit, seeded with initial generation tokens and elapsed generation time. These ledgers exclude shared planning and original retrieval, and do not impose a shared end-to-end budget on the whole C arm.
+
+\subsection{Metrics and Accounting}
+For official requests, we report reference token F1, exact match, evidence-group Recall@$k$, citation validity, latency, and tokens. Recall uses the post-fusion/post-reranking candidate list, before truncation to the five-passage generation context. Unanswered reference-bearing cases score zero on F1/EM. For synthetic cases, required-point coverage is
+\begin{equation}
+ \mathrm{Cov}=\frac{1}{N}\sum_{i=1}^{N}
+ \mathbf{1}[s_i=\mathrm{answered}]
+ \frac{|\widehat{P}_i\cap P_i|}{|P_i|},
+\end{equation}
+where the same model family grades which annotated points appear in the answer. Non-answered cases score zero. We separately report online acceptance and annotated source-document recall in the final context. Neither metric is factual accuracy.
+
+Per-arm pipeline tokens include generation and online evaluation, including C's subworkflows, but exclude the shared planner (321.4 tokens/request) and offline grading. Added workflow time excludes the original execution. The 1,000-request cost summary retains the last attempt per sample and omits outer recovery retries. We therefore avoid comparing its latency directly with the continuation times. Exploratory paired intervals resample the 20 question indices 50,000 times with seed 42; they do not measure annotation or judge uncertainty.
