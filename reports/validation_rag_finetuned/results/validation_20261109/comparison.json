@@ -1,0 +1,22 @@
+{
+  "complete_pairing": true,
+  "sample_count": 4427,
+  "metrics": {
+    "response_f1": {
+      "old_mean": 0.16431478261954363,
+      "new_mean": 0.2121866189028323,
+      "mean_delta": 0.047871836283288796,
+      "new_better": 2710,
+      "equal": 376,
+      "new_worse": 1341
+    },
+    "evidence_recall_at_10": {
+      "old_mean": 0.5170544386717868,
+      "new_mean": 0.7944431895188615,
+      "mean_delta": 0.27738875084707476,
+      "new_better": 1355,
+      "equal": 2946,
+      "new_worse": 126
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "sample_count": 4427,
+  "status_counts": {
+    "answered": 4263,
+    "insufficient_evidence": 139,
+    "error": 25
+  },
+  "response_f1": 0.2121866189028323,
+  "response_em": 0.0006776598147729839,
+  "retrieval": {
+    "@1": {
+      "recall": 0.4131466004065959,
+      "hit": 0.4156313530607635,
+      "complete_coverage": 0.41066184775242826
+    },
+    "@5": {
+      "recall": 0.7057826970860628,
+      "hit": 0.7081545064377682,
+      "complete_coverage": 0.7034108877343573
+    },
+    "@10": {
+      "recall": 0.7944431895188615,
+      "hit": 0.7964761689631805,
+      "complete_coverage": 0.7924102100745426
+    }
+  },
+  "retrieval_scored_count": 4427,
+  "citation_evidence_validity": 1.0,
+  "citation_gold_precision": 0.3695523310583129,
+  "query_source": "main retrieval.native_main.finetuned_query, no LLM rewrite",
+  "domain_filter": null,
+  "note": "Official validation is a development split. No planner or domain filter; factual support needs separate labels."
+}

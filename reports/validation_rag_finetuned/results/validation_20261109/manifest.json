@@ -1,0 +1,15 @@
+{
+  "dataset": "MultiDoc2Dial official validation",
+  "sample_count": 4427,
+  "examples_sha256": "777448d08919eea8d233f080711d8f0cbc6d799141a9291680c78a0412a12229",
+  "documents_sha256": "7205be05b7c260fd3c0eda4d98a4abddf7af66c364238f1be509aa139414012d",
+  "index_manifest_sha256": "ab1c1e6a9f476ba8f0dcddda5e29e2b718f422124bab915d6cb1522579f58629",
+  "checkpoint_manifest_sha256": "d20c64e14105a022ea2c4b6c6bfcfc85218dc71f148972f70abe8780a0d2b19f",
+  "corpus_version": "a9cefd04bcba83ae5329468ac2e1632d8f7b3a6e82e83ff0bc28b6f2396e06d6",
+  "query_source": "main retrieval.native_main.finetuned_query, no LLM rewrite",
+  "domain_filter": null,
+  "sub_queries": [],
+  "top_k": 10,
+  "retrieval_chain": "struct fine-tuned Dense, no BM25, no reranker",
+  "generation": "main EvidenceResponseGenerator, DeepSeek Flash"
+}
