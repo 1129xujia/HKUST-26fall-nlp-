@@ -1,4 +1,6 @@
 .venv/
+.venv_struct/
+.tmp/
 .deps/
 __pycache__/
 *.py[cod]
@@ -19,6 +21,7 @@ artifacts/indexes/*
 !artifacts/indexes/.gitkeep
 artifacts/models/
 artifacts/cache/
+artifacts/hf_cache/
 .cache/
 results/*
 !results/.gitkeep

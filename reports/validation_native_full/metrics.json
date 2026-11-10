@@ -1,0 +1,42 @@
+{
+  "sample_count": 4427,
+  "status_counts": {
+    "answered": 3639,
+    "escalated": 580,
+    "clarification_needed": 206,
+    "error": 2
+  },
+  "response_f1": 0.1836557974101841,
+  "response_em": 0.0006776598147729839,
+  "retrieval": {
+    "@1": {
+      "recall": 0.4131466004065959,
+      "hit": 0.4156313530607635,
+      "complete_coverage": 0.41066184775242826
+    },
+    "@5": {
+      "recall": 0.7066862435057601,
+      "hit": 0.7090580528574656,
+      "complete_coverage": 0.7043144341540547
+    },
+    "@10": {
+      "recall": 0.7967020555681048,
+      "hit": 0.7987350350124237,
+      "complete_coverage": 0.7946690761237859
+    }
+  },
+  "retrieval_scored_count": 4427,
+  "citation_evidence_validity": 1.0,
+  "citation_gold_precision": 0.3753578952878211,
+  "average_latency_ms": 6456.545064377631,
+  "p95_latency_ms": 13307.49999999825,
+  "average_retrieval_rounds": 1.1185904675852723,
+  "average_retry_count": 0.2568330697989609,
+  "average_model_calls": 3.389202620284617,
+  "average_total_tokens": 7358.417664332505,
+  "complete_usage_count": 4427,
+  "token_sources": [
+    "reported"
+  ],
+  "note": "All 4,427 requests are in the denominator; error and other unanswered statuses score F1/EM zero."
+}

@@ -6,6 +6,7 @@ import hashlib
 import json
 import platform
 import subprocess
+from functools import lru_cache
 from importlib.resources import files
 from pathlib import Path
 from uuid import uuid4
@@ -15,6 +16,16 @@ import yaml
 from customer_service_rag import __version__
 from customer_service_rag.config import AppConfig
 from customer_service_rag.schemas import RunResult
+
+
+@lru_cache(maxsize=8)
+def _data_sha256(path: Path) -> str:
+    """Hash immutable run inputs once without loading an entire dataset into RAM."""
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def _code_identity(root: Path):
@@ -59,7 +70,7 @@ def write_run(config: AppConfig, result: RunResult) -> Path:
         "models": config.models.model_dump(mode="json"),
         "retrieval": config.retrieval.model_dump(mode="json"),
         "index_manifest": result.integration.get("corpus", {}),
-        "data_sha256": {key: hashlib.sha256(config.resolve_path(path).read_bytes()).hexdigest()
+        "data_sha256": {key: _data_sha256(config.resolve_path(path))
             for key, path in {"passages": config.data.passages_path,
                               "examples": config.data.examples_path}.items()
             if config.resolve_path(path).is_file()},

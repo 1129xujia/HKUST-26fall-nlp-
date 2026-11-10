@@ -113,7 +113,8 @@ class DenseRetriever:
         # 向量已经归一化，因此内积等价于余弦相似度；IndexFlatIP 执行精确搜索。
         index = faiss.IndexFlatIP(vectors.shape[1])
         index.add(vectors)
-        faiss.write_index(index, str(artifact_dir / "faiss.index"))
+        # FAISS's Windows C++ file API cannot open non-ASCII paths.
+        (artifact_dir / "faiss.index").write_bytes(faiss.serialize_index(index).tobytes())
         np.save(artifact_dir / "passage_embeddings.npy", vectors)
         metadata = {"model_name": model_name, "query_prefix": query_prefix, "passage_prefix": passage_prefix, "passage_count": len(passages), "dimension": int(vectors.shape[1]), "normalized": True, "fingerprint_version": PASSAGE_FINGERPRINT_VERSION, "passage_fingerprint": passage_fingerprint(passages), "reused_passage_count": reused_count, "encoded_passage_count": len(passages) - reused_count}
         metadata["local_model_fingerprint"] = model_identity
@@ -130,8 +131,11 @@ class DenseRetriever:
         metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
         if metadata.get("fingerprint_version") != PASSAGE_FINGERPRINT_VERSION:
             raise RetrievalModelMismatch("Dense fingerprint version is stale; rebuild indexes")
-        if metadata.get("model_name") != model_name:
-            raise RetrievalModelMismatch(f"Dense index uses {metadata.get('model_name')!r}, requested {model_name!r}")
+        saved_model = metadata.get("model_name")
+        if saved_model != model_name and (
+            not saved_model or Path(saved_model).resolve() != Path(model_name).resolve()
+        ):
+            raise RetrievalModelMismatch(f"Dense index uses {saved_model!r}, requested {model_name!r}")
         if metadata.get("local_model_fingerprint") != local_model_fingerprint(model_name):
             raise RetrievalModelMismatch("Local encoder weights/config changed or identity is missing; rebuild indexes")
         if metadata.get("query_prefix", "") != query_prefix:
@@ -140,7 +144,7 @@ class DenseRetriever:
             raise RetrievalModelMismatch("Dense index was built with a different passage prefix")
         if metadata.get("passage_count") != len(passages) or metadata.get("passage_fingerprint") != passage_fingerprint(passages):
             raise RetrievalModelMismatch("Dense index was built from a different corpus")
-        index = faiss.read_index(str(index_path))
+        index = faiss.deserialize_index(np.frombuffer(index_path.read_bytes(), dtype="uint8"))
         if index.ntotal != len(passages) or index.d != metadata.get("dimension"):
             raise RetrievalModelMismatch("FAISS shape does not match corpus metadata")
         if metadata.get("normalized") is not True:

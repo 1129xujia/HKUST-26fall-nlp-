@@ -1,0 +1,13 @@
+{
+  "dataset": "MultiDoc2Dial official validation",
+  "sample_count": 4427,
+  "examples_sha256": "777448d08919eea8d233f080711d8f0cbc6d799141a9291680c78a0412a12229",
+  "corpus_sha256": "45741b67831e614e24348d518e4465ef9fdbb4be2ae21d26966a9e89cfa85c6b",
+  "corpus_version": "a9cefd04bcba83ae5329468ac2e1632d8f7b3a6e82e83ff0bc28b6f2396e06d6",
+  "selection_sha256": "13f87c60ac6a1f544cc48725d46d26840cd6b019bc26ebafc8f9561d0a368d7b",
+  "progress_sha256": "c25fd2e08dfc0cb05b2a7b1cb3cdbad8fb959e8f5a143b1c7075a24e2d8f5037",
+  "config_sha256": "acf775f6516c8a9124536b20ee11953eab1a73cd19eae5541e0e1ecfe38a5029",
+  "retrieval": "struct fine-tuned BGE Dense, full corpus, top 10, no reranker",
+  "workflow": "planner -> retrieval -> DeepSeek generation -> evaluator -> optimizer",
+  "error_policy": "last saved error kept; F1/EM zero; no fabricated clarification"
+}
